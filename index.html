@@ -1179,14 +1179,17 @@ html:not([data-bg="plain"]):not([data-bg="dots"]) .stat{background:color-mix(in 
 .wl-add input{border:0;border-radius:999px;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line);padding:8px 13px;width:220px;max-width:60vw}
 .wl h3 .chips button{padding:6px 10px;font-size:.72rem}
 .mk-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:18px;align-items:start}
-.tvbox{border-radius:12px;overflow:hidden}
-.tvbox.tape{min-height:46px;border-radius:999px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line)}
-.tvbox.chart{height:520px}
+.tvbox{border-radius:12px;overflow:hidden;background:#131722}
+.tvbox iframe{color-scheme:dark}
+.mk-chart.full{position:fixed;inset:0;z-index:96;border-radius:0;margin:0;display:flex;flex-direction:column;padding:12px max(12px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.mk-chart.full .tvbox.chart{flex:1;height:auto;min-height:0}
+.tvbox.tape{height:46px;border-radius:14px;background:#131722;box-shadow:0 0 0 1px var(--line)}
+.tvbox.chart{height:min(72vh,720px);min-height:460px}
 .tvbox.quotes{height:420px}
 .tvbox.news{height:560px}
 .tvbox.cal{height:600px}
 .tvbox .tradingview-widget-copyright{font-size:.7rem;color:var(--faint)}
-@media (max-width:980px){.mk-grid{grid-template-columns:1fr}.tvbox.chart{height:420px}}
+@media (max-width:760px){.tvbox.chart{height:62vh;min-height:380px}}
 @media (max-width:760px){.frow3{grid-template-columns:1fr 1fr}.pcal-h,.pcal-r{grid-template-columns:repeat(7,minmax(0,1fr))}.pcal-h span:last-child,.pc.wk{display:none}.pc{min-height:52px;padding:4px 5px}.pc b{font-size:.68rem}.pc small{display:none}.srow{grid-template-columns:64px minmax(0,1fr)}.sbar-hours{left:72px}.wl-add input{width:160px}}
 </style>
 
@@ -3781,9 +3784,9 @@ function normSym(s){s=String(s||'').trim().toUpperCase().replace(/\s/g,'');if(!s
   const map={NQ:'OANDA:NAS100USD',NAS100:'OANDA:NAS100USD',US100:'OANDA:NAS100USD',ES:'OANDA:SPX500USD',SPX:'OANDA:SPX500USD',US500:'OANDA:SPX500USD',YM:'OANDA:US30USD',US30:'OANDA:US30USD',DAX:'OANDA:DE30EUR',GER40:'OANDA:DE30EUR',GOLD:'OANDA:XAUUSD',XAUUSD:'OANDA:XAUUSD',SILVER:'OANDA:XAGUSD',XAGUSD:'OANDA:XAGUSD',OIL:'TVC:USOIL',WTI:'TVC:USOIL',CL:'TVC:USOIL',DXY:'TVC:DXY',VIX:'TVC:VIX',BTC:'BINANCE:BTCUSDT',ETH:'BINANCE:ETHUSDT',SOL:'BINANCE:SOLUSDT'};
   if(map[s])return map[s];if(/^[A-Z]{6}$/.test(s)&&/(USD|EUR|GBP|JPY|CHF|CAD|AUD|NZD|SEK|NOK)$/.test(s))return 'FX:'+s;if(/USDT$/.test(s))return 'BINANCE:'+s;if(/^(BTC|ETH|SOL|XRP|ADA|DOGE|BNB)USD$/.test(s))return 'BINANCE:'+s.replace(/USD$/,'USDT');return s}
 const symLabel=s=>s.split(':').pop().replace('NAS100USD','NAS100').replace('SPX500USD','SPX500').replace('US30USD','US30').replace('DE30EUR','DAX').replace('UK100GBP','FTSE').replace('USDT','');
-function tvTheme(){return document.documentElement.dataset.skin==='bone'?'light':'dark'}
+function tvTheme(){return 'dark'}
 function tvLocale(){return LANG==='sv'?'sv_SE':'en'}
-function tvMount(el,script,cfg){if(!el)return;el.innerHTML='<div class="tradingview-widget-container__widget"></div>';el.className='tradingview-widget-container tvw';const s=document.createElement('script');s.type='text/javascript';s.async=true;s.src='https://s3.tradingview.com/external-embedding/embed-widget-'+script+'.js';s.text=JSON.stringify(cfg);el.appendChild(s)}
+function tvMount(el,script,cfg){if(!el)return;el.innerHTML='<div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>';el.classList.add('tradingview-widget-container','tvw');const s=document.createElement('script');s.type='text/javascript';s.async=true;s.src='https://s3.tradingview.com/external-embedding/embed-widget-'+script+'.js';s.text=JSON.stringify(cfg);el.appendChild(s)}
 function renderMarkets(force){const W=watchList();const sel=S.msym&&W.includes(S.msym)?S.msym:W[0];S.msym=sel;const sig=JSON.stringify([W,sel,tvTheme(),LANG,S.mnews||'market',S.mmarket||'forex',CAN_NET]);
   if(!force&&V.markets.dataset.sig===sig){const sc=V.markets.querySelector('#m-sess');if(sc)sc.outerHTML=sessionsCard().replace('class="card sessc"','id="m-sess" class="card sessc"');return}
   V.markets.dataset.sig=sig;const P=WL_PRESETS();
@@ -3792,25 +3795,27 @@ function renderMarkets(force){const W=watchList();const sel=S.msym&&W.includes(S
   <div class="card wl"><h3>${T('Your watchlist','Din bevakningslista')}<span class="grow"></span><span class="chips">${WL_NAMES().map(([k,l])=>`<button data-act="x-wl-preset" data-v="${k}">${l}</button>`).join('')}</span></h3>
     <div class="wl-chips">${W.map(s=>`<span class="wlc ${s===sel?'on':''}"><button data-act="x-msym" data-v="${esc(s)}">${esc(symLabel(s))}</button><button class="del" data-act="x-wl-del" data-v="${esc(s)}" aria-label="${T('Remove','Ta bort')}">×</button></span>`).join('')}
     <form class="wl-add" data-xform="wl"><input name="s" placeholder="${T('Add: EURUSD, NQ, BTC, AAPL…','Lägg till: EURUSD, NQ, BTC, AAPL…')}" maxlength="30" autocomplete="off" aria-label="${T('Add symbol','Lägg till symbol')}"><button class="btn small" type="submit">+</button></form></div></div>
-  ${CAN_NET?`<div class="mk-grid"><div class="card mk-chart"><h3 class="led-on">${esc(symLabel(sel))}<span class="aside">${esc(sel)}</span></h3><div id="tv-chart" class="tvbox chart"></div></div>
-    <div class="stack"><div class="card"><h3>${T('Prices','Priser')}</h3><div id="tv-quotes" class="tvbox quotes"></div></div>${sessionsCard().replace('class="card sessc"','id="m-sess" class="card sessc"')}</div></div>
+  ${CAN_NET?`<div class="card mk-chart" id="mk-chart"><h3 class="led-on">${esc(symLabel(sel))}<span class="aside">${esc(sel)}</span><span class="grow"></span><button class="btn small ghost" data-act="x-mfull">${T('Fullscreen','Helskärm')}</button></h3><div id="tv-chart" class="tvbox chart"></div></div>
+    <div class="two"><div class="card"><h3>${T('Prices','Priser')}</h3><div id="tv-quotes" class="tvbox quotes"></div></div>${sessionsCard().replace('class="card sessc"','id="m-sess" class="card sessc"')}</div>
   <div class="two"><div class="card"><h3 class="led-hot">${T('Live news','Livenyheter')}<span class="grow"></span><span class="seg"><button data-act="x-mnews" data-v="market" aria-pressed="${(S.mnews||'market')==='market'}">${T('Market','Marknad')}</button><button data-act="x-mnews" data-v="symbol" aria-pressed="${S.mnews==='symbol'}">${esc(symLabel(sel))}</button></span></h3>${(S.mnews||'market')==='market'?`<div class="chips" style="margin-bottom:10px">${[['forex','Forex'],['crypto',T('Crypto','Krypto')],['stock',T('Stocks','Aktier')],['index',T('Indices','Index')],['futures','Futures']].map(([k,l])=>`<button data-act="x-mmarket" data-v="${k}" aria-pressed="${(S.mmarket||'forex')===k}">${l}</button>`).join('')}</div>`:''}<div id="tv-news" class="tvbox news"></div></div>
     <div class="card"><h3 class="led-mid">${T('Economic calendar','Ekonomisk kalender')}</h3><div id="tv-cal" class="tvbox cal"></div></div></div>
   <p class="empty-note">${T('Market data and news by TradingView. Prices can be delayed depending on the exchange.','Marknadsdata och nyheter från TradingView. Priser kan vara fördröjda beroende på börs.')}</p>`
   :`<div class="card"><p class="empty-note" style="margin:0 0 12px">${T('Live prices, charts and news need the app version of Vantor, because this view inside Claude cannot load outside data.','Livepriser, grafer och nyheter kräver app-versionen av Vantor, eftersom den här vyn i Claude inte kan hämta data utifrån.')}</p><a class="btn primary" href="https://pablo523.github.io/Arete/" target="_blank" rel="noopener">${T('Open the app version','Öppna app-versionen')} →</a></div>${sessionsCard()}`}`;
   if(!CAN_NET)return;const th=tvTheme(),lc=tvLocale();
-  tvMount(document.getElementById('tv-tape'),'ticker-tape',{symbols:W.map(s=>({proName:s,title:symLabel(s)})),showSymbolLogo:true,isTransparent:true,displayMode:'adaptive',colorTheme:th,locale:lc});
-  tvMount(document.getElementById('tv-chart'),'advanced-chart',{autosize:true,symbol:sel,interval:'15',timezone:Intl.DateTimeFormat().resolvedOptions().timeZone||'Etc/UTC',theme:th,style:'1',locale:lc,allow_symbol_change:true,hide_side_toolbar:false,withdateranges:true,support_host:'https://www.tradingview.com',backgroundColor:th==='dark'?'rgba(0,0,0,0)':'rgba(255,255,255,0)'});
-  tvMount(document.getElementById('tv-quotes'),'market-quotes',{width:'100%',height:'100%',symbolsGroups:[{name:T('Watchlist','Bevakning'),symbols:W.map(s=>({name:s,displayName:symLabel(s)}))}],showSymbolLogo:true,isTransparent:true,colorTheme:th,locale:lc});
-  tvMount(document.getElementById('tv-news'),'timeline',(S.mnews||'market')==='market'?{feedMode:'market',market:S.mmarket||'forex',isTransparent:true,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc}:{feedMode:'symbol',symbol:sel,isTransparent:true,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc});
-  tvMount(document.getElementById('tv-cal'),'events',{colorTheme:th,isTransparent:true,width:'100%',height:'100%',locale:lc,importanceFilter:'0,1',countryFilter:'us,eu,gb,jp,ch,au,ca,cn,se'})}
+  tvMount(document.getElementById('tv-tape'),'ticker-tape',{symbols:W.map(s=>({proName:s,title:symLabel(s)})),showSymbolLogo:true,isTransparent:false,displayMode:'adaptive',colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-chart'),'advanced-chart',{autosize:true,symbol:sel,interval:'15',timezone:Intl.DateTimeFormat().resolvedOptions().timeZone||'Etc/UTC',theme:th,style:'1',locale:lc,allow_symbol_change:true,hide_side_toolbar:false,withdateranges:true,support_host:'https://www.tradingview.com',backgroundColor:'#0F0F0F',gridColor:'rgba(255,255,255,0.05)'});
+  tvMount(document.getElementById('tv-quotes'),'market-quotes',{width:'100%',height:'100%',symbolsGroups:[{name:T('Watchlist','Bevakning'),symbols:W.map(s=>({name:s,displayName:symLabel(s)}))}],showSymbolLogo:true,isTransparent:false,colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-news'),'timeline',(S.mnews||'market')==='market'?{feedMode:'market',market:S.mmarket||'forex',isTransparent:false,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc}:{feedMode:'symbol',symbol:sel,isTransparent:false,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-cal'),'events',{colorTheme:th,isTransparent:false,width:'100%',height:'100%',locale:lc,importanceFilter:'0,1',countryFilter:'us,eu,gb,jp,ch,au,ca,cn,se'})}
 function mAct(a,b){switch(a){
+  case 'x-mfull':{const c=document.getElementById('mk-chart');if(c){const on=!c.classList.contains('full');c.classList.toggle('full',on);document.documentElement.style.overflow=on?'hidden':'';b.textContent=on?T('Close','Stäng'):T('Fullscreen','Helskärm')}return true}
   case 'x-msym':S.msym=b.dataset.v;renderMarkets();return true;
   case 'x-wl-del':S.cfg.watch=watchList().filter(x=>x!==b.dataset.v);saveCfg();renderMarkets();return true;
   case 'x-wl-preset':S.cfg.watch=WL_PRESETS()[b.dataset.v].slice();S.msym=S.cfg.watch[0];saveCfg();renderMarkets();return true;
   case 'x-mnews':S.mnews=b.dataset.v;renderMarkets();return true;
   case 'x-mmarket':S.mmarket=b.dataset.v;renderMarkets();return true;}return false}
 function mSubmit(k,f,g){if(k!=='wl')return false;const s=normSym(g('s'));if(!s)return true;const W=watchList();if(!W.includes(s))W.push(s);if(W.length>24)W.shift();S.msym=s;saveCfg();renderMarkets();sfx('pop');return true}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const c=document.getElementById('mk-chart');if(c&&c.classList.contains('full')){c.classList.remove('full');document.documentElement.style.overflow='';const b=c.querySelector('[data-act="x-mfull"]');if(b)b.textContent=T('Fullscreen','Helskärm')}}});
 /* ================= standalone build ================= */
 const LOCAL_DL={async save({filename,data}){const blob=data instanceof Blob?data:new Blob([data],{type:'application/octet-stream'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return {ok:true}}};
 function backupAll(){const out={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('stigen:'))out[k]=localStorage.getItem(k)}return {app:'arete',v:1,at:new Date().toISOString(),data:out}}

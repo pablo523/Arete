@@ -1,4 +1,4 @@
-/* Arete cloud settings.
+/* Vantor cloud settings.
    Leave empty to run fully on the device (no accounts).
    To switch on accounts and sync, paste your Supabase Project URL and the
    public "anon" / "publishable" key here (Supabase → Project Settings → API).

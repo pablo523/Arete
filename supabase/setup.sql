@@ -1,4 +1,4 @@
--- Arete: run this once in Supabase → SQL Editor → New query → Run.
+-- Vantor: run this once in Supabase → SQL Editor → New query → Run.
 -- One row per user and document. Row level security makes sure every
 -- person can only ever read and write their own rows.
 

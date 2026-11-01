@@ -1,4 +1,6 @@
-# Arete
+# Vantor
+
+![Vantor](icons/vantor-logo.png)
 
 **A personal command center for becoming a better version of yourself.**
 Habits, tasks, money, training, reading, trading and goals in one place, with levels, seasons and a design that feels like an instrument, not a spreadsheet.
@@ -29,7 +31,7 @@ Use **Profile → Save backup** now and then, and **Restore backup** to move to 
 
 ## Accounts and sync (optional)
 
-Arete works without accounts. To let people log in and sync between devices:
+Vantor works without accounts. To let people log in and sync between devices:
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. In the project: **SQL Editor → New query**, paste everything from [`supabase/setup.sql`](supabase/setup.sql) and press **Run**.
@@ -40,7 +42,7 @@ The anon key is public by design. Row level security in `setup.sql` makes sure e
 
 ---
 
-# Arete (svenska)
+# Vantor (svenska)
 
 **En personlig kontrollpanel för att bli en bättre version av dig själv.**
 

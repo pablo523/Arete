@@ -17,6 +17,8 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 
 ## What is inside
 
+- **5-second log:** result, symbol, side and rules. Date, time, R, setup, emotion and notes are optional
+- **Ask your journal:** plain-language questions like "win rate on Fridays after 15" or "best setup last 30 days", answered instantly with the trades behind the answer
 - **Coach that sees the whole person:** a green, yellow or red light every morning from sleep, mood and yesterday's rule breaks, plus patterns between your life and your results (AI coach in the Claude version)
 - **Prop mode:** templates for common challenge types, live chance to pass (simulated from your own trades) and your max risk per trade today
 - **Discipline league and mentors:** compete with friends on discipline, never money; mentors see a student's details only when the student allows it

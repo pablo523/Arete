@@ -1480,6 +1480,26 @@ html.pro #v-markets>.page-head{display:none}
 .pt-row{min-width:0}.pt-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pt-acct{min-width:0;flex:0 1 auto}.pt-acct select{max-width:100%;text-overflow:ellipsis}.pt-av,.pt-logo{flex:none}
 @media (max-width:1000px){.pt-acct select{max-width:38vw}}
 .err-card code{display:block;font-family:var(--f-mono);font-size:.72rem;color:var(--neg);white-space:pre-wrap;word-break:break-word;margin-top:6px}.err-card .err-st{color:var(--faint)}
+/* v19 */
+.qlog .tform{display:flex;flex-direction:column;gap:12px}
+.ql-main{display:flex;gap:10px;align-items:stretch}
+.ql-res{flex:1;position:relative;display:block}.ql-res input{width:100%;border:0;border-radius:14px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line);padding:15px 56px 15px 16px;font-family:var(--f-display);font-stretch:112%;font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.ql-res input:focus{outline:none;box-shadow:inset 0 2px 6px var(--sh),0 0 0 2px var(--moss)}.ql-res em{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-style:normal;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
+.ql-dir{flex:none;align-items:stretch}.ql-dir button{padding:0 14px;font-size:.8rem}
+.ql-dir button[data-v="Long"][aria-pressed="true"]{color:var(--pos)}.ql-dir button[data-v="Short"][aria-pressed="true"]{color:var(--neg)}
+.ql-sym{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.ql-sym input{flex:1 1 140px;min-width:0;border:0;border-radius:12px;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line);padding:10px 13px;text-transform:uppercase}
+.ql-chip{border:0;border-radius:999px;padding:7px 11px;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);background:var(--surface-2);box-shadow:0 0 0 1px var(--line-2)}.ql-chip.on{color:var(--on-accent);background:var(--moss)}
+.ql-foot{display:flex;align-items:center;gap:12px;justify-content:space-between}.ql-foot .btn{min-width:120px}
+.ql-rules{display:flex;gap:9px;align-items:center;font-size:.9rem;color:var(--ink)}.ql-rules input{width:20px;height:20px;accent-color:var(--moss)}
+.ql-more summary{cursor:pointer;color:var(--muted);font-size:.84rem;padding:4px 0;list-style:none}.ql-more summary::before{content:"+ "}.ql-more[open] summary::before{content:"− "}.ql-more summary::-webkit-details-marker{display:none}
+.ql-more[open]{display:flex;flex-direction:column;gap:10px}.ql-more .fgrid{margin:6px 0 0}
+.ask-f{display:flex;gap:8px;flex-wrap:wrap}.ask-f input{flex:1 1 220px;min-width:0;border:0;border-radius:14px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line);padding:13px 15px;font-size:1rem}
+.ask-f input:focus{outline:none;box-shadow:inset 0 2px 6px var(--sh),0 0 0 2px var(--moss)}
+.ask-ex{margin-top:12px}.ask-a{margin-top:14px;padding:14px 16px;border-radius:14px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line)}.ask-a>p{margin:0;font-size:1.02rem;line-height:1.55}
+.ask-rows{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ask-rows span{font-size:.78rem;padding:5px 9px;border-radius:9px;background:var(--surface-2);color:var(--muted)}.ask-rows b{color:var(--ink)}
+.ask-src{margin-top:10px}.ask-src summary{cursor:pointer;color:var(--muted);font-size:.82rem}
+.reread blockquote{margin:0 0 10px;padding:10px 14px;border-left:3px solid var(--amber);background:var(--surface-2);border-radius:0 12px 12px 0;line-height:1.5}.reread blockquote small{display:block;font-family:var(--f-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase}
+.rr-t{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;width:100%;text-align:left;border:0;padding:10px 12px;border-radius:12px;background:var(--surface-2);color:var(--ink);margin-bottom:8px}.rr-t em{grid-column:1/-1;font-style:normal;color:var(--muted);font-size:.84rem}
 </style>
 
 </head>
@@ -4305,7 +4325,7 @@ function calcRisk(){const v=id=>numx((document.getElementById(id)||{}).value);co
   ${rr!=null?`<div class="co-row"><span>R:R</span><b class="num ${wrongSide?'neg':rr<1.5?'neg':'pos'}">${wrongSide?T('target on the wrong side','målet på fel sida'):fmtN(Math.round(rr*100)/100)}</b></div>`:''}
   ${I[3]==='contract'&&raw<1?`<p class="neg" style="margin:8px 0 0">${T('Even one contract is too much risk here. Use the micro contract or a wider account.','Även ett kontrakt är för stor risk här. Använd micro-kontraktet.')}</p>`:''}`}
 /* ================= v14: wiring ================= */
-function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAct6(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
+function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAct6(a,b)||tAct7(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
   switch(a){
     case 'x-breathe':openBreathe(pid||S.proj,'');return true;
     case 'x-treview':openSheet('treview',{p:pid,off:0});return true;
@@ -5142,6 +5162,119 @@ function tAct6(a,b){switch(a){
     S.cfg.projects.push(p);saveCfg();S.tsub=S.tsub&&secOf(S.tsub)?S.tsub:'overview';setView('trade');render(true);sfx('level');toast(T('Your trading journal is ready','Din tradingjournal är klar'));return true}
 }return false}
 document.addEventListener('change',e=>{const s=e.target.closest&&e.target.closest('[data-pacct]');if(!s)return;S.tacct=S.tacct||{};S.tacct[s.dataset.pacct]=s.value;render(false)});
+/* ================= v19: five-second log, ask your journal, deeper coach, reread ================= */
+/* ---------- five-second quick log: result, symbol, side, rules. Everything else is optional ---------- */
+function quickLog(p){const A=accountsOf(p);const tk=dkey(today());const PB=p.playbook||[];const dir=S.qDir||'Long';
+  const recent=[...new Set(sortTr(tradesAll(PD(p.id))).reverse().map(x=>x.sym).filter(Boolean))].slice(0,5);
+  return `<div class="card qlog"><h3>${T('Log a trade','Logga en trade')}<span class="aside">${T('5 seconds','5 sekunder')}</span><span class="grow"></span><button class="btn small ghost vbtn" data-act="x-voice" data-p="${p.id}" aria-label="${T('Voice log','Röstlogg')}">${MIC}<span>${T('Voice','Röst')}</span></button></h3>
+  <form class="tform" data-form="trade" data-p="${p.id}">
+    <div class="ql-main"><label class="ql-res"><span class="sr">${T('Result','Resultat')}</span><input id="tr-pnl" name="pnl" type="text" inputmode="decimal" placeholder="${T('Result','Resultat')} +250 / -120" required autocomplete="off"><em>${CUR()}</em></label>
+      <div class="seg ql-dir" role="group" aria-label="${T('Side','Riktning')}"><button type="button" data-act="x-qdir" data-v="Long" aria-pressed="${dir==='Long'}">Long</button><button type="button" data-act="x-qdir" data-v="Short" aria-pressed="${dir==='Short'}">Short</button></div><input type="hidden" name="dir" id="tr-dir" value="${dir}"></div>
+    <div class="ql-sym"><input id="tr-sym" name="sym" placeholder="${T('Symbol','Symbol')}" maxlength="20" autocomplete="off" aria-label="${T('Symbol','Symbol')}">${recent.map(s=>`<button type="button" class="ql-chip" data-act="x-qsym" data-v="${esc(s)}">${esc(s)}</button>`).join('')}</div>
+    <div class="ql-foot"><label class="ql-rules"><input type="checkbox" id="tr-rules" name="rules" checked><span>${T('Followed my rules','Följde mina regler')}</span></label><button class="btn primary" type="submit">${T('Save','Spara')}</button></div>
+    <details class="ql-more" ${S.qlMore?'open':''}><summary>${T('More details (optional)','Fler detaljer (valfritt)')}</summary>
+      <div class="fgrid"><label class="f"><span>${T('Date','Datum')}</span><input id="tr-d" type="date" name="d" value="${tk}" max="${tk}"></label><label class="f"><span>${T('Time','Tid')}</span><input id="tr-tm" type="time" name="tm" value="${hm(new Date())}"></label><label class="f"><span>R</span><input id="tr-r" name="r" inputmode="decimal" placeholder="2 / -1" autocomplete="off"></label>
+      <label class="f"><span>Setup</span><input id="tr-setup" name="setup" list="pb-${p.id}" maxlength="40" autocomplete="off"><datalist id="pb-${p.id}">${PB.map(x=>`<option value="${esc(x.name)}">`).join('')}</datalist></label><label class="f"><span>${T('Emotion','Känsla')}</span><select id="tr-emo" name="emo"><option value="">–</option>${EMOS_().map(e=>`<option>${e}</option>`).join('')}</select></label>${A.length>1?`<label class="f"><span>${T('Account','Konto')}</span><select name="acct">${A.map(a=>`<option value="${a.id}" ${tAcct(p)===a.id?'selected':''}>${esc(a.name)}</option>`).join('')}</select></label>`:''}</div>
+      <div class="chips mchips">${MISTAKES_().slice(0,6).map(([k,l])=>`<label class="mck"><input type="checkbox" name="tag" value="${k}"><span>${l}</span></label>`).join('')}</div>
+      <label class="check"><input type="checkbox" id="tr-bt" name="bt"><span>${T('Backtest (not a live trade)','Backtest (inte en livetrade)')}</span></label>
+      <input class="fwide" id="tr-note" name="note" placeholder="${T('Note (optional)','Anteckning (valfritt)')}" maxlength="200" autocomplete="off"><button class="btn small ghost" type="button" data-act="x-trade-new" data-p="${p.id}">${T('Full trade form with screenshots','Fullt formulär med skärmdumpar')} →</button></details>
+  </form></div>`}
+
+/* ---------- ask your journal ---------- */
+const WD_SV=['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'],WD_EN=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+const MO_SV=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'],MO_EN=['january','february','march','april','may','june','july','august','september','october','november','december'];
+function askParse(q,p,d){q=' '+String(q||'').toLowerCase().replace(/[?!.,]/g,' ')+' ';const t=today();const f=[];const desc=[];let all=tradesAll(d);
+  const rng=(a,b,l)=>{f.push(x=>x.d>=dkey(a)&&x.d<=dkey(b));desc.push(l)};
+  if(/\b(idag|today)\b/.test(q))rng(t,t,T('today','idag'));
+  else if(/\b(igår|yesterday)\b/.test(q)){const y=addDays(t,-1);rng(y,y,T('yesterday','igår'))}
+  else if(/(förra veckan|last week)/.test(q)){const [a,b]=weekBounds(-1);rng(a,b,T('last week','förra veckan'))}
+  else if(/(denna vecka|den här veckan|this week|veckan)/.test(q)){const [a,b]=weekBounds(0);rng(a,b,T('this week','den här veckan'))}
+  else if(/(förra månaden|last month)/.test(q)){const a=new Date(t.getFullYear(),t.getMonth()-1,1),b=new Date(t.getFullYear(),t.getMonth(),0);rng(a,b,T('last month','förra månaden'))}
+  else if(/(denna månad|den här månaden|this month|månaden)/.test(q)){rng(new Date(t.getFullYear(),t.getMonth(),1),t,T('this month','den här månaden'))}
+  else if(/(i år|this year|året)/.test(q)){rng(new Date(t.getFullYear(),0,1),t,T('this year','i år'))}
+  else{const m=q.match(/(senaste|last|past)\s+(\d+)\s*(dagar|days|dag|day|veckor|weeks)/);if(m){const n=+m[2]*(/vec|week/.test(m[3])?7:1);rng(addDays(t,-n+1),t,T(`last ${n} days`,`senaste ${n} dagarna`))}
+    else{const mi=MO_SV.findIndex(x=>q.includes(' '+x))>=0?MO_SV.findIndex(x=>q.includes(' '+x)):MO_EN.findIndex(x=>q.includes(' '+x));if(mi>=0){let y=t.getFullYear();if(mi>t.getMonth())y--;rng(new Date(y,mi,1),new Date(y,mi+1,0),(LANG==='sv'?MO_SV:MO_EN)[mi])}}}
+  let wd=WD_SV.findIndex(w=>q.includes(' '+w));if(wd<0)wd=WD_EN.findIndex(w=>q.includes(' '+w));
+  if(wd>=0&&!/(bästa|sämsta|best|worst)\s+(vecko)?dag/.test(q)){f.push(x=>parseD(x.d).getDay()===wd);desc.push((LANG==='sv'?WD_SV:WD_EN)[wd]+(LANG==='sv'?'ar':'s'))}
+  const hb=q.match(/(före|innan|before)\s+(?:kl\s*)?(\d{1,2})(?::(\d{2}))?/),ha=q.match(/(efter|after)\s+(?:kl\s*)?(\d{1,2})(?::(\d{2}))?/);
+  if(hb){const m=+hb[2]*60+(+hb[3]||0);f.push(x=>{const v=tmMin(x.tm);return v!=null&&v<m});desc.push(T(`before ${hb[2]}:${hb[3]||'00'}`,`före ${hb[2]}:${hb[3]||'00'}`))}
+  if(ha){const m=+ha[2]*60+(+ha[3]||0);f.push(x=>{const v=tmMin(x.tm);return v!=null&&v>=m});desc.push(T(`after ${ha[2]}:${ha[3]||'00'}`,`efter ${ha[2]}:${ha[3]||'00'}`))}
+  if(/(morgon|förmiddag|morning)/.test(q)){f.push(x=>{const v=tmMin(x.tm);return v!=null&&v<720});desc.push(T('mornings','förmiddagar'))}
+  if(/(eftermiddag|afternoon)/.test(q)){f.push(x=>{const v=tmMin(x.tm);return v!=null&&v>=720&&v<1020});desc.push(T('afternoons','eftermiddagar'))}
+  if(/(kväll|evening)/.test(q)){f.push(x=>{const v=tmMin(x.tm);return v!=null&&v>=1020});desc.push(T('evenings','kvällar'))}
+  if(/\blongs?\b/.test(q)&&!/\bshorts?\b/.test(q)){f.push(x=>x.dir==='Long');desc.push('long')}
+  if(/\bshorts?\b/.test(q)&&!/\blongs?\b/.test(q)){f.push(x=>x.dir==='Short');desc.push('short')}
+  if(/(regelbrott|bröt|bryter|broke|rule break|utan regler)/.test(q)){f.push(x=>!x.rules);desc.push(T('rule breaks','regelbrott'))}
+  else if(/(följde|followed|enligt regler)/.test(q)){f.push(x=>x.rules);desc.push(T('rules followed','följda regler'))}
+  const setups=[...new Set(all.map(x=>(x.setup||'').trim()).filter(Boolean).concat((p.playbook||[]).map(s=>s.name)))].sort((a,b)=>b.length-a.length);
+  const su=setups.find(s=>q.includes(' '+s.toLowerCase()+' ')||q.includes(' '+s.toLowerCase()));if(su){f.push(x=>(x.setup||'').toLowerCase()===su.toLowerCase());desc.push(su)}
+  const syms=[...new Set(all.map(x=>(x.sym||'').toUpperCase()).filter(Boolean))];const sy=syms.find(s=>new RegExp('\\b'+s.toLowerCase().replace(/[^a-z0-9]/g,'')+'\\b').test(q.replace(/[^a-z0-9 ]/g,'')));if(sy){f.push(x=>(x.sym||'').toUpperCase()===sy);desc.push(sy)}
+  const em=EMOS_().find(e=>q.includes(e.toLowerCase()));if(em){f.push(x=>x.emo===em);desc.push(em)}
+  MISTAKES_().forEach(([k,l])=>{if(q.includes(l.toLowerCase())){f.push(x=>(x.tags||[]).includes(k));desc.push(l)}});
+  const onlyW=/\b(vinster|vinnare|winners|winning trades)\b/.test(q),onlyL=/\b(förluster|förlorare|losers|losing trades)\b/.test(q)&&!/(största förlust|biggest loss)/.test(q);
+  let metric='summary',group=null,dirn=1;
+  if(/(bästa|best)/.test(q))dirn=1;if(/(sämsta|worst|värsta)/.test(q))dirn=-1;
+  if(/(bästa|sämsta|värsta|best|worst)/.test(q)){if(/(setup|strategi|strategy)/.test(q))group='setup';else if(/(veckodag|weekday|day of the week)/.test(q))group='wd';else if(/(timme|hour|tid på dagen|time of day)/.test(q))group='hour';else if(/(symbol|marknad|market|instrument|par|pair)/.test(q))group='sym';else if(/(dag|day)/.test(q))group='day';else if(/(känsla|emotion|humör)/.test(q))group='emo';else group='trade'}
+  else if(/(hur många|how many|antal|number of)/.test(q))metric='count';
+  else if(/(vinstprocent|träffsäkerhet|win ?rate|hit ?rate|winrate)/.test(q))metric='win';
+  else if(/(snitt.?r\b|average r|avg r|genomsnittlig r|r per trade|expectancy|förväntan)/.test(q))metric='avgR';
+  else if(/(snitt|average|genomsnitt|avg)/.test(q))metric='avg';
+  else if(/(totalt|total|tjänat|tjänade|förlorat|net|resultat|p&l|pnl|made|lost)/.test(q))metric='net';
+  if(onlyW&&metric!=='win'){f.push(x=>x.pnl>0);desc.push(T('winners','vinster'))}if(onlyL&&metric!=='win'){f.push(x=>x.pnl<0);desc.push(T('losers','förluster'))}
+  const list=sortTr(all.filter(x=>f.every(g=>g(x))));return {list,metric,group,dirn,desc}}
+function askStats(a){const n=a.length,net=a.reduce((s,x)=>s+x.pnl,0),w=a.filter(x=>x.pnl>0),l=a.filter(x=>x.pnl<0);const Rs=a.map(rOf).filter(v=>v!=null);const gw=w.reduce((s,x)=>s+x.pnl,0),gl=-l.reduce((s,x)=>s+x.pnl,0);
+  return {n,net,win:n?w.length/n:0,avg:n?net/n:0,avgR:Rs.length?Rs.reduce((s,v)=>s+v,0)/Rs.length:null,pf:gl?gw/gl:null,rules:n?a.filter(x=>x.rules).length/n:0}}
+function askAnswer(p,d,q){const P=askParse(q,p,d);const a=P.list;const scope=P.desc.length?P.desc.join(', '):T('all your trades','alla dina trades');
+  if(!a.length)return {h:T(`No trades match: ${scope}.`,`Inga trades matchar: ${scope}.`),a};const s=askStats(a);const pct=v=>Math.round(v*100)+'%';const R=v=>v==null?T('no R logged','inget R loggat'):(v>0?'+':'')+fmtN(Math.round(v*100)/100)+'R';
+  if(P.group){const key={setup:x=>x.setup||T('(no setup)','(ingen setup)'),wd:x=>(LANG==='sv'?WD_SV:WD_EN)[parseD(x.d).getDay()],hour:x=>{const m=tmMin(x.tm);return m==null?null:String(Math.floor(m/60)).padStart(2,'0')+':00'},sym:x=>x.sym||null,day:x=>x.d,emo:x=>x.emo||null,trade:x=>x.id}[P.group];
+    if(P.group==='trade'){const b=a.slice().sort((x,y)=>P.dirn*(y.pnl-x.pnl))[0];return {h:T(`Your ${P.dirn>0?'best':'worst'} trade (${scope}): <b>${money(b.pnl)}</b> on ${esc(b.d)}${b.sym?' in '+esc(b.sym):''}${b.setup?', setup '+esc(b.setup):''}.`,`Din ${P.dirn>0?'bästa':'sämsta'} trade (${scope}): <b>${money(b.pnl)}</b> den ${esc(b.d)}${b.sym?' i '+esc(b.sym):''}${b.setup?', setup '+esc(b.setup):''}.`),a:[b]}}
+    const G={};a.forEach(x=>{const k=key(x);if(k!=null)(G[k]=G[k]||[]).push(x)});const rows=Object.entries(G).filter(([,v])=>v.length>=(P.group==='day'?1:2)).map(([k,v])=>[k,askStats(v),v]).sort((x,y)=>P.dirn*(y[1].net-x[1].net));
+    if(!rows.length)return {h:T('Not enough trades per group to compare yet.','Inte tillräckligt många trades per grupp för att jämföra än.'),a};const [k,st,v]=rows[0];
+    return {h:T(`${P.dirn>0?'Best':'Worst'} ${({setup:'setup',wd:'weekday',hour:'hour',sym:'market',day:'day',emo:'emotion'})[P.group]}: <b>${esc(k)}</b> with <b>${money(st.net)}</b> over ${st.n} trades, ${pct(st.win)} winners, ${R(st.avgR)} per trade.`,`${P.dirn>0?'Bästa':'Sämsta'} ${({setup:'setup',wd:'veckodag',hour:'timme',sym:'marknad',day:'dag',emo:'känsla'})[P.group]}: <b>${esc(k)}</b> med <b>${money(st.net)}</b> på ${st.n} trades, ${pct(st.win)} vinnare, ${R(st.avgR)} per trade.`),a:v,rows:rows.slice(0,6)}}
+  const H={count:T(`<b>${s.n}</b> trades (${scope}).`,`<b>${s.n}</b> trades (${scope}).`),win:T(`Win rate <b>${pct(s.win)}</b> on ${s.n} trades (${scope}).`,`Träffsäkerhet <b>${pct(s.win)}</b> på ${s.n} trades (${scope}).`),avgR:T(`Average <b>${R(s.avgR)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${R(s.avgR)}</b> per trade på ${s.n} trades (${scope}).`),avg:T(`Average <b>${money(s.avg)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${money(s.avg)}</b> per trade på ${s.n} trades (${scope}).`),net:T(`Net <b>${money(s.net)}</b> on ${s.n} trades (${scope}).`,`Totalt <b>${money(s.net)}</b> på ${s.n} trades (${scope}).`),summary:T(`${scope}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} winners, ${R(s.avgR)} per trade, rules followed ${pct(s.rules)}.`,`${cap(scope)}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} vinnare, ${R(s.avgR)} per trade, följde reglerna ${pct(s.rules)}.`)};
+  return {h:H[P.metric],a,s}}
+function askCard(p,d){const A=S.ask&&S.ask.p===p.id?S.ask:null;const ex=[T('Win rate on Fridays','Vinstprocent på fredagar'),T('Best setup last 30 days','Bästa setup senaste 30 dagarna'),T('How many rule breaks this month','Hur många regelbrott den här månaden'),T('Average R before 10','Snitt R före 10'),T('Worst hour','Sämsta timme'),T('Total last week','Totalt förra veckan')];
+  return `<div class="card ask"><h3 class="led-on">${T('Ask your journal','Fråga din journal')}<span class="aside">${T('plain language, instant answers','vanligt språk, svar direkt')}</span></h3>
+  <form class="ask-f" data-xform="ask" data-p="${p.id}"><input name="q" id="ask-q" value="${esc(A?A.q:'')}" placeholder="${T('e.g. win rate on Fridays after 15','t.ex. vinstprocent på fredagar efter 15')}" autocomplete="off" aria-label="${T('Question','Fråga')}"><button class="btn primary" type="submit">${T('Ask','Fråga')}</button>${S.caps.sample?`<button class="btn" type="button" data-act="x-ask-ai" data-p="${p.id}" ${S.askBusy?'disabled':''}>${S.askBusy?T('Thinking…','Tänker…'):T('Ask AI','Fråga AI')}</button>`:''}</form>
+  ${A?`<div class="ask-a"><p>${A.h}</p>${A.rows?`<div class="ask-rows">${A.rows.map(([k,st])=>`<span><b>${esc(k)}</b> ${money(st.net)} · ${st.n}</span>`).join('')}</div>`:''}${A.ai?`<div class="prose ai-coach">${mdLite(A.ai)}</div>`:''}${A.ids&&A.ids.length?`<details class="ask-src"><summary>${T('Based on','Underlag')}: ${A.ids.length} trades</summary>${tradeTable(p,A.ids.map(id=>d.trades.find(x=>x.id===id)).filter(Boolean).slice(-25).reverse())}</details>`:''}</div>`:`<div class="chips ask-ex">${ex.map(e=>`<button type="button" data-act="x-ask-ex" data-p="${p.id}" data-v="${esc(e)}">${esc(e)}</button>`).join('')}</div>`}</div>`}
+function runAsk(p,q){const d=PD(p.id);const r=askAnswer(p,d,q);S.ask={p:p.id,q,h:r.h,rows:r.rows||null,ids:(r.a||[]).map(x=>x.id)};render(false);setTimeout(()=>{const el=document.querySelector('.ask-a');if(el&&el.getBoundingClientRect().top>innerHeight*.7)el.scrollIntoView({behavior:'smooth',block:'center'})},50)}
+async function runAskAI(p){const q=((document.getElementById('ask-q')||{}).value||'').trim();if(!q||!S.caps.sample)return;S.askBusy=true;render(false);const d=PD(p.id);
+  const rows=sortTr(tradesAll(d)).slice(-400).map(x=>[x.d,x.tm||'',x.sym||'',x.dir,Math.round(x.pnl),rOf(x),x.setup||'',x.emo||'',x.rules?1:0,(x.tags||[]).join('|')]);
+  try{const r=await S.caps.sample.json(`You answer questions about one trader's own journal. Columns: date,time,symbol,side,result(${CUR()}),R,setup,emotion,followedRules,mistakes. Data: ${JSON.stringify(rows)}. Question: "${q}". Answer in ${LNG()} in at most 90 words. Compute from the data, state the numbers and how many trades they are based on. If the data cannot answer it, say so. No trading advice about what to buy or sell. Return JSON {"text":"…"}.`,{modelTier:'default',cache:false});
+    const loc=askAnswer(p,d,q);S.ask={p:p.id,q,h:loc.h,rows:loc.rows||null,ids:(loc.a||[]).map(x=>x.id),ai:r&&r.text?String(r.text).slice(0,1500):''}}catch(e){toast(T('The AI could not answer right now','AI:n kunde inte svara just nu'))}
+  S.askBusy=false;render(false)}
+
+/* ---------- deeper coach: weekday, hold time, size after a loss ---------- */
+{const o=coachInsights;coachInsights=function(p,d){const out=o(p,d);try{const since=dkey(addDays(today(),-120));const R=sortTr(tradesAll(d).filter(x=>x.d>=since));if(R.length<10)return out;const av=a=>a.reduce((s,x)=>s+x.pnl,0)/a.length;
+  const W={};R.forEach(x=>{(W[parseD(x.d).getDay()]=W[parseD(x.d).getDay()]||[]).push(x)});const ws=Object.entries(W).filter(([,a])=>a.length>=4).sort((a,b)=>av(b[1])-av(a[1]));
+  if(ws.length>=3&&av(ws[ws.length-1][1])<0){const nm=i=>(LANG==='sv'?WD_SV:WD_EN)[+i];out.push({w:3,h:T(`<b>${cap(nm(ws[ws.length-1][0]))}s</b> are your weakest day (${money(av(ws[ws.length-1][1]))}/trade). <b>${cap(nm(ws[0][0]))}s</b> are your best (${money(av(ws[0][1]))}).`,`<b>${cap(nm(ws[ws.length-1][0]))}ar</b> är din svagaste dag (${money(av(ws[ws.length-1][1]))}/trade). <b>${cap(nm(ws[0][0]))}ar</b> är din bästa (${money(av(ws[0][1]))}).`)})}
+  const hold=x=>{const a=tmMin(x.tm),b=tmMin(x.xtm);if(a==null||b==null)return null;const m=b-a;return m>=0&&m<720?m:null};const hw=R.filter(x=>x.pnl>0).map(hold).filter(v=>v!=null),hl=R.filter(x=>x.pnl<0).map(hold).filter(v=>v!=null);
+  if(hw.length>=4&&hl.length>=4){const mw=hw.reduce((s,v)=>s+v,0)/hw.length,ml=hl.reduce((s,v)=>s+v,0)/hl.length;if(ml>mw*1.5)out.push({w:5,h:T(`You hold <b>losers ${Math.round(ml)} min</b> but <b>winners only ${Math.round(mw)} min</b>. Cutting winners early and letting losers run is the classic leak.`,`Du håller <b>förlorare ${Math.round(ml)} min</b> men <b>vinnare bara ${Math.round(mw)} min</b>. Att klippa vinnare och låta förluster rinna är det klassiska läckaget.`)})}
+  const sz=R.filter(x=>+x.size>0);if(sz.length>=8){const avgS=sz.reduce((s,x)=>s+ +x.size,0)/sz.length;const big=[];for(let i=1;i<R.length;i++){const a=R[i-1],b=R[i];if(a.d===b.d&&a.pnl<0&&+b.size>avgS*1.3)big.push(b)}
+    if(big.length>=2)out.push({w:5,h:T(`<b>Size up after a loss</b> ${big.length} times, averaging ${money(av(big))}. That is tilt showing up in your position size.`,`<b>Större position efter en förlust</b> ${big.length} gånger, i snitt ${money(av(big))}. Det är tilt som syns i din positionsstorlek.`)})}
+  }catch(e){}return out.sort((a,b)=>b.w-a.w)}}
+
+/* ---------- reread: where the lesson actually sticks ---------- */
+function rereadCard(p,d){const cut=dkey(addDays(today(),-7));const old=tradesAll(d).filter(x=>x.d<=cut);const T2=old.filter(x=>x.note||(x.tags||[]).length||!x.rules).concat(old.filter(x=>x.pnl<0).sort((a,b)=>a.pnl-b.pnl).slice(0,8)).filter((x,i,a)=>a.indexOf(x)===i);const L=Object.entries(d.days||{}).filter(([k,j])=>k<=cut&&j&&j.lesson).sort((a,b)=>a[0]<b[0]?1:-1);
+  if(!T2.length&&!L.length)return '';const seed=+dkey(today()).replace(/-/g,'');const pick=(a,n)=>{const o=[];const c=a.slice();let s=seed;while(o.length<n&&c.length){s=(s*9301+49297)%233280;o.push(c.splice(s%c.length,1)[0])}return o};
+  const tr=pick(T2.slice(0,12),2),ls=pick(L.slice(0,20),2);const M=Object.fromEntries(MISTAKES_());
+  return `<div class="card reread"><h3 class="led-mid">${T('Reread','Läs om')}<span class="aside">${T('the lesson sticks when you reread','lärdomen fastnar när du läser om')}</span></h3>
+  ${ls.map(([k,j])=>`<blockquote><small>${esc(shortDate(parseD(k)))}</small>${esc(j.lesson)}</blockquote>`).join('')}
+  ${tr.map(x=>`<button class="rr-t" data-act="x-trade-open" data-p="${p.id}" data-id="${x.id}"><span class="${x.pnl<0?'neg':'pos'} num">${money(x.pnl)}</span><span>${esc(shortDate(parseD(x.d)))}${x.sym?' · '+esc(x.sym):''}${x.setup?' · '+esc(x.setup):''}${x.rules?'':' · '+T('rule break','regelbrott')}</span><em>${esc(x.note||(x.tags||[]).map(t=>M[t]||t).join(', '))}</em></button>`).join('')}
+  <p class="empty-note" style="margin:8px 0 0">${T('Would you take these trades again, the same way?','Skulle du ta de här traderna igen, på samma sätt?')}</p></div>`}
+
+/* ---------- placement ---------- */
+{const o=tradingModule;tradingModule=function(p,d){const h=o(p,d);if(!isPro())return h;const sub=S.tsub||'overview';
+  if(sub==='stats'){const i=h.indexOf('<div class="card coach">');const card=safe('ask',()=>askCard(p,d));return i>=0?h.slice(0,i)+card+h.slice(i):h+card}
+  if(sub==='routine')return h+safe('reread',()=>rereadCard(p,d));return h}}
+function tAct7(a,b){switch(a){
+  case 'x-qdir':{S.qDir=b.dataset.v;const f=b.closest('form');if(f&&f.dir)f.dir.value=b.dataset.v;b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return true}
+  case 'x-qsym':{const i=document.getElementById('tr-sym');if(i){i.value=b.dataset.v;b.parentElement.querySelectorAll('.ql-chip').forEach(x=>x.classList.toggle('on',x===b))}return true}
+  case 'x-ask-ex':{const p=projById(b.dataset.p);if(p)runAsk(p,b.dataset.v);return true}
+  case 'x-ask-ai':{const p=projById(b.dataset.p);if(p)runAskAI(p);return true}
+}return false}
+document.addEventListener('toggle',e=>{const t=e.target;if(t&&t.classList&&t.classList.contains('ql-more'))S.qlMore=t.open},true);
+document.addEventListener('submit',e=>{const f=e.target;if(!f.matches||!f.matches('form[data-xform="ask"]'))return;e.preventDefault();e.stopPropagation();const p=projById(f.dataset.p);const q=(f.q.value||'').trim();if(p&&q)runAsk(p,q)},true);
 /* ================= boot ================= */
 function afterConfig(){if(S.cfg.lang)setLang(S.cfg.lang);applyAccent();fxPrefs();applyBg()}
 function gate(){if(document.getElementById('iv'))return;if(!S.cfg.lang){showLanguage();return}if(needInterview())startInterview()}

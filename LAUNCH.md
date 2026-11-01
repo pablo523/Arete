@@ -77,3 +77,27 @@ Price idea: 99 kr / $9 per month, 790 kr / $79 per year. Mentors: 49 kr per stud
 - Check the name Arelo in the App Store, Google Play, domains (arelo.app / arelo.io) and trademarks (PRV, EUIPO) before spending on branding.
 - Add a privacy policy and terms page (Supabase stores emails and journal data).
 - Keep "not financial advice" visible.
+
+## Market research (November 2026)
+
+What the big journals do and where they leave gaps:
+
+| | Price | Strong at | Weak at |
+|---|---|---|---|
+| TraderSync | $29.95–79.95/mo | 700+ broker syncs, Cypher AI questions, replay, native apps | Cypher capped at 5 questions/day on Pro, replay detail on top tier |
+| TradeZella | $29–99/mo | Replay, playbooks, Zella score, prop firm sync | No free trial, no refunds, replay only on higher tiers, weak mobile |
+| Edgewonk | ~$197/yr | Tiltmeter, alternative strategy testing, checklists | No replay, inconsistent auto-sync |
+| Tradervue | Free–$49.95/mo | 100+ reports, trade sharing and mentoring | No AI, no replay, dated interface, no mobile app |
+
+**Why traders quit journaling:** too many fields per trade, manual entry right after a loss, writing without ever rereading, no fixed review time.
+
+**What Arelo now does about it:**
+- 5-second log: result, symbol, side, rules. Everything else is optional.
+- Ask your journal in plain language, free and uncapped, with the trades behind every answer.
+- Coach that flags hold-time leaks (losers held longer than winners), sizing up after losses, and weak weekdays.
+- Reread card in Routine that brings back old lessons and losing trades.
+- Mobile first, which most competitors are not.
+
+**Biggest remaining gap vs. paid tools:** automatic broker sync. That needs a server and is the natural core of a Pro plan.
+
+Sources: daytradingtoolkit.com (best trading journals ranking, Cypher explained), traderssecondbrain.com (best trading journal app), daytradingz.com (TradeZella review), united-daytraders.com (is a trading journal necessary).

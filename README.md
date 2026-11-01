@@ -27,6 +27,17 @@ Use **Profile → Save backup** now and then, and **Restore backup** to move to 
 - Trading journal: pre-trade ticket (FOMO brake), analytics by setup, weekday and hour, backtest vs live, prop firm evaluation mode, CSV import
 - Levels per life area, quarterly seasons with medals, unlocks, month film and share cards
 
+## Accounts and sync (optional)
+
+Arete works without accounts. To let people log in and sync between devices:
+
+1. Create a free project at [supabase.com](https://supabase.com).
+2. In the project: **SQL Editor → New query**, paste everything from [`supabase/setup.sql`](supabase/setup.sql) and press **Run**.
+3. **Authentication → URL Configuration:** set *Site URL* to `https://pablo523.github.io/Arete/` and add the same address under *Redirect URLs*.
+4. **Project Settings → API:** copy the *Project URL* and the *anon / publishable* key into [`config.js`](config.js).
+
+The anon key is public by design. Row level security in `setup.sql` makes sure every person can only read and write their own data.
+
 ---
 
 # Arete (svenska)

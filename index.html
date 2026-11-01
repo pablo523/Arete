@@ -4953,7 +4953,7 @@ function xSheetClick2(a,b,c,e){const v=b.dataset.v;const set=sa=>sheet.querySele
 function isFuture(d){return d&&dkey(d)>dkey(today())}
 /* ================= v17: trading home, focus mode, live strip, equity hero, story card, polish ================= */
 function hasTrade(){return !!trProj()}
-function syncTradeTab(){document.documentElement.classList.toggle('has-trade',hasTrade());if(S.view==='trade'&&!hasTrade())setView('today')}
+function syncTradeTab(){document.documentElement.classList.toggle('has-trade',hasTrade());if(S.view==='trade'&&!hasTrade()&&!document.documentElement.classList.contains('pro'))setView('today')}
 function SKEL(n){return `<div class="skel-wrap" aria-label="${T('Loading','Laddar')}">${Array.from({length:n||3},(_,i)=>`<i class="skel" style="width:${[92,70,84,60][i%4]}%"></i>`).join('')}</div>`}
 
 /* ---------- trading home ---------- */
@@ -5100,7 +5100,7 @@ function acctPick(p){const A=accountsOf(p);if(A.length<2)return '';const cur=tAc
 function errCard(where,e){try{console.error(where,e)}catch(x){}return `<div class="card err-card"><h3 class="led-hot">${T('Part of this page could not load','En del av sidan kunde inte visas')}</h3><p class="empty-note" style="margin:0 0 8px">${T('Everything else still works. Send a screenshot of this box so it can be fixed.','Allt annat fungerar ändå. Skicka en skärmdump av den här rutan så kan felet rättas.')}</p><code>${esc(where)}: ${esc(String(e&&e.message||e))}</code><code class="err-st">${esc(String(e&&e.stack||'').split('\n').slice(0,3).join(' | ').slice(0,300))}</code></div>`}
 function safe(where,f){try{return f()}catch(e){return errCard(where,e)}}
 function renderTrade(){const p=trProj();if(!p){V.trade.innerHTML=startCard();return}let h;try{h=tradingModule(p,PD(p.id))}catch(e){h=proHead(p)+errCard('trading/'+(S.tsub||''),e)}V.trade.innerHTML=`<div class="tr-body" data-p="${p.id}">${h}</div>`;scrollSubs()}
-function startCard(){return `<div class="card start-card"><p class="eyebrow">${T('Welcome to Arelo','Välkommen till Arelo')}</p><h2>${T('Start your trading journal','Starta din tradingjournal')}</h2><p class="lead">${T('One place for your trades, your rules and the days behind them. Takes ten seconds.','Ett ställe för dina trades, dina regler och dagarna bakom dem. Tar tio sekunder.')}</p><button class="btn primary lg" data-act="x-mk-trade">${T('Create my journal','Skapa min journal')} →</button></div>`}
+function startCard(){return `<div class="card start-card"><p class="eyebrow">${T('Welcome to Arelo','Välkommen till Arelo')}</p><h2>${T('Start your trading journal','Starta din tradingjournal')}</h2><p class="lead">${T('Journal, Analysis and the trading home need a trading journal. One tap and it is ready. Nothing else in your app changes.','Journal, Analys och tradingstartsidan behöver en tradingjournal. Ett tryck så är den klar. Inget annat i din app ändras.')}</p><button class="btn primary lg" data-act="x-mk-trade">${T('Create my trading journal','Skapa min tradingjournal')} →</button></div>`}
 function greet(){const h=new Date().getHours();return h<5?T('Late night','Sen natt'):h<10?T('Good morning','God morgon'):h<17?T('Good afternoon','God eftermiddag'):T('Good evening','God kväll')}
 function proHead(p){const S2=TSUBS();return `${S2.length>1?`<div class="tsubs chips seg-tabs" role="tablist">${S2.map(([k,l])=>`<button data-act="x-tsub" data-v="${k}" aria-pressed="${S.tsub===k}">${l}</button>`).join('')}</div>`:''}`}
 function homeBody(p,d){const L=lockState(p,d);const r=readiness(p,d);const F=focusData(p,d);const tk=dkey(today());const ds=discScore(p,d,tk);const disc=ds&&ds.s!=null?Math.max(0,ds.s):null;const pr=S.cfg.profile||{};
@@ -5133,12 +5133,13 @@ function renderHub(){const p=trProj();const tile=(act,attrs,ic,t,s)=>`<button cl
 function proBoot(){document.documentElement.classList.add('pro');if(trProj()){S.proInit=1;if(S.view==='today'){S.view='trade';S.tsub='overview'}}}
 {const o=afterRender;afterRender=function(nav){try{o(nav)}catch(e){console.error(e)}try{if(isPro()){if(!S.proInit&&S.view==='today'&&trProj()&&!sheet&&!document.getElementById('iv')){S.proInit=1;S.tsub='overview';setView('trade');render(true);return}proChrome();S.lastSub=S.lastSub||{};if(S.view==='trade')S.lastSub[curSec()]=S.tsub}}catch(e){}}}
 function goSec(v){if(v==='markets'){setView('markets');render(true);return}if(v==='hub'){setView('hub');render(true);return}
-  const p=trProj();if(!p){setView('trade');render(true);return}const ls=(S.lastSub||{})[v];S.tsub=ls&&SEC_SUBS[v].includes(ls)?ls:SEC_SUBS[v][0];setView('trade');render(true);scrollTo({top:0})}
+  const ls=(S.lastSub||{})[v];S.tsub=ls&&SEC_SUBS[v].includes(ls)?ls:SEC_SUBS[v][0];setView('trade');render(true);scrollTo({top:0})}
 function tAct6(a,b){switch(a){
   case 'pnav':goSec(b.dataset.v);sfx('click');return true;
   case 'pgo':S.tsub=b.dataset.sub;setView(b.dataset.v);render(true);scrollTo({top:0});return true;
   case 'x-quick':{const p=trProj();if(!p)return true;const t=today();openSheet('trade',{isNew:true,id:uid(),p:p.id,d:dkey(t),tm:hm(new Date()),dir:'Long',acct:tAcct(p)==='all'?'main':tAcct(p),tags:[],rules:true,shots:[]});return true}
-  case 'x-mk-trade':openSheet('proj',{isNew:true,type:'trading',name:PT('trading').label,stage:0,goal:'',obstacle:'',hours:5,extra:{}});return true;
+  case 'x-mk-trade':{if(trProj()){render(true);return true}const p={id:'p'+uid(),type:'trading',name:'Trading',stage:0,goal:'',obstacle:'',hoursGoal:300,extra:{risk:1,capital:0,maxLoss:0},checklist:(TPL_CHECK_().trading||[]).map(s=>({id:uid(),text:s,done:false})),rules:TPL_RULES_(),premarket:PRE_DEF_()};
+    S.cfg.projects.push(p);saveCfg();S.tsub=S.tsub&&secOf(S.tsub)?S.tsub:'overview';setView('trade');render(true);sfx('level');toast(T('Your trading journal is ready','Din tradingjournal är klar'));return true}
 }return false}
 document.addEventListener('change',e=>{const s=e.target.closest&&e.target.closest('[data-pacct]');if(!s)return;S.tacct=S.tacct||{};S.tacct[s.dataset.pacct]=s.value;render(false)});
 /* ================= boot ================= */

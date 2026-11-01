@@ -5,6 +5,6 @@
    The anon key is meant to be public; your data is protected by the
    row level security rules in supabase/setup.sql. */
 window.ARETE_CLOUD = {
-  url: '',
+  url: 'https://nqbdylperlboanfmnslw.supabase.co',
   key: ''
 };

@@ -1,54 +1,36 @@
-# Vantor
+# Arelo
 
-![Vantor](icons/vantor-logo.png)
+![Arelo](icons/arelo-logo.png)
 
-**A personal command center for becoming a better version of yourself.**
-Habits, tasks, money, training, reading, trading and goals in one place, with levels, seasons and a design that feels like an instrument, not a spreadsheet.
+**A trading journal and life coach in one.** Sleep, mood, habits, money, training and trades in the same app, so you can see what actually drives your results.
 
-**Open the app:** https://pablo523.github.io/Arete/
+**Open the app:** https://pablo523.github.io/Arete/ · **Landing page:** https://pablo523.github.io/Arete/landing.html
 
 ## Install on your phone
 
 - **iPhone:** open the link in Safari → Share → *Add to Home Screen*.
-- **Android:** open the link in Chrome → *Install app* (or ⋮ → *Add to Home screen*).
-
-It opens full screen and works offline.
-
-## Your data
-
-Everything you log stays **on your own device**. Nothing is sent to a server, and nobody else can see it.
-Use **Profile → Save backup** now and then, and **Restore backup** to move to a new phone or computer.
+- **Android:** open the link in Chrome → *Install app*.
 
 ## What is inside
 
-- Personal interview that shapes the app around you
-- Today dashboard, habits, weekly planning, morning mode and Sunday ritual
-- Money: transactions, CSV import from your bank, budget, savings goals and a goal forecast
-- Training program that progresses with you, sessions, personal bests, sleep and body trend
-- Reading and watch lists, vision board, letters to your future self, decision journal
-- Trading journal: pre-trade ticket (FOMO brake), analytics by setup, weekday and hour, backtest vs live, prop firm evaluation mode, CSV import
-- Levels per life area, quarterly seasons with medals, unlocks, month film and share cards
+- **Coach that sees the whole person:** a green, yellow or red light every morning from sleep, mood and yesterday's rule breaks, plus patterns between your life and your results (AI coach in the Claude version)
+- **Prop mode:** templates for common challenge types, live chance to pass (simulated from your own trades) and your max risk per trade today
+- **Discipline league and mentors:** compete with friends on discipline, never money; mentors see a student's details only when the student allows it
+- **Voice log:** say what happened and the trade is filled in
+- **Replay:** watch a crypto trade play out candle by candle
+- **Price alerts:** crypto alerts, live from Binance, while the app is open
+- **Public profile:** share discipline, win rate, average R and your R curve at `?u=your-name`. Never amounts
+- Trading journal, playbook, accounts, statistics, Monte Carlo, tilt lock, weekly review, reports, position size calculator
+- Markets: TradingView charts and prices, news and the ForexFactory calendar
+- Habits, goals, weekly planning, money, training, books and films
 
-## Accounts and sync (optional)
+## Supabase setup (accounts, sync, leagues, profiles, news)
 
-Vantor works without accounts. To let people log in and sync between devices:
+1. **SQL:** Supabase → *SQL Editor → New query*. New project: paste [`supabase/setup.sql`](supabase/setup.sql) and run. Already ran it before: paste only [`supabase/v15-leagues.sql`](supabase/v15-leagues.sql) and run.
+2. **News and calendar proxy:** Supabase → *Edge Functions → Deploy a new function → Via editor*. Name it exactly `feeds`, paste [`supabase/functions/feeds/index.ts`](supabase/functions/feeds/index.ts) and deploy. In the function's settings, turn **off** *Enforce JWT verification* (it only fetches public news).
+3. **Authentication → URL Configuration:** *Site URL* `https://pablo523.github.io/Arete/`, and the same under *Redirect URLs*.
+4. Put the *Project URL* and *publishable* key in [`config.js`](config.js) (already done).
 
-1. Create a free project at [supabase.com](https://supabase.com).
-2. In the project: **SQL Editor → New query**, paste everything from [`supabase/setup.sql`](supabase/setup.sql) and press **Run**.
-3. **Authentication → URL Configuration:** set *Site URL* to `https://pablo523.github.io/Arete/` and add the same address under *Redirect URLs*.
-4. **Project Settings → API:** copy the *Project URL* and the *anon / publishable* key into [`config.js`](config.js).
+The publishable key is public by design. Row level security makes sure each person only reads and writes their own data. Never share the *service_role / secret* key.
 
-The anon key is public by design. Row level security in `setup.sql` makes sure every person can only read and write their own data.
-
----
-
-# Vantor (svenska)
-
-**En personlig kontrollpanel för att bli en bättre version av dig själv.**
-
-**Öppna appen:** https://pablo523.github.io/Arete/
-
-- **iPhone:** öppna länken i Safari → Dela → *Lägg till på hemskärmen*.
-- **Android:** öppna länken i Chrome → *Installera app*.
-
-All din data sparas **bara på din egen enhet**. Använd **Profil → Spara säkerhetskopia** då och då.
+See [LAUNCH.md](LAUNCH.md) for the launch plan.

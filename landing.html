@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Arelo · Disciplin för traders och för livet</title>
+<meta name="description" content="Arelo är en gratis tradingjournal och livscoach i ett. Sömn, humör, vanor och trades i samma app, så att du ser vad som faktiskt styr ditt resultat.">
+<meta property="og:title" content="Arelo · Disciplin för traders och för livet">
+<meta property="og:description" content="Gratis tradingjournal med coach, prop-läge, disciplinliga och röstlogg.">
+<meta property="og:image" content="icons/icon-512.png">
+<meta name="theme-color" content="#0B0B0B">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0B;--s:#151514;--s2:#1C1C1A;--ink:#F3F1EC;--mu:#A19E96;--fa:#6E6B65;--line:rgba(255,255,255,.08);--acc:#FF6A2A;--acc2:#F0420A;--pos:#3DD68C;--neg:#FF5A4E}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;gap:12px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font:800 22px/1 'Inter Tight',sans-serif;letter-spacing:-.6px;text-decoration:none}.brand svg{width:34px;height:34px}
+nav .grow{flex:1}
+.lang{background:none;border:1px solid var(--line);color:var(--mu);border-radius:20px;padding:6px 11px;font:600 12px Inter;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font:600 15px Inter;text-decoration:none;border:0;cursor:pointer}
+.btn.p{background:linear-gradient(180deg,#FF8A4C,var(--acc2));color:#fff;box-shadow:0 10px 30px -10px rgba(255,90,30,.7)}
+.btn.g{background:var(--s2);border:1px solid var(--line)}
+.btn.small{padding:9px 15px;font-size:14px}
+header.hero{position:relative;padding:70px 0 40px;text-align:center}
+.glow{position:absolute;inset:-120px 0 auto;height:620px;background:radial-gradient(600px 300px at 50% 30%,rgba(255,106,42,.22),transparent 70%);pointer-events:none;z-index:-1}
+.eyebrow{font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+h1{font:800 clamp(40px,7.4vw,84px)/.98 'Inter Tight',sans-serif;letter-spacing:-.045em;margin:18px auto 20px;max-width:900px;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(90deg,#FFB27F,#FF6A2A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--mu);max-width:640px;margin:0 auto 30px;text-wrap:pretty}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.free{margin-top:14px;color:var(--fa);font-size:13px}
+.mock{margin:56px auto 0;max-width:920px;border-radius:24px;background:var(--s);border:1px solid var(--line);padding:18px;box-shadow:0 40px 120px -40px rgba(0,0,0,.9);text-align:left}
+.mgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.mc{background:var(--s2);border:1px solid var(--line);border-radius:16px;padding:16px}
+.mc h4{margin:0 0 12px;font:600 14px Inter;display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:var(--pos);box-shadow:0 0 10px var(--pos)}
+.light{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:#111110;margin-bottom:10px}.light i{width:14px;height:14px;border-radius:50%;background:#F5B544;box-shadow:0 0 14px #F5B544;flex:none}
+.light b{display:block}.light span{color:var(--mu);font-size:14px}
+.ins{font-size:14px;color:var(--mu);padding:10px 12px;border-radius:10px;background:#111110;margin-top:8px}.ins b{color:var(--ink)}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kp div{background:#111110;border-radius:12px;padding:10px 12px}.kp small{display:block;color:var(--mu);font-size:12px}.kp b{font:700 22px 'Inter Tight'}
+.bar{height:8px;border-radius:6px;background:#111110;overflow:hidden;margin:6px 0 12px}.bar i{display:block;height:100%;width:64%;background:linear-gradient(90deg,#FF8A4C,var(--acc2))}
+section{padding:80px 0}
+h2{font:800 clamp(30px,4.6vw,50px)/1.04 'Inter Tight';letter-spacing:-.035em;margin:12px 0 16px;text-wrap:balance}
+.sub{color:var(--mu);max-width:620px;font-size:18px}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.f{background:var(--s);border:1px solid var(--line);border-radius:20px;padding:22px}
+.f .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,106,42,.12);color:var(--acc);font-size:19px;margin-bottom:14px}
+.f h3{margin:0 0 6px;font:700 18px 'Inter Tight';letter-spacing:-.01em}.f p{margin:0;color:var(--mu);font-size:15px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.quote{font:600 clamp(22px,3vw,30px)/1.3 'Inter Tight';letter-spacing:-.02em}
+.list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}.list li{display:flex;gap:10px;color:var(--mu)}.list li:before{content:"";width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--acc);flex:none}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;max-width:820px}
+.pc{background:var(--s);border:1px solid var(--line);border-radius:22px;padding:26px}.pc.hl{border-color:rgba(255,106,42,.5);background:linear-gradient(180deg,rgba(255,106,42,.08),var(--s) 50%)}
+.pc h3{margin:0;font:700 20px 'Inter Tight'}.pc .amt{font:800 44px 'Inter Tight';letter-spacing:-.04em;margin:8px 0 2px}.pc .amt small{font-size:15px;color:var(--mu);font-weight:500;letter-spacing:0}
+.pc ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:8px;color:var(--mu);font-size:15px}.pc li:before{content:"✓  ";color:var(--pos)}
+.tag{display:inline-block;font:600 11px Inter;padding:3px 9px;border-radius:20px;background:rgba(255,106,42,.15);color:#FFB27F;margin-left:8px;vertical-align:middle}
+.final{text-align:center;padding:90px 0 110px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fa);font-size:13px}footer .wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){.mgrid,.split,.price{grid-template-columns:1fr}.feat{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.feat{grid-template-columns:1fr}header.hero{padding-top:40px}section{padding:60px 0}nav .hide-s{display:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="brand" href="./landing.html"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lp-t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2A28"/><stop offset="1" stop-color="#0D0D0C"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lp-t)"/><rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".14"/><defs><linearGradient id="lp-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A4C"/><stop offset="1" stop-color="#F0420A"/></linearGradient><radialGradient id="lp-f" cx=".5" cy=".72" r=".6"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#FFE2C4"/><stop offset="1" stop-color="#FF9A5A"/></radialGradient><radialGradient id="lp-g"><stop offset="0" stop-color="#FF7A30" stop-opacity=".55"/><stop offset="1" stop-color="#FF7A30" stop-opacity="0"/></radialGradient></defs><g transform="translate(.8 .4)"><path d="M14 20.5v11.5" stroke="#F3F1EC" stroke-width="1.3" stroke-linecap="round" opacity=".38"/><rect x="11.7" y="23" width="4.6" height="6.4" rx="1.2" fill="#F3F1EC" opacity=".34"/><path d="M24.5 12.6v20.4" stroke="#FF7A3A" stroke-width="1.5" stroke-linecap="round"/><rect x="21.3" y="15.6" width="6.4" height="13.6" rx="1.7" fill="url(#lp-c)"/><circle cx="24.5" cy="8.4" r="7" fill="url(#lp-g)"/><path d="M24.5 3.6c2 2.3 3.1 4.1 3.1 5.7a3.1 3.1 0 0 1-6.2 0c0-1.6 1.1-3.4 3.1-5.7z" fill="url(#lp-f)"/></g></svg><span>arelo</span></a><span class="grow"></span><button class="lang" id="lang" aria-label="Byt språk">EN</button><a class="btn g small hide-s" href="./" data-sv="Logga in" data-en="Sign in">Logga in</a><a class="btn p small" href="./" data-sv="Starta gratis" data-en="Start free">Starta gratis</a></nav>
+<header class="hero"><div class="glow"></div>
+<p class="eyebrow" data-sv="Tradingjournal + livscoach" data-en="Trading journal + life coach">Tradingjournal + livscoach</p>
+<h1 data-sv="Ditt resultat börjar <em>innan</em> du öppnar grafen." data-en="Your results start <em>before</em> you open the chart.">Ditt resultat börjar <em>innan</em> du öppnar grafen.</h1>
+<p class="lead" data-sv="Arelo kopplar ihop sömn, humör, vanor och trades. Du ser vad som faktiskt styr ditt resultat, och får en coach som säger hur stor risk du tål idag." data-en="Arelo connects sleep, mood, habits and trades. See what actually drives your results, with a coach that tells you how much risk you can handle today.">Arelo kopplar ihop sömn, humör, vanor och trades. Du ser vad som faktiskt styr ditt resultat, och får en coach som säger hur stor risk du tål idag.</p>
+<div class="cta"><a class="btn p" href="./" data-sv="Starta gratis →" data-en="Start free →">Starta gratis →</a><a class="btn g" href="#hur" data-sv="Se hur det funkar" data-en="See how it works">Se hur det funkar</a></div>
+<p class="free" data-sv="Gratis. Inget kort. Funkar på mobil och dator." data-en="Free. No card. Works on phone and computer.">Gratis. Inget kort. Funkar på mobil och dator.</p>
+<div class="mock reveal"><div class="mgrid">
+ <div class="mc"><h4><span class="dot"></span><span data-sv="Din coach" data-en="Your coach">Din coach</span></h4>
+  <div class="light"><i></i><div><b data-sv="Gult ljus" data-en="Yellow light">Gult ljus</b><span data-sv="Halv storlek och bara dina bästa setups idag. 5,5 h sömn." data-en="Half size and only your best setups today. 5.5 h sleep.">Halv storlek och bara dina bästa setups idag. 5,5 h sömn.</span></div></div>
+  <div class="ins" data-sv="Efter <b>6,5 h sömn eller mer</b> tjänar du i snitt <b>+1,2R</b> per dag, efter mindre sömn <b>−0,4R</b>." data-en="After <b>6.5 h+ sleep</b> you average <b>+1.2R</b> a day, after less sleep <b>−0.4R</b>.">Efter <b>6,5 h sömn eller mer</b> tjänar du i snitt <b>+1,2R</b> per dag, efter mindre sömn <b>−0,4R</b>.</div>
+  <div class="ins" data-sv="Trades <b>inom 20 min efter en förlust</b>: 31 % träffsäkerhet." data-en="Trades <b>within 20 min of a loss</b>: 31% win rate.">Trades <b>inom 20 min efter en förlust</b>: 31 % träffsäkerhet.</div></div>
+ <div class="mc"><h4><span class="dot" style="background:var(--acc);box-shadow:0 0 10px var(--acc)"></span><span data-sv="Prop-coach · 50K" data-en="Prop coach · 50K">Prop-coach · 50K</span></h4>
+  <div class="bar"><i></i></div>
+  <div class="kp"><div><small data-sv="Kvar idag" data-en="Left today">Kvar idag</small><b>$840</b></div><div><small data-sv="Till drawdown" data-en="To drawdown">Till drawdown</small><b>$1 620</b></div><div style="outline:1px solid rgba(255,106,42,.5)"><small data-sv="Maxrisk per trade" data-en="Max risk per trade">Maxrisk per trade</small><b>$270</b></div><div><small data-sv="Chans att klara" data-en="Chance to pass">Chans att klara</small><b style="color:var(--pos)">68%</b></div></div></div>
+</div></div>
+</header>
+
+<section id="hur"><p class="eyebrow" data-sv="Allt i en app" data-en="All in one app">Allt i en app</p>
+<h2 data-sv="Byggd för traders som vill hålla i längden." data-en="Built for traders who want to last.">Byggd för traders som vill hålla i längden.</h2>
+<p class="sub" data-sv="Inte en app till för signaler. Arelo hjälper dig att bli den trader och den människa som följer sin plan." data-en="Not another signals app. Arelo helps you become the trader, and the person, who follows the plan.">Inte en app till för signaler. Arelo hjälper dig att bli den trader och den människa som följer sin plan.</p>
+<div class="feat">
+ <div class="f reveal"><div class="ic">◐</div><h3 data-sv="Coach som ser hela dig" data-en="A coach that sees all of you">Coach som ser hela dig</h3><p data-sv="Sömn, humör och vanor bredvid dina trades. Grönt, gult eller rött ljus varje morgon." data-en="Sleep, mood and habits next to your trades. A green, yellow or red light every morning.">Sömn, humör och vanor bredvid dina trades. Grönt, gult eller rött ljus varje morgon.</p></div>
+ <div class="f reveal"><div class="ic">◎</div><h3 data-sv="Prop-läge" data-en="Prop mode">Prop-läge</h3><p data-sv="Mallar för vanliga utmaningar, din chans att klara den och hur mycket du får riskera idag." data-en="Templates for common challenges, your chance to pass and how much you can risk today.">Mallar för vanliga utmaningar, din chans att klara den och hur mycket du får riskera idag.</p></div>
+ <div class="f reveal"><div class="ic">♜</div><h3 data-sv="Disciplinliga" data-en="Discipline league">Disciplinliga</h3><p data-sv="Tävla med vänner i disciplin, aldrig i pengar. Mentorer ser elevernas utveckling, om eleven tillåter det." data-en="Compete with friends on discipline, never money. Mentors follow their students' progress, with permission.">Tävla med vänner i disciplin, aldrig i pengar. Mentorer ser elevernas utveckling, om eleven tillåter det.</p></div>
+ <div class="f reveal"><div class="ic">◉</div><h3 data-sv="Röstlogg" data-en="Voice log">Röstlogg</h3><p data-sv="”Long NQ, plus 2R, följde reglerna.” Traden är loggad på fem sekunder." data-en="“Long NQ, plus 2R, followed my rules.” Logged in five seconds.">”Long NQ, plus 2R, följde reglerna.” Traden är loggad på fem sekunder.</p></div>
+ <div class="f reveal"><div class="ic">▶</div><h3 data-sv="Spela upp din trade" data-en="Replay your trade">Spela upp din trade</h3><p data-sv="Se marknaden röra sig in i din entry och ut igen, candle för candle. Just nu för krypto." data-en="Watch the market move into your entry and out again, candle by candle. Crypto for now.">Se marknaden röra sig in i din entry och ut igen, candle för candle. Just nu för krypto.</p></div>
+ <div class="f reveal"><div class="ic">↗</div><h3 data-sv="Publik profil" data-en="Public profile">Publik profil</h3><p data-sv="Dela disciplin, R-kurva och träffsäkerhet med en länk. Aldrig belopp eller saldon." data-en="Share discipline, R curve and win rate with a link. Never amounts or balances.">Dela disciplin, R-kurva och träffsäkerhet med en länk. Aldrig belopp eller saldon.</p></div>
+</div></section>
+
+<section><div class="split">
+ <div class="reveal"><p class="eyebrow" data-sv="Mer än trading" data-en="More than trading">Mer än trading</p><p class="quote" data-sv="Den som sover dåligt, hoppar över träningen och har pengastress tradar sämre. Därför bygger Arelo hela livet, inte bara journalen." data-en="Bad sleep, skipped workouts and money stress make worse trades. That is why Arelo builds your whole life, not just the journal.">Den som sover dåligt, hoppar över träningen och har pengastress tradar sämre. Därför bygger Arelo hela livet, inte bara journalen.</p></div>
+ <ul class="list reveal">
+  <li data-sv="Vanor, mål och veckoplanering" data-en="Habits, goals and weekly planning">Vanor, mål och veckoplanering</li>
+  <li data-sv="Ekonomi, träning, böcker och filmer" data-en="Money, training, books and films">Ekonomi, träning, böcker och filmer</li>
+  <li data-sv="Livepriser, nyheter och ekonomisk kalender" data-en="Live prices, news and the economic calendar">Livepriser, nyheter och ekonomisk kalender</li>
+  <li data-sv="Tilt-lås, dagsmål och andningsövning" data-en="Tilt lock, daily goal and breathing exercise">Tilt-lås, dagsmål och andningsövning</li>
+  <li data-sv="Import från NinjaTrader, Tradovate, MetaTrader, TradingView och IBKR" data-en="Import from NinjaTrader, Tradovate, MetaTrader, TradingView and IBKR">Import från NinjaTrader, Tradovate, MetaTrader, TradingView och IBKR</li>
+  <li data-sv="Synk mellan mobil och dator" data-en="Sync between phone and computer">Synk mellan mobil och dator</li>
+ </ul></div></section>
+
+<section id="pris"><p class="eyebrow" data-sv="Pris" data-en="Pricing">Pris</p><h2 data-sv="Gratis att börja. Gratis att stanna." data-en="Free to start. Free to stay.">Gratis att börja. Gratis att stanna.</h2>
+<div class="price">
+ <div class="pc hl reveal"><h3>Free</h3><div class="amt">0 kr <small data-sv="för alltid" data-en="forever">för alltid</small></div><ul>
+  <li data-sv="Obegränsad tradingjournal" data-en="Unlimited trading journal">Obegränsad tradingjournal</li><li data-sv="Coach, prop-läge och tilt-lås" data-en="Coach, prop mode and tilt lock">Coach, prop-läge och tilt-lås</li><li data-sv="Disciplinliga och publik profil" data-en="Discipline league and public profile">Disciplinliga och publik profil</li><li data-sv="Vanor, mål, ekonomi och träning" data-en="Habits, goals, money and training">Vanor, mål, ekonomi och träning</li><li data-sv="Synk mellan enheter" data-en="Sync across devices">Synk mellan enheter</li></ul><a class="btn p" href="./" data-sv="Starta gratis" data-en="Start free">Starta gratis</a></div>
+ <div class="pc reveal"><h3>Pro <span class="tag" data-sv="Kommer" data-en="Coming">Kommer</span></h3><div class="amt">99 kr <small data-sv="/ månad" data-en="/ month">/ månad</small></div><ul>
+  <li data-sv="AI-coach med veckobrev" data-en="AI coach with a weekly letter">AI-coach med veckobrev</li><li data-sv="Automatisk synk från mäklare" data-en="Automatic broker sync">Automatisk synk från mäklare</li><li data-sv="Prislarm i mobilen för alla marknader" data-en="Phone price alerts for all markets">Prislarm i mobilen för alla marknader</li><li data-sv="Replay för futures och forex" data-en="Replay for futures and forex">Replay för futures och forex</li><li data-sv="Mentorspaket för grupper" data-en="Mentor package for groups">Mentorspaket för grupper</li></ul><a class="btn g" href="./" data-sv="Börja gratis nu" data-en="Start free now">Börja gratis nu</a></div>
+</div></section>
+
+<div class="final reveal"><h2 data-sv="Högre bottnar. Varje vecka." data-en="Higher lows. Every week.">Högre bottnar. Varje vecka.</h2><p class="lead" data-sv="Du behöver inte en perfekt dag. Du behöver en plan du håller." data-en="You don't need a perfect day. You need a plan you keep.">Du behöver inte en perfekt dag. Du behöver en plan du håller.</p><a class="btn p" href="./" data-sv="Starta gratis →" data-en="Start free →">Starta gratis →</a></div>
+</div>
+<footer><div class="wrap"><span>© 2026 Arelo</span><span data-sv="Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar." data-en="Arelo does not give financial advice. Trading carries a risk of losing money.">Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar.</span></div></footer>
+<script>
+(function(){var L='sv';try{L=localStorage.getItem('arelo:lp-lang')||((navigator.language||'').slice(0,2)==='sv'?'sv':'en')}catch(e){}
+function set(l){L=l;document.documentElement.lang=l;document.querySelectorAll('[data-sv]').forEach(function(el){el.innerHTML=el.getAttribute('data-'+l)});var b=document.getElementById('lang');b.textContent=l==='sv'?'EN':'SV';b.setAttribute('aria-label',l==='sv'?'Switch to English':'Byt till svenska');try{localStorage.setItem('arelo:lp-lang',l)}catch(e){}}
+document.getElementById('lang').onclick=function(){set(L==='sv'?'en':'sv')};set(L);
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15}):null;
+document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});})();
+</script>
+</body></html>

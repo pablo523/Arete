@@ -101,3 +101,6 @@ What the big journals do and where they leave gaps:
 **Biggest remaining gap vs. paid tools:** automatic broker sync. That needs a server and is the natural core of a Pro plan.
 
 Sources: daytradingtoolkit.com (best trading journals ranking, Cypher explained), traderssecondbrain.com (best trading journal app), daytradingz.com (TradeZella review), united-daytraders.com (is a trading journal necessary).
+
+**Round 2 (pro features made free):** Edge score (six-metric composite, like TradeZella's score), pivot reports and scatter plots (TradesViz Platinum pivot grid, Tradervue advanced reports), MAE/MFE with exit efficiency and stop/target simulator (TradesViz Platinum), advanced journal filters with bulk edit, Kelly and risk of ruin.
+Sources: help.tradezella.com (Zella score), tradervue.com/help/reports_advanced, daytradingz.com (TradesViz review).

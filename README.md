@@ -19,6 +19,11 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 
 - **5-second log:** result, symbol, side and rules. Date, time, R, setup, emotion and notes are optional
 - **Ask your journal:** plain-language questions like "win rate on Fridays after 15" or "best setup last 30 days", answered instantly with the trades behind the answer
+- **Edge score:** profit factor, win/loss ratio, drawdown, win rate, recovery and consistency in one 0–100 score with a radar and your biggest lever
+- **Reports:** pivot by setup, market, weekday, hour, hold time, R bucket, mistake and more, plus a scatter plot with any two axes
+- **Exit analysis:** MAE/MFE (auto-filled from Replay for crypto), exit efficiency and a stop/target simulator
+- **Journal filters and bulk edit:** period, market, setup, side, result, rules, mistake and text search, with summary stats and edit-all
+- **Risk engine:** Kelly and simulated risk of ruin from your own trades
 - **Coach that sees the whole person:** a green, yellow or red light every morning from sleep, mood and yesterday's rule breaks, plus patterns between your life and your results (AI coach in the Claude version)
 - **Prop mode:** templates for common challenge types, live chance to pass (simulated from your own trades) and your max risk per trade today
 - **Discipline league and mentors:** compete with friends on discipline, never money; mentors see a student's details only when the student allows it

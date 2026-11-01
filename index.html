@@ -1080,7 +1080,116 @@ html[data-bg="stars"] body{background:linear-gradient(180deg,#0A0C18,var(--bg) 7
 @media (prefers-reduced-motion:reduce){#bgfx::before,#bgfx::after{animation:none!important}}
 html:not([data-bg="plain"]):not([data-bg="dots"]) :is(.card,.panel,.day,.gcard,.stat){background:color-mix(in oklab,var(--surface) 84%,transparent)}
 html:not([data-bg="plain"]):not([data-bg="dots"]) .stat{background:color-mix(in oklab,var(--chassis) 80%,transparent)}
+</style><style>
+.tsubs{margin:4px 0 2px}
+.acct-chips{margin-top:-6px}
+.lockb{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:color-mix(in oklab,var(--neg) 14%,var(--surface));box-shadow:0 0 0 1px color-mix(in oklab,var(--neg) 50%,transparent)}
+.lockb .lk-ic{font-size:1.6rem}
+.lockb b{display:block;font-weight:700}
+.lockb small{color:var(--muted);font-size:.84rem}
+.lockb small b{display:inline;color:var(--ink)}
+.dsc-top{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+.dsc-top>div{display:flex;flex-direction:column;align-items:center;min-width:80px}
+.dsc-top .xp{font-size:2.6rem;line-height:1;color:var(--moss)}
+.dsc-top small{font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;color:var(--muted);text-align:center}
+.dbars{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;height:70px;align-items:end}
+.dbars i{border-radius:4px;background:var(--line-2)}
+.dbars i.ok{background:var(--pos)}.dbars i.mid{background:var(--amber)}.dbars i.bad{background:var(--neg)}.dbars i.na{background:var(--line)}
+.sess-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.sess .label{display:block;margin-bottom:6px}
+.grades{display:flex;gap:6px;margin:6px 0 12px}
+.grade{width:44px;height:44px;border:0;border-radius:12px;font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.2rem;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line);color:var(--muted)}
+.grade[aria-pressed="true"]{color:#111;box-shadow:0 8px 18px -8px var(--sh)}
+.grade.g-A[aria-pressed="true"]{background:var(--pos)}.grade.g-B[aria-pressed="true"]{background:var(--sand)}.grade.g-C[aria-pressed="true"]{background:var(--amber)}.grade.g-D[aria-pressed="true"]{background:var(--moss)}.grade.g-F[aria-pressed="true"]{background:var(--neg)}
+.pcal{display:flex;flex-direction:column;gap:6px}
+.pcal-h,.pcal-r{display:grid;grid-template-columns:repeat(7,minmax(0,1fr)) minmax(70px,.9fr);gap:6px}
+.pcal-h span{font-family:var(--f-mono);font-size:.6rem;color:var(--faint);text-align:center;text-transform:uppercase}
+.pc{position:relative;border:0;border-radius:10px;min-height:72px;padding:6px 8px;text-align:left;display:flex;flex-direction:column;gap:2px;background:var(--chassis);box-shadow:inset 0 1px 3px var(--sh),0 0 0 1px var(--line);color:var(--ink);transition:transform .15s}
+.pc:hover{transform:scale(1.03)}
+.pc.na{background:none;box-shadow:none}
+.pc.up{background:color-mix(in oklab,var(--pos) calc(var(--a) * 100%),var(--chassis))}
+.pc.dn{background:color-mix(in oklab,var(--neg) calc(var(--a) * 100%),var(--chassis))}
+.pc.today{box-shadow:0 0 0 2px var(--ink)}
+.pc.sel{box-shadow:0 0 0 2px var(--moss)}
+.pc .pd{font-family:var(--f-mono);font-size:.62rem;color:var(--muted)}
+.pc b{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:.95rem;letter-spacing:-.02em}
+.pc small{font-family:var(--f-mono);font-size:.56rem;color:var(--muted)}
+.pc .dd{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%}
+.pc .dd.ok{background:var(--pos)}.pc .dd.mid{background:var(--amber)}.pc .dd.bad{background:var(--neg)}
+.pc.wk{display:flex;align-items:center;justify-content:flex-end;font-family:var(--f-mono);font-size:.76rem;background:transparent;box-shadow:none;cursor:default}
+.pc-day{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-2)}
+.pc-day h4{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:1.1rem;margin-bottom:8px}
+.trow{cursor:pointer}
+.trow:hover td{background:var(--surface-2)}
+.mtag{display:inline-block;font-size:.66rem;padding:2px 7px;border-radius:99px;margin:1px 3px 1px 0;background:color-mix(in oklab,var(--neg) 16%,transparent);color:var(--neg);white-space:nowrap}
+.hist{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;height:180px;align-items:end}
+.hb{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;font-family:var(--f-mono);font-size:.62rem;color:var(--muted)}
+.hb i{width:100%;border-radius:8px 8px 3px 3px;min-height:3px}
+.hb i.neg{background:var(--neg)}.hb i.z{background:var(--line-2)}.hb i.pos{background:var(--pos)}
+.mist{display:flex;flex-direction:column;gap:6px}
+.mi{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.mi .mtag{font-size:.78rem;padding:4px 10px;justify-self:start}
+.mi b{font-family:var(--f-mono);font-weight:500}
+.pbk{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pbs{border:0;text-align:left;padding:0;border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:inset 0 1px 0 var(--hi),0 14px 30px -18px var(--sh),0 0 0 1px var(--line);color:var(--ink);display:flex;flex-direction:column;transition:transform .2s}
+.pbs:hover{transform:translateY(-3px)}
+.pbs img{width:100%;height:140px;object-fit:cover;background:var(--chassis)}
+.pbs-in{padding:16px;display:flex;flex-direction:column;gap:6px}
+.pbs-in b{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:1.1rem}
+.pbs-in small{color:var(--muted);font-size:.78rem}
+.pbs-in ul{margin:4px 0 0;padding-left:18px;font-size:.84rem;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.pbs-st{margin-top:6px;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.accts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.acct-card.is-bad{box-shadow:inset 0 1px 0 var(--hi),0 0 0 1px color-mix(in oklab,var(--neg) 60%,transparent)}
+.acct-card.is-ok{box-shadow:inset 0 1px 0 var(--hi),0 0 0 2px var(--pos),0 0 36px -12px var(--pos)}
+.fspan{grid-column:1/-1}
+.mchips{margin:2px 0 12px}
+.mck{position:relative;cursor:pointer}
+.mck input{position:absolute;opacity:0;pointer-events:none}
+.mck span{display:inline-block;border-radius:999px;padding:6px 11px;font-size:.76rem;color:var(--muted);background:var(--surface-2);box-shadow:0 0 0 1px var(--line-2);transition:all .2s}
+.mck input:checked+span{color:#fff;background:var(--neg);box-shadow:0 6px 14px -6px var(--neg)}
+.impf{display:inline-flex;gap:6px;align-items:center}
+.frow3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.shots{display:flex;gap:8px;flex-wrap:wrap}
+.shot{position:relative;width:110px;height:76px;border-radius:10px;overflow:hidden;background:var(--chassis);box-shadow:0 0 0 1px var(--line-2)}
+.shot img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.shot .del{position:absolute;top:4px;right:4px;background:rgb(0 0 0 / .6);color:#fff;border-radius:50%;width:22px;height:22px}
+.shot.add{display:grid;place-items:center;font-size:1.6rem;color:var(--muted);cursor:pointer;border:1.5px dashed var(--line-2);box-shadow:none}
+.shot.add input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.sess-now{margin:0 0 12px;font-size:.88rem;color:var(--muted)}
+.sess-now b{color:var(--ink)}
+.sbar-wrap{position:relative;padding-top:18px}
+.sbar-hours{position:absolute;top:0;left:92px;right:0;height:14px}
+.sbar-hours span{position:absolute;transform:translateX(-50%);font-size:.58rem;color:var(--faint)}
+.srow{display:grid;grid-template-columns:84px minmax(0,1fr);gap:8px;align-items:center;margin-bottom:6px}
+.sl{font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sl.on{color:var(--ink);font-weight:600}
+.strack{position:relative;height:16px;border-radius:6px;background:var(--chassis);box-shadow:inset 0 1px 3px var(--sh);overflow:hidden}
+.strack i{position:absolute;top:2px;bottom:2px;border-radius:4px;background:color-mix(in oklab,var(--sc) 45%,transparent)}
+.strack i.on{background:var(--sc);box-shadow:0 0 10px var(--sc)}
+.strack .nowl{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);box-shadow:0 0 6px var(--ink)}
+.srow.kz .strack i{background:repeating-linear-gradient(135deg,color-mix(in oklab,var(--sc) 55%,transparent) 0 3px,transparent 3px 6px)}
+.wl-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.wlc{display:inline-flex;align-items:center;border-radius:999px;background:var(--surface-2);box-shadow:0 0 0 1px var(--line-2);padding:0 4px 0 0}
+.wlc button:first-child{border:0;background:none;padding:8px 6px 8px 13px;font-family:var(--f-mono);font-size:.78rem;color:var(--ink)}
+.wlc.on{background:var(--moss);box-shadow:0 6px 16px -6px var(--glow)}
+.wlc.on button:first-child{color:var(--on-accent)}
+.wlc .del{opacity:.6}
+.wl-add{display:inline-flex;gap:6px}
+.wl-add input{border:0;border-radius:999px;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line);padding:8px 13px;width:220px;max-width:60vw}
+.wl h3 .chips button{padding:6px 10px;font-size:.72rem}
+.mk-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:18px;align-items:start}
+.tvbox{border-radius:12px;overflow:hidden}
+.tvbox.tape{min-height:46px;border-radius:999px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line)}
+.tvbox.chart{height:520px}
+.tvbox.quotes{height:420px}
+.tvbox.news{height:560px}
+.tvbox.cal{height:600px}
+.tvbox .tradingview-widget-copyright{font-size:.7rem;color:var(--faint)}
+@media (max-width:980px){.mk-grid{grid-template-columns:1fr}.tvbox.chart{height:420px}}
+@media (max-width:760px){.frow3{grid-template-columns:1fr 1fr}.pcal-h,.pcal-r{grid-template-columns:repeat(7,minmax(0,1fr))}.pcal-h span:last-child,.pc.wk{display:none}.pc{min-height:52px;padding:4px 5px}.pc b{font-size:.68rem}.pc small{display:none}.srow{grid-template-columns:64px minmax(0,1fr)}.sbar-hours{left:72px}.wl-add input{width:160px}}
 </style>
+
 </head>
 <body>
 <div id="bgfx" aria-hidden="true"></div>
@@ -1093,6 +1202,7 @@ html:not([data-bg="plain"]):not([data-bg="dots"]) .stat{background:color-mix(in 
       <button role="tab" id="tab-week" data-act="tab" data-v="week" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Week</span></button>
       <button role="tab" id="tab-life" data-act="tab" data-v="life" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-8-4.6-8-10.4A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.5c0 5.8-8 10.4-8 10.4z"/></svg><span>Life</span></button>
       <button role="tab" id="tab-projects" class="mob-hide" data-act="tab" data-v="projects" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V4.5h6V7"/></svg><span>Projects</span></button>
+      <button role="tab" id="tab-markets" class="mob-hide" data-act="tab" data-v="markets" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 6-8 3 3"/><path d="M3 21h18"/></svg><span>Markets</span></button>
       <button role="tab" id="tab-goals" class="mob-hide" data-act="tab" data-v="goals" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 20 10 6l4 7 2.5-4L21 20z"/></svg><span>Journey</span></button>
       <button role="tab" id="tab-insights" class="mob-hide" data-act="tab" data-v="insights" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V11M10 20V5M16 20v-6M2.5 20.5h19"/></svg><span>Insights</span></button>
       <button id="tab-more" class="more-btn" data-act="more" aria-selected="false" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg><span>More</span></button>
@@ -1115,6 +1225,7 @@ html:not([data-bg="plain"]):not([data-bg="dots"]) .stat{background:color-mix(in 
     <section id="v-week" class="view" hidden></section>
     <section id="v-life" class="view" hidden></section>
     <section id="v-projects" class="view" hidden></section>
+    <section id="v-markets" class="view" hidden></section>
     <section id="v-goals" class="view" hidden></section>
     <section id="v-insights" class="view" hidden></section>
   </main>
@@ -1256,7 +1367,7 @@ function seedExample(){
 
 /* ================= state & docs ================= */
 const T0=today();
-const VIEWS=['today','habits','week','life','projects','goals','insights'];
+const VIEWS=['today','habits','week','life','projects','markets','goals','insights'];
 const S={view:'today',cfg:null,docs:{},loaded:new Set(),y:T0.getFullYear(),m:T0.getMonth(),week:mondayOf(T0),year:T0.getFullYear(),repY:T0.getFullYear(),repM:T0.getMonth(),
   caps:{},meName:'',meId:'',events:{},chat:[],chatBusy:false,proj:null,ciSeg:null,
   shared:{on:false,db:null,challenges:[],peers:{},names:{}},timer:{dur:25,left:1500,running:false,endAt:0,task:'',proj:''}};
@@ -1310,6 +1421,7 @@ function neededKeys(){const t=today();const ks=new Set();const addM=d=>ks.add(mK
   if(S.view==='today'){addM(t);addM(new Date(t.getFullYear(),t.getMonth()-1,1));addW(t);addM(mondayOf(t));addW(addDays(t,1))}
   if(['today','life','insights'].includes(S.view)){const fk=d=>'f'+mKeyD(d).slice(1);ks.add(fk(t));ks.add(fk(new Date(t.getFullYear(),t.getMonth()-1,1)));ks.add('x-train');ks.add('x-read');if(S.fm)ks.add(fk(S.fm))}
   if(S.view==='today'){addW(addDays(t,-7));addW(addDays(t,-14));addW(addDays(t,-21))}
+  if(S.view==='projects'){ks.add('x-train');for(let i=0;i<2;i++)addM(new Date(t.getFullYear(),t.getMonth()-i,1));for(let i=0;i<8;i++)addW(addDays(t,-7*i))}
   if(S.view==='habits')ks.add(mKey(S.y,S.m));
   if(S.view==='week'){addW(S.week);addM(S.week);addM(addDays(S.week,6))}
   if(S.view==='goals'){addW(t);for(let i=0;i<3;i++)addM(new Date(t.getFullYear(),t.getMonth()-i,1));const q0=Math.floor(t.getMonth()/3)*3;for(let m=q0;m<q0+3;m++){const d=new Date(t.getFullYear(),m,1);addM(d);ks.add('f'+mKeyD(d).slice(1))}ks.add('x-train');ks.add('x-read');S.cfg.projects.forEach(p=>ks.add('p-'+p.id))}
@@ -2195,7 +2307,7 @@ function applyPlan(){const D=IV.d,P=IV.plan;
   S.cfg.flags.interviewed=true;S.cfg.flags.ivSkipped=false;saveCfg();applyAccent();const nm=firstName();closeOverlay();setView('today');render(true);window.scrollTo(0,0);toast(nm?T(`Welcome, ${nm}.`,`Välkommen, ${nm}.`):T('Your plan is ready.','Din plan är klar.'))}
 
 /* ================= events ================= */
-function setView(v){S.view=v;try{localStorage.setItem('stigen:view',v)}catch(e){}VIEWS.forEach(k=>{V[k].hidden=k!==v;document.getElementById('tab-'+k).setAttribute('aria-selected',k===v)});const mb=document.getElementById('tab-more');if(mb)mb.setAttribute('aria-selected',['projects','goals','insights'].includes(v));closeMore();requestAnimationFrame(moveInd);stagger(V[v])}
+function setView(v){S.view=v;try{localStorage.setItem('stigen:view',v)}catch(e){}VIEWS.forEach(k=>{V[k].hidden=k!==v;document.getElementById('tab-'+k).setAttribute('aria-selected',k===v)});const mb=document.getElementById('tab-more');if(mb)mb.setAttribute('aria-selected',['projects','markets','goals','insights'].includes(v));closeMore();requestAnimationFrame(moveInd);stagger(V[v])}
 const MAIN=document.getElementById('main');
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b||b.closest('.pop,.sheet-bg,.iv'))return;const a=b.dataset.act;const date=b.dataset.date?parseD(b.dataset.date):null;const t=today();const pid=b.dataset.p;
   switch(a){
@@ -2272,7 +2384,7 @@ MAIN.addEventListener('submit',e=>{if(xSubmit(e))return;
   const af=e.target.closest('.addf');if(af){e.preventDefault();const d=parseD(af.dataset.date);const inp=af.querySelector('input');const v=inp.value.trim();if(!v)return;const id=inp.id;tasksOf(d).push({id:uid(),text:v,done:false});saveWeekOf(d);render(false);const ni=document.getElementById(id);if(ni)ni.focus();return}
   const f=e.target;const k=f.dataset.form;if(!k)return;e.preventDefault();const pid=f.dataset.p;const fd=new FormData(f);const g=n=>(fd.get(n)||'').toString().trim();const p=projById(pid);if(!p)return;const d=PD(pid);const num=s=>parseFloat(s.replace(/\s/g,'').replace(',','.').replace('−','-'));
   switch(k){
-    case 'trade':{const pnl=num(g('pnl'));if(isNaN(pnl)){toast(T('Enter the result','Fyll i resultatet'));return}d.trades.push({id:uid(),d:g('d')||dkey(today()),sym:g('sym').toUpperCase(),dir:g('dir')||'Long',pnl,setup:g('setup'),tm:g('tm'),r:(v=>isNaN(v)?null:v)(num(g('r'))),emo:g('emo'),rules:fd.get('rules')==='on',note:g('note'),bt:fd.get('bt')==='on'});linkTicket(p,d,d.trades[d.trades.length-1]);savePD(pid);toast(T('Trade saved','Trade sparad'));break}
+    case 'trade':{const pnl=num(g('pnl'));if(isNaN(pnl)){toast(T('Enter the result','Fyll i resultatet'));return}if(isFuture(parseD(g('d')||dkey(today())))){toast(T('That date is in the future','Datumet ligger i framtiden'));return}d.trades.push({id:uid(),d:g('d')||dkey(today()),sym:g('sym').toUpperCase(),dir:g('dir')||'Long',pnl,setup:g('setup'),tm:g('tm'),r:(v=>isNaN(v)?null:v)(num(g('r'))),emo:g('emo'),rules:fd.get('rules')==='on',note:g('note'),bt:fd.get('bt')==='on',acct:g('acct')||'main',tags:fd.getAll('tag').map(String)});linkTicket(p,d,d.trades[d.trades.length-1]);savePD(pid);toast(T('Trade saved','Trade sparad'));break}
     case 'rule':{const v=g('r');if(!v)return;p.rules=p.rules||[];p.rules.push(v);saveCfg();break}
     case 'kpi':{const rev=num(g('rev'));if(isNaN(rev)){toast(T('Enter revenue','Fyll i omsättningen'));return}const day=g('d')||dkey(today());d.kpis=d.kpis.filter(x=>x.d!==day);d.kpis.push({id:uid(),d:day,rev,ad:num(g('ad'))||0,orders:parseInt(g('orders'),10)||0,cogs:num(g('cogs'))||0});savePD(pid);toast(T('Day saved','Dagen sparad'));break}
     case 'product':{const v=g('t');if(!v)return;d.items.push({id:uid(),kind:'product',text:v,status:'test'});savePD(pid);break}
@@ -2303,7 +2415,7 @@ async function moveUnfinished(d){const next=addDays(d,1);await refresh([wKey(nex
 function clearExample(silent){(S.cfg.exampleKeys||[]).forEach(k=>{S.docs[k]=k[0]==='m'?normMonth(null):normWeek(null);saveDoc(k)});S.cfg.example=false;delete S.cfg.exampleKeys;S.cfg.stats={pomos:0,focusMin:0};S.cfg.badges={};saveCfg();if(!silent){render(false);toast(T('Example data cleared. The journey is yours.','Exempeldatan är borta. Resan är din.'))}}
 
 /* ================= render ================= */
-function renderChrome(){const L={today:T('Today','Idag'),habits:T('Habits','Vanor'),week:T('Week','Veckan'),life:T('Life','Livet'),more:T('More','Mer'),projects:T('Projects','Projekt'),goals:T('Journey','Resan'),insights:T('Insights','Insikter')};
+function renderChrome(){const L={today:T('Today','Idag'),habits:T('Habits','Vanor'),week:T('Week','Veckan'),life:T('Life','Livet'),markets:T('Markets','Marknader'),more:T('More','Mer'),projects:T('Projects','Projekt'),goals:T('Journey','Resan'),insights:T('Insights','Insikter')};
   [...VIEWS,'more'].forEach(v=>{const s=document.querySelector('#tab-'+v+' span');if(s)s.textContent=L[v]});document.querySelector('.tabs').setAttribute('aria-label',T('Views','Vyer'));
   document.getElementById('banner-txt').innerHTML=T('<strong>You are looking at example data.</strong> Your interview replaces it with your own plan, or you can clear it now.','<strong>Du tittar på exempeldata.</strong> Intervjun ersätter den med din egen plan, eller så rensar du den nu.');document.getElementById('banner-btn').textContent=T('Clear example','Rensa exempel');
   const p=S.cfg.profile||{};const a=document.getElementById('avatar');a.textContent=initials(p.name);a.setAttribute('aria-label',T('Your profile','Din profil')+(p.name?': '+p.name:''));setSync(syncEl.dataset.s||'local');document.title='Arete'}
@@ -2316,6 +2428,7 @@ function render(nav){
   if(S.view==='week'){renderWeek();const dd=document.getElementById('days');if(dd){if(keepDays!=null)dd.scrollLeft=keepDays;else{const ti=sameDay(mondayOf(today()),S.week)?wdIdx(today()):0;const el=dd.children[ti];if(el&&dd.scrollWidth>dd.clientWidth)dd.scrollLeft=el.offsetLeft-dd.offsetLeft-(dd.clientWidth-el.offsetWidth)/2}dd.addEventListener('scroll',onDaysScroll,{passive:true});onDaysScroll()}}
   if(S.view==='projects'){renderProjects();calcRisk()}
   if(S.view==='life')renderLife();
+  if(S.view==='markets')renderMarkets();
   if(S.view==='goals'){renderGoals();journeyExtras()}
   if(S.view==='insights'){renderInsights();insightExtras()}
   afterRender(nav);
@@ -2440,7 +2553,7 @@ function renderToday(){
   V.today.innerHTML=`${coverBlock(t)}${todayPrompts()}${tickerHTML(t)}
   <div class="dash">
     <div class="dash-c stack">${eveningCard(t)}${briefCard(t)}${signalsCard(t)}${habitsCardToday(t,mon)}${lessonCard(t)}${chalCardToday(t)}${checkinCard(t)}</div>
-    <div class="dash-r stack">${todayTasksCard(t)}${calCard(t)}${weekAheadCard(t,mon)}${timerCard(t).replace('<div class="timer-sub">','<div class="timer-sub">'+ambientBtn())}${feelCard(t)}${debriefCard(t)}</div>
+    <div class="dash-r stack">${todayTasksCard(t)}${S.cfg.projects.some(p=>p.type==='trading')?sessionsCard(true):''}${calCard(t)}${weekAheadCard(t,mon)}${timerCard(t).replace('<div class="timer-sub">','<div class="timer-sub">'+ambientBtn())}${feelCard(t)}${debriefCard(t)}</div>
     <div class="dash-l stack">${cloudNudge()}${backupNudge()}${quickCard()}${progressCard(t)}${forecastCard(true)}${levelsMini()}${linksCard()}</div>
   </div>
   ${projectsShelf(t,mon)}
@@ -2601,14 +2714,14 @@ const XSHEET={
 function setPath(o,p,v){const k=p.split('.');let x=o;for(let i=0;i<k.length-1;i++){x=x[k[i]]=x[k[i]]||{}}x[k[k.length-1]]=v}
 async function uploadImg(file,c,field){if(!S.caps.assets||!file)return;if(!/^image\//.test(file.type)){toast(T('Choose an image file','Välj en bildfil'));return}if(file.size>20*1024*1024){toast(T('That image is over 20 MB','Bilden är över 20 MB'));return}
   c.busy=true;renderSheet();try{const r=await S.caps.assets.upload(file);c[field]=r.url;c[field+'Id']=r.id}catch(e){toast(T('Could not upload the image','Kunde inte ladda upp bilden'))}c.busy=false;if(sheet)renderSheet()}
-function xSheetInput(e,t,c){
+function xSheetInput(e,t,c){if(tSheetInput(e,t,c))return true;
   if(t.dataset.xfile){if(e.type!=='change')return true;const f=t.files&&t.files[0];const k=t.dataset.xfile;
     if(k==='cover'){c=c||{};uploadImg(f,c,'url').then(()=>{if(c.url){S.cfg.cover={url:c.url,id:c.urlId};saveCfg();toast(T('New cover set','Nytt omslag'))}})}
     else if(k==='bookcover')uploadImg(f,c,'cover');else uploadImg(f,c,'url');return true}
   if(t.dataset.x){setPath(c,t.dataset.x,t.value);if(t.dataset.x==='title'&&(sheetMode==='book'||sheetMode==='watch'))scheduleCoverSearch(c);return true}
   return false}
 function xSheetSubmit(e){return false}
-function xSheetClick(a,b,c,e){const v=b.dataset.v;const t=today();if(/^x-(snd|cel|bg)$/.test(a)){xSheetClick2(a,b,c,e);return}
+function xSheetClick(a,b,c,e){const v=b.dataset.v;const t=today();if(tSheetClick(a,b,c,e))return;if(/^x-(snd|cel|bg)$/.test(a)){xSheetClick2(a,b,c,e);return}
   const setPressed=sel=>sheet.querySelectorAll(`[data-sa="${sel}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b));
   switch(a){
     case 'skin':S.cfg.skin=v;saveCfg();applyAccent();setPressed('skin');sfx('click');break;
@@ -2876,7 +2989,7 @@ function afterRender(nav){
   if(updateXP())saveCfg();checkLevels();
   if(S.view==='today'){const t=today();const H=S.cfg.habits;const d=H.filter(h=>isDone(h.id,t)).length;const k=dkey(t)+':'+d+'/'+H.length;const prev=lastDoneKey;lastDoneKey=k;
     if(prev&&prev.startsWith(dkey(t))&&H.length&&d===H.length&&prev!==k){setTimeout(()=>{rain();sfx('chord');vib([15,30,15,30,40]);toast(T('Every habit done today. Nice work.','Alla vanor klara idag. Snyggt jobbat.'))},120)}}
-  if(nav)countUp(V[S.view]);bindTilt(V[S.view]);if(S.view==='today'||S.view==='life')backfillCovers();
+  if(nav)countUp(V[S.view]);bindTilt(V[S.view]);if(S.view==='today'||S.view==='life')backfillCovers();hydrateShots(V[S.view]);
   if(S.cfg.flags.buddy)pushPulse(false)}
 
 /* ================= v8: savings forecast ================= */
@@ -3288,14 +3401,14 @@ function xAct3(a,b,e,date,t){const pid=b.dataset.p;
     case 'x-amb':ambientToggle();break;
     case 'x-share-k':S.shareK=b.dataset.v;render(false);break;
     case 'x-share-save':saveShare();break;
-    default:xAct2(a,b,e,date,t);
+    default:if(!tAct(a,b,e,date,t)&&!mAct(a,b))xAct2(a,b,e,date,t);
   }}
-function xSubmit3(k,f,g){const t=today();
+function xSubmit3(k,f,g){const t=today();if(tSubmit(k,f,g)||mSubmit(k,f,g))return true;
   if(k==='chain'){const a=g('a'),b=g('b');if(!a||!b||a===b){toast(T('Pick two different habits','Välj två olika vanor'));return true}S.cfg.chains=S.cfg.chains||[];if(!S.cfg.chains.some(c=>c.a===a&&c.b===b))S.cfg.chains.push({id:uid(),a,b});saveCfg();render(false);return true}
   if(k==='tprog'){genProgram(g('goal'),g('level'),+g('days')||3);return true}
   if(k==='body'){const w=numx(g('w')),ws=numx(g('waist'));if(isNaN(w)&&isNaN(ws))return true;const D=TRN();D.body=D.body||{};const dk=dkey(t);const o=D.body[dk]||{};if(!isNaN(w))o.w=w;if(!isNaN(ws))o.waist=ws;D.body[dk]=o;saveDoc('x-train');render(false);sfx('tick');return true}
   return xSubmit2(k,f,g)}
-function xInput3(e,t){
+function xInput3(e,t){if(tInput(e,t))return true;
   if(t.dataset.imp&&e.type==='change'){const f=t.files&&t.files[0];if(f){if(t.dataset.imp==='tx')importTx(f);else importTrades(t.dataset.p,f)}t.value='';return true}
   if(t.dataset.tk!=null){S.ticket=S.ticket||{checks:{}};S.ticket[t.dataset.tk]=t.value;updTicket();return true}
   if(t.dataset.tkr!=null){S.ticket=S.ticket||{checks:{}};S.ticket.checks[t.dataset.tkr]=t.checked;if(t.checked)sfx('tick');updTicket();return true}
@@ -3334,6 +3447,370 @@ function posterEl(w){const ep=w.kind!=='film'?`S${w.s||1} · E${w.e||0}`:'';
 
 {const _b=XSHEET.book,_w=XSHEET.watch;const inject=(box,c,id)=>{const f=box.querySelector(id);const fld=f&&f.closest('.field');if(fld){fld.insertAdjacentHTML('afterend',`${c.cover?`<div class="cprev"><img src="${esc(c.cover)}" alt=""><button type="button" class="linkbtn quiet" data-sa="x-cover-clear">${T('Remove cover','Ta bort omslag')}</button></div>`:''}<div id="cres" class="field"></div>`);paintResults(c)}};
 XSHEET.book=function(box,c){_b(box,c);if(CAN_NET)inject(box,c,'#xb-t')};XSHEET.watch=function(box,c){_w(box,c);if(CAN_NET)inject(box,c,'#xw-t')}}
+
+/* ================= v12: trading pro ================= */
+function MISTAKES_(){return [['fomo','FOMO'],['revenge',T('Revenge trade','Hämndtrade')],['oversize',T('Too big','För stor position')],['movedstop',T('Moved stop','Flyttade stop')],['early',T('Exited early','Gick ur för tidigt')],['late',T('Late entry','Sen entry')],['noplan',T('No plan','Ingen plan')],['overtrade',T('Overtrading','Överhandel')],['news',T('Traded the news','Tradade nyheter')],['chase',T('Chased price','Jagade priset')]]}
+const mistakeName=k=>(MISTAKES_().find(x=>x[0]===k)||[k,k])[1];
+function INSTR(){return [
+ ['custom',T('Shares / units','Aktier / enheter'),1,'unit'],
+ ['fx',T('Forex, quote USD (EURUSD, GBPUSD…)','Forex, USD som kvot (EURUSD, GBPUSD…)'),100000,'lot'],
+ ['fxjpy',T('Forex, JPY pairs (USDJPY…)','Forex, JPY-par (USDJPY…)'),'jpy','lot'],
+ ['xau','XAUUSD (100 oz / lot)',100,'lot'],
+ ['es','ES · S&P 500 E-mini ($50/pt)',50,'contract'],['mes','MES · Micro S&P ($5/pt)',5,'contract'],
+ ['nq','NQ · Nasdaq E-mini ($20/pt)',20,'contract'],['mnq','MNQ · Micro Nasdaq ($2/pt)',2,'contract'],
+ ['ym','YM · Dow E-mini ($5/pt)',5,'contract'],['mym','MYM · Micro Dow ($0.5/pt)',.5,'contract'],
+ ['rty','RTY · Russell E-mini ($50/pt)',50,'contract'],['m2k','M2K · Micro Russell ($5/pt)',5,'contract'],
+ ['cl','CL · Crude oil ($1000/pt)',1000,'contract'],['mcl','MCL · Micro crude ($100/pt)',100,'contract'],
+ ['gc','GC · Gold ($100/pt)',100,'contract'],['mgc','MGC · Micro gold ($10/pt)',10,'contract'],
+ ['crypto',T('Crypto (coins)','Krypto (mynt)'),1,'coin']]}
+function guessInstr(sym){sym=String(sym||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(!sym)return 'custom';
+  const m=['MNQ','MES','MYM','M2K','MCL','MGC','NQ','ES','YM','RTY','CL','GC'].find(k=>sym.startsWith(k));if(m)return m.toLowerCase();
+  if(/XAU/.test(sym))return 'xau';if(/^[A-Z]{6}$/.test(sym)&&/JPY$/.test(sym))return 'fxjpy';if(/^[A-Z]{6}$/.test(sym)&&/USD$/.test(sym))return 'fx';if(/(BTC|ETH|SOL|USDT)/.test(sym))return 'crypto';return 'custom'}
+function accountsOf(p){p.accounts=p.accounts||[];if(!p.accounts.length)p.accounts.push({id:'main',name:T('Main account','Huvudkonto'),type:'personal',size:+((p.extra||{}).capital)||0});return p.accounts}
+const acctOf=x=>x.acct||'main';
+function tAcct(p){S.tacct=S.tacct||{};return S.tacct[p.id]||'all'}
+function liveTrades(p,d){const a=tAcct(p);return d.trades.filter(x=>!x.bt&&(a==='all'||acctOf(x)===a))}
+function dayNet(tr){const m={};tr.forEach(x=>{m[x.d]=(m[x.d]||0)+x.pnl});return m}
+function rOf(x){if(x.r!=null&&!isNaN(x.r))return +x.r;const e=+x.entry,s=+x.stop,xp=+x.exit;if(e&&s&&xp&&e!==s){const sgn=x.dir==='Short'?-1:1;return Math.round(sgn*(xp-e)/Math.abs(e-s)*100)/100}return null}
+function holdMin(x){if(!x.tm||!x.xtm)return null;const [a,b]=x.tm.split(':').map(Number),[c,e]=x.xtm.split(':').map(Number);let m=(c*60+e)-(a*60+b);if(m<0)m+=1440;return m}
+/* ---- loss lock ---- */
+function lockState(p,d){const ex=p.extra||{};const t=today();const tk=dkey(t);const tr=d.trades.filter(x=>!x.bt);const dn=tr.filter(x=>x.d===tk).reduce((s,x)=>s+x.pnl,0);
+  const mon=mondayOf(t);const wn=tr.filter(x=>x.d>=dkey(mon)).reduce((s,x)=>s+x.pnl,0);
+  if(+ex.maxLoss&&dn<=-+ex.maxLoss){const until=addDays(t,1);return {kind:'day',until,net:dn,lim:+ex.maxLoss}}
+  if(+ex.maxWeek&&wn<=-+ex.maxWeek){const until=addDays(mon,7);return {kind:'week',until,net:wn,lim:+ex.maxWeek}}return null}
+function lockBanner(L){const ms=Math.max(0,L.until-new Date());const h=Math.floor(ms/3600000),m=Math.floor(ms%3600000/60000);
+  return `<div class="lockb"><span class="lk-ic">🔒</span><div><b>${L.kind==='day'?T('Daily loss limit reached','Dagens förlustgräns är nådd'):T('Weekly loss limit reached','Veckans förlustgräns är nådd')}</b><small>${money(L.net)} / −${money(L.lim)} · ${T('Trading opens again in','Tradingen öppnar igen om')} <b class="num" data-countdown="${L.until.getTime()}">${h} h ${pad(m)} min</b></small></div></div>`}
+/* ---- discipline score ---- */
+function discScore(p,d,dk){const tr=d.trades.filter(x=>!x.bt&&x.d===dk);const pre=(p.premarket&&p.premarket.length?p.premarket:PRE_DEF_());const pd=d.pre[dk]||{};const preP=pre.length?pre.filter((_,i)=>pd[i]).length/pre.length:0;
+  if(!tr.length)return preP>0?{s:null,pre:preP}:null;const ex=p.extra||{};const rules=tr.filter(x=>x.rules).length/tr.length;const gateOn=ex.gate!==false&&(p.rules||[]).length;const planned=gateOn?tr.filter(x=>x.planned).length/tr.length:rules;
+  const net=tr.reduce((s,x)=>s+x.pnl,0);const lim=(!+ex.maxTrades||tr.length<=+ex.maxTrades)&&(!+ex.maxLoss||net>-+ex.maxLoss*1.05)?1:0;const tagged=tr.filter(x=>(x.tags||[]).length).length/tr.length;
+  return {s:Math.round(rules*40+planned*25+preP*20+lim*15-tagged*10),pre:preP,n:tr.length}}
+function discCard(p,d){const t=today();const days=[];for(let i=13;i>=0;i--){const dk=dkey(addDays(t,-i));const s=discScore(p,d,dk);days.push([dk,s&&s.s!=null?Math.max(0,s.s):null])}
+  let streak=0;for(let i=days.length-1;i>=0;i--){if(days[i][1]==null)continue;if(days[i][1]>=80)streak++;else break}const vals=days.filter(x=>x[1]!=null).map(x=>x[1]);const avg=vals.length?Math.round(vals.reduce((a,b)=>a+b,0)/vals.length):null;
+  return `<div class="card"><h3 class="led-on">${T('Discipline','Disciplin')}<span class="grow"></span><span class="aside num">${avg==null?'':T('avg ','snitt ')+avg}</span></h3>
+  <div class="dsc-top"><div><span class="xp num">${streak}</span><small>${T('days in a row ≥ 80','dagar i rad ≥ 80')}</small></div><p class="empty-note" style="margin:0">${T('Rules followed, plan before the trade, pre-market done and limits kept. Profit does not count.','Följda regler, plan före traden, förberedelser klara och gränser hållna. Vinst räknas inte.')}</p></div>
+  <div class="dbars">${days.map(([dk,v])=>`<i class="${v==null?'na':v>=80?'ok':v>=50?'mid':'bad'}" style="height:${v==null?6:Math.max(8,v)}%" title="${shortDate(parseD(dk))}: ${v==null?'–':v}"></i>`).join('')}</div></div>`}
+/* ---- session journal ---- */
+function sessionCard(p,d){const tk=dkey(today());d.days=d.days||{};const j=d.days[tk]||{};const pre=p.premarket&&p.premarket.length?p.premarket:PRE_DEF_();const pd=d.pre[tk]||{};const preN=pre.filter((_,i)=>pd[i]).length;
+  return `<div class="card sess"><h3 class="led-mid">${T('Today’s session','Dagens session')}<span class="grow"></span><span class="aside num">${preN}/${pre.length}</span></h3>
+  <div class="sess-grid"><div><span class="label">${T('Before the open','Före öppning')}</span><ul class="ms">${pre.map((x,i)=>`<li class="${pd[i]?'done':''}"><button class="tk${pd[i]?' on':''}" data-act="pre-tog" data-p="${p.id}" data-i="${i}" aria-pressed="${!!pd[i]}" aria-label="${esc(x)}">${pd[i]?CHECK:''}</button><span>${esc(x)}</span></li>`).join('')}</ul>
+    <div class="field" style="margin-top:10px"><span class="lbl">${T('Bias','Riktning')}</span><div class="seg">${[['long','Long'],['neutral',T('Neutral','Neutral')],['short','Short']].map(([k,l])=>`<button type="button" data-act="x-tbias" data-p="${p.id}" data-v="${k}" aria-pressed="${j.bias===k}">${l}</button>`).join('')}</div></div>
+    <label class="field"><span class="lbl">${T('Plan and key levels','Plan och nyckelnivåer')}</span><textarea rows="3" maxlength="600" data-tday="plan" data-p="${p.id}">${esc(j.plan||'')}</textarea></label></div>
+  <div><span class="label">${T('After the close','Efter stängning')}</span><div class="grades">${['A','B','C','D','F'].map(g=>`<button type="button" class="grade g-${g}" data-act="x-tgrade" data-p="${p.id}" data-v="${g}" aria-pressed="${j.grade===g}">${g}</button>`).join('')}</div>
+    <label class="field"><span class="lbl">${T('What did today teach you?','Vad lärde dagen dig?')}</span><textarea rows="3" maxlength="600" data-tday="lesson" data-p="${p.id}">${esc(j.lesson||'')}</textarea></label></div></div></div>`}
+/* ---- account chips ---- */
+function acctChips(p){const A=accountsOf(p);if(A.length<2)return '';const cur=tAcct(p);return `<div class="chips acct-chips">${[['all',T('All accounts','Alla konton')],...A.map(a=>[a.id,a.name])].map(([k,l])=>`<button data-act="x-tacct" data-p="${p.id}" data-v="${k}" aria-pressed="${cur===k}">${esc(l)}</button>`).join('')}</div>`}
+/* ---- P&L calendar ---- */
+function pnlCalendar(p,d){const t=today();S.tcal=S.tcal||new Date(t.getFullYear(),t.getMonth(),1);const y=S.tcal.getFullYear(),m=S.tcal.getMonth();const tr=liveTrades(p,d);const dn=dayNet(tr);const cnt={};tr.forEach(x=>cnt[x.d]=(cnt[x.d]||0)+1);
+  const n=new Date(y,m+1,0).getDate();const first=new Date(y,m,1);const off=wdIdx(first);const vals=Object.entries(dn).filter(([k])=>k.startsWith(`${y}-${pad(m+1)}`)).map(([,v])=>Math.abs(v));const mx=Math.max(1,...vals);
+  let cells='';let week=0;let wkSum=0;const rows=[];let row='';for(let i=0;i<off;i++)row+='<span class="pc na"></span>';
+  for(let dd=1;dd<=n;dd++){const dt=new Date(y,m,dd);const dk=dkey(dt);const v=dn[dk];const c=cnt[dk]||0;const ds=discScore(p,d,dk);wkSum+=v||0;
+    row+=`<button class="pc${v>0?' up':v<0?' dn':''}${dk===dkey(t)?' today':''}${S.tday===dk?' sel':''}" style="--a:${v?(.18+.62*Math.abs(v)/mx).toFixed(2):0}" data-act="x-tday" data-v="${dk}"><span class="num pd">${dd}</span>${v!=null?`<b class="num">${compact(v)}</b><small class="num">${c} ${c===1?'trade':'trades'}</small>`:''}${ds&&ds.s!=null?`<i class="dd ${ds.s>=80?'ok':ds.s>=50?'mid':'bad'}" title="${T('Discipline','Disciplin')} ${ds.s}"></i>`:''}</button>`;
+    if(wdIdx(dt)===6||dd===n){rows.push(row+`<span class="pc wk num ${wkSum>0?'pos':wkSum<0?'neg':''}">${wkSum?money(wkSum):'–'}</span>`);row='';wkSum=0}}
+  const mnet=Object.entries(dn).filter(([k])=>k.startsWith(`${y}-${pad(m+1)}`)).reduce((s,[,v])=>s+v,0);const gd=Object.entries(dn).filter(([k,v])=>k.startsWith(`${y}-${pad(m+1)}`)&&v>0).length,rd=Object.entries(dn).filter(([k,v])=>k.startsWith(`${y}-${pad(m+1)}`)&&v<0).length;
+  const sel=S.tday?tr.filter(x=>x.d===S.tday):[];
+  return `<div class="card"><h3 class="led-on"><button class="icon-btn sm" data-act="x-tcal" data-v="-1" aria-label="${T('Previous month','Förra månaden')}">${ARROW_L}</button>${cap(MONTHS[m])} ${y}<button class="icon-btn sm" data-act="x-tcal" data-v="1" aria-label="${T('Next month','Nästa månad')}">${ARROW_R}</button><span class="grow"></span><span class="aside num ${mnet<0?'neg':'pos'}">${money(mnet)} · ${gd} ${T('green','gröna')} · ${rd} ${T('red','röda')}</span></h3>
+  <div class="pcal"><div class="pcal-h">${WDI.map(w=>`<span>${w}</span>`).join('')}<span>${T('Week','Vecka')}</span></div>${rows.map(r=>`<div class="pcal-r">${r}</div>`).join('')}</div>
+  ${S.tday?`<div class="pc-day"><h4>${cap(WD[wdIdx(parseD(S.tday))])} ${longDate(parseD(S.tday))}</h4>${sel.length?tradeTable(p,sel):`<p class="empty-note">${T('No trades that day.','Inga trades den dagen.')}</p>`}${(d.days||{})[S.tday]&&(d.days[S.tday].lesson||d.days[S.tday].plan)?`<p class="quote" style="font-size:.95rem;margin-top:12px">${esc(d.days[S.tday].lesson||d.days[S.tday].plan)}</p>`:''}</div>`:''}</div>`}
+function tradeTable(p,list){return `<div class="scroll"><table class="tbl ttbl"><thead><tr><th>${T('Date','Datum')}</th><th>${T('Symbol','Symbol')}</th><th>${T('Side','Riktning')}</th><th>Setup</th><th class="r">R</th><th>${T('Mistakes','Misstag')}</th><th class="r">${T('Result','Resultat')}</th><th></th></tr></thead><tbody>${list.map(x=>{const r=rOf(x);return `<tr class="trow" data-act="x-trade-open" data-p="${p.id}" data-id="${x.id}"><td>${shortDate(parseD(x.d))}${x.tm?` <small class="muted">${x.tm}</small>`:''}</td><td>${esc(x.sym||'–')}${(x.shots||[]).length?' <small class="muted">▣</small>':''}</td><td>${esc(x.dir||'')}</td><td>${esc(x.setup||'–')}</td><td class="r num">${r==null?'–':fmtN(r)}</td><td>${(x.tags||[]).map(k=>`<span class="mtag">${esc(mistakeName(k))}</span>`).join('')||(x.rules?'':`<span class="mtag">${T('Rules broken','Bröt regler')}</span>`)}</td><td class="r num ${x.pnl<0?'neg':'pos'}">${money(x.pnl)}</td><td><button class="del" data-act="tr-del" data-p="${p.id}" data-id="${x.id}" aria-label="${T('Delete trade','Ta bort trade')}">×</button></td></tr>`}).join('')}</tbody></table></div>`}
+/* ---- stats ---- */
+function fullStats(tr){const n=tr.length;const net=tr.reduce((s,x)=>s+x.pnl,0);const W=tr.filter(x=>x.pnl>0),L=tr.filter(x=>x.pnl<0);const gw=W.reduce((s,x)=>s+x.pnl,0),gl=-L.reduce((s,x)=>s+x.pnl,0);
+  const srt=tr.slice().sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:(a.tm||'')<(b.tm||'')?-1:1);let eq=0,peak=0,mdd=0;const curve=[],dd=[];srt.forEach(x=>{eq+=x.pnl;peak=Math.max(peak,eq);mdd=Math.min(mdd,eq-peak);curve.push(eq);dd.push(eq-peak)});
+  let cw=0,cl=0,bw=0,bl=0;srt.forEach(x=>{if(x.pnl>0){cw++;cl=0}else if(x.pnl<0){cl++;cw=0}bw=Math.max(bw,cw);bl=Math.max(bl,cl)});
+  const Rs=srt.map(rOf).filter(v=>v!=null);let rc=0;const rcurve=Rs.map(v=>rc+=v);
+  return {n,net,win:n?W.length/n:0,avgW:W.length?gw/W.length:0,avgL:L.length?gl/L.length:0,pf:gl?gw/gl:(gw?Infinity:0),exp:n?net/n:0,avgR:Rs.length?Rs.reduce((a,b)=>a+b,0)/Rs.length:null,mdd,bw,bl,curve,dd,rcurve,Rs,srt}}
+function histR(Rs){const bins=[['≤-2',v=>v<=-2],['-1',v=>v>-2&&v<=-.5],['0',v=>v>-.5&&v<.5],['1',v=>v>=.5&&v<1.5],['2',v=>v>=1.5&&v<2.5],['3',v=>v>=2.5&&v<3.5],['≥4',v=>v>=3.5]];const c=bins.map(([l,f])=>[l,Rs.filter(f).length]);const mx=Math.max(1,...c.map(x=>x[1]));
+  return `<div class="hist">${c.map(([l,v],i)=>`<div class="hb"><i class="${i<2?'neg':i===2?'z':'pos'}" style="height:${Math.round(v/mx*100)}%"></i><small class="num">${v}</small><span>${l}R</span></div>`).join('')}</div>`}
+function formCorr(p,tr){const dn=dayNet(tr);const days=Object.keys(dn);const D=TRN();const out=[];
+  const split=(f,lab1,lab0,tpl)=>{const a=[],b=[];days.forEach(k=>{const v=f(k);if(v==null)return;(v?a:b).push(dn[k])});if(a.length>=4&&b.length>=4){const av=x=>x.reduce((s,y)=>s+y,0)/x.length;const A=av(a),B=av(b);if(Math.abs(A-B)>Math.max(1,Math.abs(B)*.25))out.push(tpl(A,B,a.length,b.length))}};
+  split(k=>D.sleep[k]==null?null:D.sleep[k]>=6.5,'','',(A,B)=>T(`After <b>6.5 h+ sleep</b> you average <b>${money(A)}</b> a day, after less sleep <b>${money(B)}</b>.`,`Efter <b>6,5 h sömn eller mer</b> tjänar du i snitt <b>${money(A)}</b> per dag, efter mindre sömn <b>${money(B)}</b>.`));
+  split(k=>{const v=getRate('energy',parseD(k));return v?v>=4:null},'','',(A,B)=>T(`On <b>high-energy</b> days: ${money(A)} a day. Low-energy days: ${money(B)}.`,`Dagar med <b>hög energi</b>: ${money(A)} per dag. Låg energi: ${money(B)}.`));
+  split(k=>{const v=getRate('mood',parseD(k));return v?v>=4:null},'','',(A,B)=>T(`In a <b>good mood</b> you make ${money(A)} a day, otherwise ${money(B)}.`,`På <b>gott humör</b> tjänar du ${money(A)} per dag, annars ${money(B)}.`));
+  split(k=>{const tr2=S.cfg.habits.filter(h=>isDone(h.id,parseD(k))).length;return S.cfg.habits.length?tr2>=Math.ceil(S.cfg.habits.length*.7):null},'','',(A,B)=>T(`On days you keep most of your <b>habits</b>: ${money(A)}. Other days: ${money(B)}.`,`Dagar du håller de flesta <b>vanorna</b>: ${money(A)}. Andra dagar: ${money(B)}.`));
+  return out}
+function statsTab(p,d){const tr=liveTrades(p,d);if(tr.length<2)return `<div class="card"><p class="empty-note" style="margin:0">${T('Log a few trades and your statistics appear here.','Logga några trades så dyker statistiken upp här.')}</p></div>`;
+  const F=fullStats(tr);const mode=S.tcurve||'money';const cv=mode==='r'?F.rcurve:F.curve;const lo=Math.min(0,...cv),hi=Math.max(0,...cv);
+  const xl=i=>i===0||i===cv.length-1?{s:shortDate(parseD(F.srt[Math.min(i,F.srt.length-1)].d))}:null;
+  const mist={};tr.forEach(x=>(x.tags||[]).forEach(k=>{(mist[k]=mist[k]||{n:0,net:0});mist[k].n++;mist[k].net+=x.pnl}));const ME=Object.entries(mist).sort((a,b)=>a[1].net-b[1].net);
+  const tbl=(rows,lab)=>`<div class="scroll"><table class="tbl"><thead><tr><th>${lab}</th><th class="r">n</th><th class="r">${T('Win','Vinst')}</th><th class="r">R</th><th class="r">${T('Net','Netto')}</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.k)}</td><td class="r num">${r.n}</td><td class="r num">${Math.round(r.win*100)}%</td><td class="r num">${r.avgR==null?'–':fmtN(r.avgR)}</td><td class="r num ${r.net<0?'neg':'pos'}">${money(r.net)}</td></tr>`).join('')}</tbody></table></div>`;
+  const trR=tr.map(x=>({...x,r:rOf(x)}));const hb=x=>{const h=holdMin(x);return h==null?null:h<5?'< 5 min':h<30?'5–30 min':h<120?'30 min–2 h':'> 2 h'};
+  const corr=formCorr(p,tr);
+  return `<div class="stats">${statCell(T('Expectancy','Förväntat värde'),money(F.exp),T('per trade','per trade'),F.exp<0?'neg':'pos')}${statCell(T('Avg R','Snitt-R'),F.avgR==null?'–':fmtN(F.avgR),T(`${F.Rs.length} trades with R`,`${F.Rs.length} trades med R`))}${statCell(T('Max drawdown','Största drawdown'),money(F.mdd),T('from peak','från toppen'),'neg')}${statCell(T('Streaks','Sviter'),`${F.bw} / ${F.bl}`,T('longest win / loss','längsta vinst / förlust'))}</div>
+  <div class="stats">${statCell(T('Net','Netto'),money(F.net),`${F.n} trades`,F.net<0?'neg':'pos')}${statCell(T('Win rate','Vinstprocent'),Math.round(F.win*100)+'%',`${T('Avg win','Snittvinst')} ${money(F.avgW)}`)}${statCell('Profit factor',F.pf===Infinity?'∞':fmtN(Math.round(F.pf*100)/100),`${T('Avg loss','Snittförlust')} ${money(F.avgL)}`)}${statCell(T('Best day','Bästa dag'),money(Math.max(...Object.values(dayNet(tr)))),T('Worst','Sämsta')+' '+money(Math.min(...Object.values(dayNet(tr)))))}</div>
+  <div class="two"><div class="card"><h3>${T('Equity curve','Kapitalkurva')}<span class="grow"></span><span class="seg"><button data-act="x-tcurve" data-v="money" aria-pressed="${mode==='money'}">${CUR()}</button><button data-act="x-tcurve" data-v="r" aria-pressed="${mode==='r'}">R</button></span></h3>${cv.length>1?`<div class="scroll">${chart({n:cv.length,series:[{vals:cv,c:'moss',area:true}],min:lo,max:hi,ticks:lo<0&&hi>0?[lo,0,hi]:[lo,hi],fmt:mode==='r'?(v=>fmtN(Math.round(v*10)/10)+'R'):compact,xl,h:180,label:T('Equity','Kapital')})}</div>`:''}
+    <span class="label" style="display:block;margin-top:12px">${T('Drawdown','Drawdown')}</span><div class="scroll">${chart({n:F.dd.length,series:[{vals:F.dd,c:'lingon',area:true}],min:Math.min(-1,...F.dd),max:0,ticks:[Math.min(-1,...F.dd),0],fmt:compact,xl:()=>null,h:110,label:'Drawdown'})}</div></div>
+    <div class="card"><h3>${T('R distribution','Fördelning av R')}</h3>${F.Rs.length>=3?histR(F.Rs):`<p class="empty-note">${T('Add stop and exit (or R) to your trades to see this.','Fyll i stop och exit (eller R) på dina trades för att se detta.')}</p>`}</div></div>
+  <div class="card"><h3 class="led-hot">${T('What your mistakes cost','Vad dina misstag kostar')}</h3>${ME.length?`<div class="mist">${ME.map(([k,v])=>`<div class="mi"><span class="mtag">${esc(mistakeName(k))}</span><span class="num muted">${v.n}×</span><b class="num ${v.net<0?'neg':'pos'}">${money(v.net)}</b></div>`).join('')}</div>`:`<p class="empty-note" style="margin:0">${T('Tag mistakes on your trades (FOMO, moved stop, too big…) and you will see exactly what each one costs.','Tagga misstag på dina trades (FOMO, flyttat stop, för stor…) så ser du exakt vad varje misstag kostar.')}</p>`}</div>
+  ${corr.length?`<div class="card"><h3 class="led-mid">${T('Your form and your results','Din form och ditt resultat')}</h3><div class="tips">${corr.map(x=>`<p>${x}</p>`).join('')}</div></div>`:''}
+  <div class="card"><h3>${T('Breakdown','Uppdelning')}</h3><div class="three">
+    <div><span class="label">${T('Instrument','Instrument')}</span>${tbl(groupStats(trR,x=>x.sym||null).sort((a,b)=>b.net-a.net),T('Symbol','Symbol'))}</div>
+    <div><span class="label">${T('Side','Riktning')}</span>${tbl(groupStats(trR,x=>x.dir||null),T('Side','Riktning'))}</div>
+    <div><span class="label">${T('Hold time','Hålltid')}</span>${tbl(groupStats(trR,hb),T('Time','Tid'))}</div>
+  </div></div>
+  ${tradeAnalytics(p,{...d,trades:trR})}${backtestCard(p,d)}`}
+/* ---- playbook ---- */
+function playbookTab(p,d){const PB=p.playbook||[];const tr=d.trades.filter(x=>!x.bt);
+  return `<div class="sec-head"><h3>${T('Playbook','Spelbok')}</h3><button class="btn small primary" data-act="x-setup-new" data-p="${p.id}">+ ${T('New setup','Ny setup')}</button></div>
+  ${PB.length?`<div class="pbk">${PB.map(s=>{const g=groupStats(tr.filter(x=>(x.setup||'').toLowerCase()===s.name.toLowerCase()).map(x=>({...x,r:rOf(x)})),()=> 'x')[0];return `<button class="pbs" data-act="x-setup-edit" data-p="${p.id}" data-id="${s.id}">${(s.shots||[])[0]?`<img data-shot="${esc(s.shots[0])}" alt="">`:''}<div class="pbs-in"><b>${esc(s.name)}</b>${s.tf||s.market?`<small>${esc([s.market,s.tf].filter(Boolean).join(' · '))}</small>`:''}<ul>${(s.criteria||[]).slice(0,4).map(c=>`<li>${esc(c)}</li>`).join('')}</ul><div class="pbs-st num">${g?`${g.n} trades · ${Math.round(g.win*100)}% · ${g.avgR==null?'':fmtN(g.avgR)+'R · '}<span class="${g.net<0?'neg':'pos'}">${money(g.net)}</span>`:T('No trades yet','Inga trades än')}</div></div></button>`}).join('')}</div>`:`<div class="card"><p class="empty-note" style="margin:0">${T('Write down the setups you trade: what must be true before you enter. They become your checklist in “Before you trade”, and every setup gets its own stats.','Skriv ner setuperna du tradar: vad som måste stämma innan du går in. De blir din checklista i ”Innan du tradar”, och varje setup får egen statistik.')}</p></div>`}`}
+/* ---- accounts & payouts ---- */
+function propStateA(a,tr){if(!a.prop)return null;const P=a.prop;const T2=tr.filter(x=>x.d>=(P.start||'0')).sort((x,y)=>x.d<y.d?-1:x.d>y.d?1:(x.tm||'')<(y.tm||'')?-1:1);const size=+a.size||0;let eq=size,peak=size,mdd=0;const days=new Set();
+  T2.forEach(x=>{eq+=x.pnl;days.add(x.d);peak=Math.max(peak,eq);mdd=Math.max(mdd,(P.trailing?peak:size)-eq)});const tk=dkey(today());const dayNet2=T2.filter(x=>x.d===tk).reduce((s,x)=>s+x.pnl,0);const profit=eq-size;
+  const dn=dayNet(T2);const breached=(+P.maxDD&&mdd>=+P.maxDD)||(+P.maxDaily&&Object.values(dn).some(v=>-v>=+P.maxDaily));const passed=!breached&&+P.target&&profit>=+P.target&&days.size>=(+P.minDays||0);
+  return {P,eq,dd:Math.max(0,(P.trailing?peak:size)-eq),dayNet:dayNet2,profit,days:days.size,breached,passed}}
+function accountsTab(p,d){const A=accountsOf(p);const L=p.ledger||[];const tr=d.trades.filter(x=>!x.bt);
+  const fees=L.filter(x=>x.kind==='fee').reduce((s,x)=>s+x.amount,0),pays=L.filter(x=>x.kind==='payout').reduce((s,x)=>s+x.amount,0);
+  const g=(l,v,lim,inv)=>{const pc=lim?Math.max(0,Math.min(100,v/lim*100)):0;const cls=inv?(pc>=100?'ok':''):(pc>=80?'bad':pc>=50?'warn':'');return `<div class="gauge ${cls}"><div class="gl2"><span>${l}</span><b class="num">${money(v)} <small>/ ${lim?money(lim):'–'}</small></b></div><div class="meter"><b style="width:${pc}%"></b></div></div>`};
+  const TYPES={personal:T('Personal','Eget'),eval:T('Evaluation','Utvärdering'),funded:T('Funded','Finansierat'),demo:'Demo'};
+  return `<div class="sec-head"><h3>${T('Accounts','Konton')}</h3><button class="btn small primary" data-act="x-acct-new" data-p="${p.id}">+ ${T('Account','Konto')}</button></div>
+  <div class="accts">${A.map(a=>{const at=tr.filter(x=>acctOf(x)===a.id);const net=at.reduce((s,x)=>s+x.pnl,0);const s=propStateA(a,at);return `<div class="card acct-card ${s?(s.breached?'is-bad':s.passed?'is-ok':''):''}"><h3 class="${s&&s.breached?'led-hot':'led-on'}">${esc(a.name)}<span class="chip alt">${TYPES[a.type]||a.type}</span>${a.firm?`<span class="aside">${esc(a.firm)}</span>`:''}<span class="grow"></span><button class="btn small ghost" data-act="x-acct-edit" data-p="${p.id}" data-id="${a.id}">${T('Edit','Ändra')}</button></h3>
+    <div class="mini-stats"><div><small>${T('Balance','Saldo')}</small><b class="num">${money((+a.size||0)+net)}</b></div><div><small>${T('Net','Netto')}</small><b class="num ${net<0?'neg':'pos'}">${money(net)}</b></div><div><small>Trades</small><b class="num">${at.length}</b></div></div>
+    ${s?`${g(T('Toward target','Mot målet'),Math.max(0,s.profit),+s.P.target,true)}${g(T('Today’s loss','Dagens förlust'),Math.max(0,-s.dayNet),+s.P.maxDaily)}${g('Drawdown',s.dd,+s.P.maxDD)}<p class="fc-when">${s.breached?`<b class="neg">${T('Rules breached.','Reglerna är brutna.')}</b>`:s.passed?`<b class="hl2">${T('Target reached. Request your payout.','Målet är nått. Begär din payout.')}</b>`:`${T('Trading days','Handelsdagar')}: <b>${s.days}${+s.P.minDays?' / '+s.P.minDays:''}</b>`}</p>`:''}</div>`}).join('')}</div>
+  <div class="card"><h3 class="led-on">${T('Prop firm costs and payouts','Propfirm: avgifter och utbetalningar')}</h3>
+    <div class="mini-stats"><div><small>${T('Fees paid','Betalda avgifter')}</small><b class="num neg">${money(fees)}</b></div><div><small>${T('Payouts','Utbetalningar')}</small><b class="num pos">${money(pays)}</b></div><div><small>${T('Net','Netto')}</small><b class="num ${pays-fees<0?'neg':'pos'}">${money(pays-fees)}</b></div><div><small>ROI</small><b class="num">${fees?Math.round((pays-fees)/fees*100)+'%':'–'}</b></div></div>
+    <form class="addf2 ledf" data-xform="ledger" data-p="${p.id}"><div class="fgrid"><label class="f">${T('Type','Typ')}<select name="kind"><option value="fee">${T('Fee / evaluation','Avgift / utvärdering')}</option><option value="payout">${T('Payout','Utbetalning')}</option></select></label><label class="f">${T('Amount','Belopp')}<input name="amount" inputmode="decimal" required></label><label class="f">${T('Account','Konto')}<select name="acct">${A.map(a=>`<option value="${a.id}">${esc(a.name)}</option>`).join('')}</select></label><label class="f">${T('Date','Datum')}<input type="date" name="d" value="${dkey(today())}"></label></div><input class="fwide" name="note" maxlength="80" placeholder="${T('Note, e.g. firm and account size','Anteckning, t.ex. firma och kontostorlek')}"><button class="btn small" type="submit">${T('Add','Lägg till')}</button></form>
+    ${L.length?`<ul class="minilist" style="margin-top:12px">${L.slice().sort((a,b)=>a.d<b.d?1:-1).map(x=>`<li><span>${shortDate(parseD(x.d))} · ${x.kind==='fee'?T('Fee','Avgift'):T('Payout','Utbetalning')}${x.note?' · '+esc(x.note):''}</span><span><b class="num ${x.kind==='fee'?'neg':'pos'}">${x.kind==='fee'?'−':'+'}${money(x.amount)}</b> <button class="del" data-act="x-ledger-del" data-p="${p.id}" data-id="${x.id}" aria-label="${T('Delete','Ta bort')}">×</button></span></li>`).join('')}</ul>`:''}</div>
+  ${propCard(p,d)}`}
+/* ---- tools: calculator ---- */
+function calcCard(p){const ex=p.extra||{};const ins=ex.inst||'custom';const fxr=ex.fxr||(CUR()==='USD'?1:'');
+  return `<div class="card"><h3>${T('Position size','Positionsstorlek')}</h3><div class="fgrid" id="riskcalc" data-p="${p.id}">
+    <label class="f fspan">${T('Market','Marknad')}<select id="rc-inst">${INSTR().map(([k,l])=>`<option value="${k}" ${k===ins?'selected':''}>${esc(l)}</option>`).join('')}</select></label>
+    <label class="f">${T('Account','Konto')} (${CUR()})<input id="rc-cap" type="number" inputmode="decimal" value="${ex.capital||''}"></label><label class="f">${T('Risk per trade','Risk per trade')} (%)<input id="rc-risk" type="number" step="0.1" inputmode="decimal" value="${ex.risk||1}"></label>
+    <label class="f">${T('Entry','Ingång')}<input id="rc-entry" type="number" step="any" inputmode="decimal"></label><label class="f">Stop<input id="rc-stop" type="number" step="any" inputmode="decimal"></label>
+    ${CUR()!=='USD'?`<label class="f">USD → ${CUR()}<input id="rc-fx" type="number" step="any" inputmode="decimal" value="${fxr}" placeholder="10.5"></label>`:''}
+    <label class="f">${T('Max trades / day','Max trades / dag')}<input id="tr-maxt" type="number" min="0" value="${ex.maxTrades||''}"></label><label class="f">${T('Cooldown after loss (min)','Paus efter förlust (min)')}<input id="tr-cool" type="number" min="0" value="${ex.cooldown||15}"></label>
+    <label class="f">${T('Max loss / day','Max förlust / dag')}<input id="tr-maxl" type="number" min="0" value="${ex.maxLoss||''}"></label><label class="f">${T('Max loss / week','Max förlust / vecka')}<input id="tr-maxw" type="number" min="0" value="${ex.maxWeek||''}"></label></div><p class="calc" id="rc-out"></p></div>`}
+function calcRisk(){const g=id=>parseFloat(String((document.getElementById(id)||{}).value||'').replace(',','.'));const out=document.getElementById('rc-out');if(!out)return;const cp=g('rc-cap'),r=g('rc-risk'),en=g('rc-entry'),st=g('rc-stop');
+  const insK=(document.getElementById('rc-inst')||{}).value||'custom';const I=INSTR().find(x=>x[0]===insK)||INSTR()[0];const fx=CUR()==='USD'?1:(g('rc-fx')||0);
+  if(!(cp>0&&r>0&&en>0&&st>0&&en!==st)){out.innerHTML=T('Choose the market and fill in account, risk, entry and stop.','Välj marknad och fyll i konto, risk, entry och stop.');return}
+  const riskAmt=cp*r/100;const dist=Math.abs(en-st);let perUnit;
+  if(I[0]==='custom'||I[0]==='crypto')perUnit=dist;else if(I[0]==='fxjpy')perUnit=dist*100000/en*(fx||1);else perUnit=dist*I[2]*(fx||1);
+  if(I[0]!=='custom'&&I[0]!=='crypto'&&CUR()!=='USD'&&!fx){out.innerHTML=T('Enter the USD rate so the size is right in your currency.','Fyll i dollarkursen så blir storleken rätt i din valuta.');return}
+  const size=riskAmt/perUnit;const unit={unit:T('units','st'),lot:T('lots','lots'),contract:T('contracts','kontrakt'),coin:T('coins','mynt')}[I[3]];const shown=I[3]==='contract'?Math.floor(size):I[3]==='lot'?Math.floor(size*100)/100:Math.floor(size*1e4)/1e4;
+  out.innerHTML=T(`Risk <b>${money(riskAmt)}</b> · position <b class="num">${fmtN(shown)}</b> ${unit}${I[3]==='contract'&&size<1?' · <span class="neg">too big for this account, use a micro</span>':''}`,`Risk <b>${money(riskAmt)}</b> · position <b class="num">${fmtN(shown)}</b> ${unit}${I[3]==='contract'&&size<1?' · <span class="neg">för stor för kontot, använd micro</span>':''}`)}
+/* ---- ticket with playbook and lock ---- */
+function ticketCard(p,d){const ex=p.extra||{};const rules=p.rules||[];const L=lockState(p,d);if(L)return `<div class="card ticket locked"><h3 class="led-hot">${T('Before you trade','Innan du tradar')}</h3>${lockBanner(L)}<p class="empty-note" style="margin:12px 0 0">${T('You set this limit when you were calm. Trust that version of you. You can still log trades you already took.','Du satte gränsen när du var lugn. Lita på den versionen av dig. Du kan fortfarande logga trades du redan tagit.')}</p></div>`;
+  const tk=S.ticket&&S.ticket.p===p.id?S.ticket:{p:p.id,checks:{},crit:{},setup:'',entry:'',stop:'',target:'',dir:'Long'};S.ticket=tk;tk.crit=tk.crit||{};
+  const open=(d.tickets||[]).filter(x=>!x.used&&Date.now()-x.t<3*3600000).slice(-1)[0];const e=+numx(tk.entry),s=+numx(tk.stop),g=+numx(tk.target);const risk=Math.abs(e-s),rew=Math.abs(g-e);const rr=risk&&rew?rew/risk:null;
+  const PB=p.playbook||[];const st=PB.find(x=>x.name===tk.setup);const crit=st?(st.criteria||[]):[];const allOk=rules.every((_,i)=>tk.checks[i])&&crit.every((_,i)=>tk.crit[i]);const gate=ex.gate!==false;
+  return `<div class="card ticket ${open?'cleared':''}"><h3 class="${open?'led-on':'led-hot'}">${T('Before you trade','Innan du tradar')}<span class="grow"></span><label class="check sm"><input type="checkbox" data-gate-toggle="${p.id}" ${gate?'checked':''}><span>${T('Required','Obligatoriskt')}</span></label></h3>
+  ${open?`<div class="clear-banner"><b>${T('Ready to trade','Redo att trada')}</b> · ${esc(open.setup||'')} ${esc(open.dir)} · entry ${fmtN(open.entry)} · stop ${fmtN(open.stop)}${open.rr?` · R:R ${fmtN(open.rr)}`:''}<span class="grow"></span><span class="num">${T('valid until','gäller till')} ${hm(new Date(open.t+3*3600000))}</span><button class="btn small ghost" data-act="x-ticket-void" data-p="${p.id}">${T('Cancel','Avbryt')}</button></div>`:`
+  <div class="fgrid"><label class="f">Setup${PB.length?`<select data-tk="setup" data-rer="1"><option value="">–</option>${PB.map(x=>`<option ${x.name===tk.setup?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`:`<input data-tk="setup" value="${esc(tk.setup)}" maxlength="40" placeholder="Breakout">`}</label><label class="f">${T('Side','Riktning')}<select data-tk="dir"><option ${tk.dir==='Long'?'selected':''}>Long</option><option ${tk.dir==='Short'?'selected':''}>Short</option></select></label><label class="f">${T('Entry','Ingång')}<input data-tk="entry" inputmode="decimal" value="${esc(tk.entry)}"></label><label class="f">Stop<input data-tk="stop" inputmode="decimal" value="${esc(tk.stop)}"></label><label class="f">${T('Target','Mål')}<input data-tk="target" inputmode="decimal" value="${esc(tk.target)}"></label></div>
+  <p class="tk-calc" id="tk-calc">${rr!=null?`R:R <b class="${rr<1.5?'neg':'pos'}">${fmtN(rr)}</b>`:'R:R –'}</p>
+  ${crit.length?`<span class="label">${esc(st.name)}</span><div class="tk-rules">${crit.map((r,i)=>`<label class="check"><input type="checkbox" data-tkc="${i}" ${tk.crit[i]?'checked':''}><span>${esc(r)}</span></label>`).join('')}</div>`:''}
+  ${rules.length?`<span class="label">${T('My rules','Mina regler')}</span><div class="tk-rules">${rules.map((r,i)=>`<label class="check"><input type="checkbox" data-tkr="${i}" ${tk.checks[i]?'checked':''}><span>${esc(r)}</span></label>`).join('')}</div>`:''}
+  <button class="btn primary" data-act="x-ticket-go" data-p="${p.id}" id="tk-go" ${allOk&&tk.entry&&tk.stop?'':'disabled'}>${T('All checked, take the trade','Allt stämmer, ta traden')}</button>`}</div>`}
+function updTicket(){const tk=S.ticket;const p=projById(tk.p);if(!p)return;const e=numx(tk.entry),s=numx(tk.stop),g=numx(tk.target);const risk=Math.abs(e-s),rew=Math.abs(g-e);const rr=risk&&rew?rew/risk:null;
+  const c=document.getElementById('tk-calc');if(c)c.innerHTML=`${rr!=null?`R:R <b class="${rr<1.5?'neg':'pos'}">${fmtN(rr)}</b>`:'R:R –'}${rr!=null&&rr<1.5?` · <span class="neg">${T('below 1.5R','under 1,5R')}</span>`:''}`;
+  const st=(p.playbook||[]).find(x=>x.name===tk.setup);const crit=st?(st.criteria||[]):[];const ok=(p.rules||[]).every((_,i)=>tk.checks[i])&&crit.every((_,i)=>(tk.crit||{})[i])&&tk.entry&&tk.stop;const go=document.getElementById('tk-go');if(go)go.disabled=!ok}
+/* ---- quick log ---- */
+function quickLog(p){const A=accountsOf(p);const tk=dkey(today());const PB=p.playbook||[];
+  return `<div class="card"><h3>${T('Log a trade','Logga en trade')}<span class="grow"></span><button class="btn small ghost" data-act="x-trade-new" data-p="${p.id}">${T('Detailed','Detaljerad')} →</button></h3><form class="tform" data-form="trade" data-p="${p.id}">
+    <div class="fgrid"><label class="f"><span>${T('Date','Datum')}</span><input id="tr-d" type="date" name="d" value="${tk}" max="${tk}"></label><label class="f"><span>${T('Time','Tid')}</span><input id="tr-tm" type="time" name="tm" value="${hm(new Date())}"></label><label class="f"><span>${T('Symbol','Symbol')}</span><input id="tr-sym" name="sym" placeholder="NQ, EURUSD…" maxlength="20" autocomplete="off"></label>
+    <label class="f"><span>${T('Side','Riktning')}</span><select id="tr-dir" name="dir"><option>Long</option><option>Short</option></select></label><label class="f"><span>${T('Result','Resultat')} (${CUR()})</span><input id="tr-pnl" name="pnl" type="text" inputmode="decimal" placeholder="850 / -400" required autocomplete="off"></label><label class="f"><span>R</span><input id="tr-r" name="r" inputmode="decimal" placeholder="2 / -1" autocomplete="off"></label>
+    <label class="f"><span>Setup</span><input id="tr-setup" name="setup" list="pb-${p.id}" maxlength="40" autocomplete="off"><datalist id="pb-${p.id}">${PB.map(x=>`<option value="${esc(x.name)}">`).join('')}</datalist></label><label class="f"><span>${T('Emotion','Känsla')}</span><select id="tr-emo" name="emo"><option value="">–</option>${EMOS_().map(e=>`<option>${e}</option>`).join('')}</select></label>${A.length>1?`<label class="f"><span>${T('Account','Konto')}</span><select name="acct">${A.map(a=>`<option value="${a.id}" ${tAcct(p)===a.id?'selected':''}>${esc(a.name)}</option>`).join('')}</select></label>`:''}</div>
+    <div class="chips mchips">${MISTAKES_().slice(0,6).map(([k,l])=>`<label class="mck"><input type="checkbox" name="tag" value="${k}"><span>${l}</span></label>`).join('')}</div>
+    <label class="check"><input type="checkbox" id="tr-rules" name="rules" checked><span>${T('I followed my rules','Jag följde mina regler')}</span></label><label class="check"><input type="checkbox" id="tr-bt" name="bt"><span>${T('Backtest (not a live trade)','Backtest (inte en livetrade)')}</span></label>
+    <input class="fwide" id="tr-note" name="note" placeholder="${T('Note (optional)','Anteckning (valfritt)')}" maxlength="200" autocomplete="off"><button class="btn primary" type="submit">${T('Save trade','Spara trade')}</button></form></div>`}
+/* ---- the module ---- */
+function TSUBS(){return [['overview',T('Overview','Översikt')],['journal',T('Journal','Journal')],['calendar',T('Calendar','Kalender')],['stats',T('Statistics','Statistik')],['playbook',T('Playbook','Spelbok')],['accounts',T('Accounts','Konton')],['tools',T('Tools','Verktyg')]]}
+function tradingModule(p,d0){accountsOf(p);const d=d0;S.tsub=S.tsub||'overview';const sub=S.tsub;const tr=liveTrades(p,d);const t=today(),tk=dkey(t);
+  const mk=tk.slice(0,7);const mon=tradeStats({trades:tr},x=>x.d.startsWith(mk));const td=tradeStats({trades:tr},x=>x.d===tk);const L=lockState(p,d);
+  const head=`<div class="tsubs chips" role="tablist">${TSUBS().map(([k,l])=>`<button data-act="x-tsub" data-v="${k}" aria-pressed="${sub===k}">${l}</button>`).join('')}</div>${acctChips(p)}`;
+  let body='';
+  if(sub==='overview'){const recent=tr.slice().sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:(a.tm||'')<(b.tm||'')?1:-1).slice(0,8);
+    body=`${L?lockBanner(L):''}${tradeGuard(p,liveD(d))}
+    <div class="stats">${statCell(T('Today','Idag'),money(td.net),`${td.n} trades`,td.net<0?'neg':td.net>0?'pos':'')}${statCell(cap(MONTHS[t.getMonth()]),money(mon.net),`${mon.n} trades · ${Math.round(mon.win*100)}%`,mon.net<0?'neg':'pos')}${statCell(T('Followed rules','Följde reglerna'),tr.length?Math.round(tr.filter(x=>x.rules).length/tr.length*100)+'%':'–',T('all trades','alla trades'))}${statCell(T('Discipline today','Disciplin idag'),(()=>{const s=discScore(p,d,tk);return s&&s.s!=null?Math.max(0,s.s):'–'})(),T('out of 100','av 100'))}</div>
+    <div class="two">${ticketCard(p,d)}${quickLog(p)}</div>
+    <div class="two">${sessionCard(p,d)}${discCard(p,d)}</div>
+    <div class="card"><h3>${T('Recent trades','Senaste trades')}<span class="grow"></span><button class="btn small ghost" data-act="x-tsub" data-v="journal">${T('All','Alla')} →</button></h3>${recent.length?tradeTable(p,recent):`<p class="empty-note">${T('No trades yet.','Inga trades än.')}</p>`}</div>
+    ${coachLetterCard(p,d)}`}
+  else if(sub==='journal'){const F=S.tfilter||{};let list=d.trades.filter(x=>(tAcct(p)==='all'||acctOf(x)===tAcct(p)));if(F.k==='win')list=list.filter(x=>x.pnl>0);if(F.k==='loss')list=list.filter(x=>x.pnl<0);if(F.k==='bt')list=list.filter(x=>x.bt);else list=list.filter(x=>!x.bt);if(F.k==='mist')list=list.filter(x=>(x.tags||[]).length||!x.rules);
+    list.sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:(a.tm||'')<(b.tm||'')?1:-1);
+    body=`<div class="sec-head"><h3>${T('Journal','Journal')}</h3>${importFmt(p)}<button class="btn small primary" data-act="x-trade-new" data-p="${p.id}">+ ${T('Trade','Trade')}</button></div>
+    <div class="chips">${[['all',T('All','Alla')],['win',T('Winners','Vinster')],['loss',T('Losers','Förluster')],['mist',T('Mistakes','Misstag')],['bt','Backtest']].map(([k,l])=>`<button data-act="x-tfilter" data-v="${k}" aria-pressed="${(F.k||'all')===k}">${l}</button>`).join('')}</div>
+    <div class="card">${list.length?tradeTable(p,list.slice(0,200)):`<p class="empty-note" style="margin:0">${T('No trades here yet.','Inga trades här än.')}</p>`}</div>${chartReviewCard(p,liveD(d))}`}
+  else if(sub==='calendar')body=pnlCalendar(p,d)+discCard(p,d);
+  else if(sub==='stats')body=statsTab(p,d);
+  else if(sub==='playbook')body=playbookTab(p,d);
+  else if(sub==='accounts')body=accountsTab(p,d);
+  else if(sub==='tools')body=`<div class="two">${calcCard(p)}<div class="stack">${sessionsCard()}<div class="card"><h3>${T('My rules','Mina regler')}</h3><ol class="rules">${(p.rules||[]).map((r,i)=>`<li><span>${esc(r)}</span> <button class="del" data-act="rule-del" data-p="${p.id}" data-i="${i}" aria-label="${T('Delete rule','Ta bort regel')}">×</button></li>`).join('')}</ol><form class="addf2" data-form="rule" data-p="${p.id}"><input id="rule-new" name="r" placeholder="${T('Add a rule','Lägg till en regel')}" maxlength="100" autocomplete="off"></form></div></div></div>
+    <div class="card"><h3>${T('Live markets and news','Livemarknader och nyheter')}</h3><p class="empty-note" style="margin:0 0 12px">${T('Prices, charts, news and the economic calendar are under Markets.','Priser, grafer, nyheter och ekonomisk kalender finns under Marknader.')}</p><button class="btn" data-act="tab" data-v="markets">${T('Open Markets','Öppna Marknader')} →</button></div>`;
+  return head+body}
+function importFmt(p){return `<span class="impf"><select id="imp-fmt" class="inline" aria-label="${T('Import format','Importformat')}">${[['auto',T('Auto-detect','Känn igen själv')],['ninja','NinjaTrader'],['tradovate','Tradovate'],['mt','MetaTrader 4/5'],['tv','TradingView'],['ibkr','Interactive Brokers']].map(([k,l])=>`<option value="${k}">${l}</option>`).join('')}</select>${importBtn('trades',p.id)}</span>`}
+/* ---- import with platform presets ---- */
+const IMP_KEYS={
+  date:['exit time','close time','closing time','closed','soldtimestamp','sold timestamp','close date','tradedate','trade date','date/time','datetime','date','datum','time'],
+  open:['entry time','open time','boughttimestamp','bought timestamp','opening time'],
+  pnl:['net p&l','realized p&l','fifopnlrealized','profit','p&l','pnl','net profit','resultat','result','net'],
+  sym:['instrument','symbol','ticker','item','contract','market'],
+  side:['market pos.','market pos','side','direction','type','buy/sell','action','riktning'],
+  qty:['qty','quantity','size','volume','lots','contracts','antal'],
+  entry:['entry price','open price','buyprice','buy price','fill price','avg entry','price'],
+  exit:['exit price','close price','sellprice','sell price','avg exit'],
+  fee:['commission','commissions','fees','fee','ibcommission','courtage'],swap:['swap']};
+async function importTrades(pid,file){const p=projById(pid);if(!p)return;const R=parseCSV(await file.text());if(R.length<2){toast(T('Could not read that file','Kunde inte läsa filen'));return}
+  let hi=R.findIndex(r=>findCol(r,IMP_KEYS.pnl)>=0&&findCol(r,IMP_KEYS.date.concat(IMP_KEYS.open))>=0);if(hi<0)hi=0;const H=R[hi].map(x=>x.toLowerCase());
+  const col=k=>findCol(H,IMP_KEYS[k]);const cD=col('date'),cO=col('open'),cP=col('pnl'),cS=col('sym'),cDir=col('side'),cQ=col('qty'),cE=col('entry'),cX=col('exit'),cF=col('fee'),cW=col('swap'),cSt=findCol(H,['setup','strategy','tag','strategi']);
+  if((cD<0&&cO<0)||cP<0){toast(T('Need a date column and a P&L column','Behöver en datumkolumn och en P&L-kolumn'));return}
+  const d=PD(pid);const acct=tAcct(p)==='all'?'main':tAcct(p);let added=0,dup=0;
+  R.slice(hi+1).forEach(r=>{const ds=r[cD>=0?cD:cO];const dd=pDate(ds);let pnl=pNum(r[cP]);if(!dd||isNaN(pnl))return;const fee=cF>=0?Math.abs(pNum(r[cF])||0):0,sw=cW>=0?(pNum(r[cW])||0):0;
+    const netGiven=/net|fifo/.test(H[cP]);if(!netGiven)pnl=pnl-fee+sw;pnl=Math.round(pnl*100)/100;
+    const tm=pTime(cO>=0?r[cO]:ds),xtm=pTime(ds);const sym=cS>=0?String(r[cS]||'').toUpperCase().slice(0,20):'';
+    if(d.trades.some(x=>x.d===dd&&Math.abs(x.pnl-pnl)<.01&&(x.sym||'')===sym&&(x.tm||'')===tm)){dup++;return}
+    const dirRaw=cDir>=0?String(r[cDir]||''):'';const dir=/sell|short|sälj/i.test(dirRaw)?'Short':'Long';
+    d.trades.push({id:uid(),d:dd,tm,xtm:cO>=0?xtm:'',sym,dir,pnl,size:cQ>=0?Math.abs(pNum(r[cQ]))||null:null,entry:cE>=0?pNum(r[cE])||null:null,exit:cX>=0?pNum(r[cX])||null:null,fees:fee||null,setup:cSt>=0?String(r[cSt]||'').slice(0,40):'',emo:'',rules:true,note:'',imp:1,acct});added++});
+  savePD(pid);sfx('coin');toast(T(`${added} trades imported${dup?`, ${dup} duplicates skipped`:''}`,`${added} trades importerade${dup?`, ${dup} dubbletter hoppades över`:''}`));render(false)}
+/* ---- screenshots ---- */
+const SHOTS={cache:{}};
+function idb(){return new Promise((res,rej)=>{const r=indexedDB.open('arete-shots',1);r.onupgradeneeded=()=>r.result.createObjectStore('s');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function idbPut(k,blob){const db=await idb();return new Promise((res,rej)=>{const tx=db.transaction('s','readwrite');tx.objectStore('s').put(blob,k);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error)})}
+async function idbGet(k){const db=await idb();return new Promise((res,rej)=>{const tx=db.transaction('s');const q=tx.objectStore('s').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})}
+async function shrink(file){try{const bmp=await createImageBitmap(file);const sc=Math.min(1,1600/Math.max(bmp.width,bmp.height));const c=document.createElement('canvas');c.width=Math.round(bmp.width*sc);c.height=Math.round(bmp.height*sc);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);return await new Promise(r=>c.toBlob(r,'image/jpeg',.82))}catch(e){return file}}
+async function putShot(file){const blob=await shrink(file);
+  if(S.caps.assets){const r=await S.caps.assets.upload(blob);return 'u:'+r.url}
+  if(S.sb&&S.cloudUser){const path=`${S.cloudUser.id}/${uid()}${Date.now().toString(36)}.jpg`;const {error}=await S.sb.storage.from('shots').upload(path,blob,{contentType:'image/jpeg'});if(!error)return 'sb:'+path}
+  const k=uid()+Date.now().toString(36);await idbPut(k,blob);return 'idb:'+k}
+async function shotURL(ref){if(!ref)return '';if(SHOTS.cache[ref])return SHOTS.cache[ref];let u='';
+  try{if(ref.startsWith('u:'))u=ref.slice(2);else if(ref.startsWith('sb:')&&S.sb){const {data}=await S.sb.storage.from('shots').createSignedUrl(ref.slice(3),3600);u=data&&data.signedUrl||''}else if(ref.startsWith('idb:')){const b=await idbGet(ref.slice(4));if(b)u=URL.createObjectURL(b)}}catch(e){}
+  if(u)SHOTS.cache[ref]=u;return u}
+function hydrateShots(root){(root||document).querySelectorAll('img[data-shot]:not([src])').forEach(async im=>{const u=await shotURL(im.dataset.shot);if(u)im.src=u;else im.classList.add('missing')})}
+/* ---- trade sheet ---- */
+XSHEET.trade=function(box,c){const p=projById(c.p);const A=accountsOf(p);const PB=p.playbook||[];const r=rOf(c);
+  box.innerHTML=`<h3>${c.isNew?T('New trade','Ny trade'):T('Trade','Trade')}</h3>
+  <div class="frow3"><div class="field"><label for="xt2-d">${T('Date','Datum')}</label><input id="xt2-d" type="date" data-x="d" value="${c.d}" max="${dkey(today())}"></div><div class="field"><label for="xt2-tm">${T('Entry time','Tid in')}</label><input id="xt2-tm" type="time" data-x="tm" value="${c.tm||''}"></div><div class="field"><label for="xt2-xtm">${T('Exit time','Tid ut')}</label><input id="xt2-xtm" type="time" data-x="xtm" value="${c.xtm||''}"></div></div>
+  <div class="frow3"><div class="field"><label for="xt2-sym">${T('Symbol','Symbol')}</label><input id="xt2-sym" data-x="sym" value="${esc(c.sym||'')}" maxlength="20"></div><div class="field"><span class="lbl">${T('Side','Riktning')}</span><div class="seg"><button type="button" data-sa="x-tdir" data-v="Long" aria-pressed="${c.dir!=='Short'}">Long</button><button type="button" data-sa="x-tdir" data-v="Short" aria-pressed="${c.dir==='Short'}">Short</button></div></div>${A.length>1?`<div class="field"><label for="xt2-a">${T('Account','Konto')}</label><select id="xt2-a" data-x="acct">${A.map(a=>`<option value="${a.id}" ${acctOf(c)===a.id?'selected':''}>${esc(a.name)}</option>`).join('')}</select></div>`:''}</div>
+  <div class="frow3"><div class="field"><label for="xt2-sz">${T('Size','Storlek')}</label><input id="xt2-sz" inputmode="decimal" data-x="size" value="${c.size??''}"></div><div class="field"><label for="xt2-en">Entry</label><input id="xt2-en" inputmode="decimal" data-x="entry" value="${c.entry??''}"></div><div class="field"><label for="xt2-ex">Exit</label><input id="xt2-ex" inputmode="decimal" data-x="exit" value="${c.exit??''}"></div></div>
+  <div class="frow3"><div class="field"><label for="xt2-st">Stop</label><input id="xt2-st" inputmode="decimal" data-x="stop" value="${c.stop??''}"></div><div class="field"><label for="xt2-tg">${T('Target','Mål')}</label><input id="xt2-tg" inputmode="decimal" data-x="target" value="${c.target??''}"></div><div class="field"><label for="xt2-fe">${T('Fees','Avgifter')}</label><input id="xt2-fe" inputmode="decimal" data-x="fees" value="${c.fees??''}"></div></div>
+  <div class="frow3"><div class="field"><label for="xt2-pnl">${T('Result','Resultat')} (${CUR()})</label><input id="xt2-pnl" inputmode="decimal" data-x="pnl" value="${c.pnl??''}"></div><div class="field"><label for="xt2-r">R ${r!=null&&c.r==null?`<small class="muted">· ${T('auto','auto')} ${fmtN(r)}</small>`:''}</label><input id="xt2-r" inputmode="decimal" data-x="r" value="${c.r??''}"></div><div class="field"><label for="xt2-su">Setup</label><input id="xt2-su" list="pb2" data-x="setup" value="${esc(c.setup||'')}" maxlength="40"><datalist id="pb2">${PB.map(x=>`<option value="${esc(x.name)}">`).join('')}</datalist></div></div>
+  <div class="field"><span class="lbl">${T('Emotion','Känsla')}</span><div class="chips">${EMOS_().map(e=>`<button type="button" data-sa="x-temo" data-v="${esc(e)}" aria-pressed="${c.emo===e}">${e}</button>`).join('')}</div></div>
+  <div class="field"><span class="lbl">${T('Mistakes','Misstag')}</span><div class="chips">${MISTAKES_().map(([k,l])=>`<button type="button" data-sa="x-ttag" data-v="${k}" aria-pressed="${(c.tags||[]).includes(k)}">${l}</button>`).join('')}</div></div>
+  <label class="check"><input type="checkbox" data-xc="rules" ${c.rules!==false?'checked':''}><span>${T('I followed my rules','Jag följde mina regler')}</span></label><label class="check"><input type="checkbox" data-xc="bt" ${c.bt?'checked':''}><span>${T('Backtest','Backtest')}</span></label>
+  <div class="field"><label for="xt2-n">${T('Notes','Anteckningar')}</label><textarea id="xt2-n" data-x="note" rows="3" maxlength="1000">${esc(c.note||'')}</textarea></div>
+  <div class="field"><span class="lbl">${T('Screenshots','Skärmdumpar')}</span><div class="shots">${(c.shots||[]).map((s,i)=>`<div class="shot"><img data-shot="${esc(s)}" alt=""><button type="button" class="del" style="opacity:1" data-sa="x-shot-del" data-i="${i}" aria-label="${T('Remove','Ta bort')}">×</button></div>`).join('')}<label class="shot add">${c.busy?T('Saving…','Sparar…'):'+'}<input type="file" accept="image/*" multiple data-tshot="1"></label></div></div>
+  ${foot('x-trade-save',c.isNew?'':`<button class="btn ghost" data-sa="x-trade-del" style="margin-right:auto;color:var(--neg)">${T('Delete','Ta bort')}</button>`)}`;hydrateShots(box)};
+XSHEET.setup=function(box,c){box.innerHTML=`<h3>${c.isNew?T('New setup','Ny setup'):esc(c.name)}</h3>
+  <div class="field"><label for="xs2-n">${T('Name','Namn')}</label><input id="xs2-n" data-x="name" value="${esc(c.name)}" maxlength="40" placeholder="${T('e.g. Opening range breakout','t.ex. Opening range breakout')}"></div>
+  <div class="frow"><div class="field"><label for="xs2-m">${T('Market','Marknad')}</label><input id="xs2-m" data-x="market" value="${esc(c.market||'')}" maxlength="30"></div><div class="field"><label for="xs2-tf">${T('Timeframe','Tidsram')}</label><input id="xs2-tf" data-x="tf" value="${esc(c.tf||'')}" maxlength="20" placeholder="5m"></div></div>
+  <div class="field"><label for="xs2-d">${T('Description','Beskrivning')}</label><textarea id="xs2-d" data-x="desc" rows="3" maxlength="600">${esc(c.desc||'')}</textarea></div>
+  <div class="field"><span class="lbl">${T('What must be true before you enter (one per line)','Vad som måste stämma innan du går in (en per rad)')}</span><textarea data-x="critText" rows="5" maxlength="1000">${esc(c.critText||'')}</textarea></div>
+  <div class="field"><span class="lbl">${T('Example charts','Exempelgrafer')}</span><div class="shots">${(c.shots||[]).map((s,i)=>`<div class="shot"><img data-shot="${esc(s)}" alt=""><button type="button" class="del" style="opacity:1" data-sa="x-shot-del" data-i="${i}">×</button></div>`).join('')}<label class="shot add">${c.busy?'…':'+'}<input type="file" accept="image/*" multiple data-tshot="1"></label></div></div>
+  ${foot('x-setup-save',c.isNew?'':`<button class="btn ghost" data-sa="x-setup-del" style="margin-right:auto;color:var(--neg)">${T('Delete','Ta bort')}</button>`)}`;hydrateShots(box)};
+XSHEET.acct=function(box,c){const pr=c.prop||{};box.innerHTML=`<h3>${c.isNew?T('New account','Nytt konto'):esc(c.name)}</h3>
+  <div class="frow"><div class="field"><label for="xa-n">${T('Name','Namn')}</label><input id="xa-n" data-x="name" value="${esc(c.name)}" maxlength="40"></div><div class="field"><label for="xa-f">${T('Firm or broker','Firma eller mäklare')}</label><input id="xa-f" data-x="firm" value="${esc(c.firm||'')}" maxlength="40"></div></div>
+  <div class="field"><span class="lbl">${T('Type','Typ')}</span><div class="seg">${[['personal',T('Personal','Eget')],['eval',T('Evaluation','Utvärdering')],['funded',T('Funded','Finansierat')],['demo','Demo']].map(([k,l])=>`<button type="button" data-sa="x-atype" data-v="${k}" aria-pressed="${c.type===k}">${l}</button>`).join('')}</div></div>
+  <div class="field"><label for="xa-s">${T('Starting balance','Startsaldo')}</label><input id="xa-s" inputmode="decimal" data-x="size" value="${c.size||''}"></div>
+  ${c.type==='eval'||c.type==='funded'?`<div class="frow"><div class="field"><label>${T('Profit target','Vinstmål')}</label><input inputmode="decimal" data-x="prop.target" value="${pr.target||''}"></div><div class="field"><label>${T('Max daily loss','Max daglig förlust')}</label><input inputmode="decimal" data-x="prop.maxDaily" value="${pr.maxDaily||''}"></div></div><div class="frow"><div class="field"><label>${T('Max drawdown','Max drawdown')}</label><input inputmode="decimal" data-x="prop.maxDD" value="${pr.maxDD||''}"></div><div class="field"><label>${T('Min trading days','Min handelsdagar')}</label><input inputmode="numeric" data-x="prop.minDays" value="${pr.minDays||''}"></div></div><div class="frow"><div class="field"><label>${T('Started','Startade')}</label><input type="date" data-x="prop.start" value="${pr.start||dkey(today())}"></div><label class="check" style="align-self:end"><input type="checkbox" data-xc="prop.trailing" ${pr.trailing?'checked':''}><span>${T('Trailing drawdown','Släpande drawdown')}</span></label></div>`:''}
+  ${foot('x-acct-save',c.isNew||c.id==='main'?'':`<button class="btn ghost" data-sa="x-acct-del" style="margin-right:auto;color:var(--neg)">${T('Delete','Ta bort')}</button>`)}`};
+function tSheetClick(a,b,c,e){const v=b.dataset.v;const set=sa=>sheet.querySelectorAll(`[data-sa="${sa}"]`).forEach(x=>x.setAttribute('aria-pressed',x===b));
+  switch(a){
+    case 'x-tdir':c.dir=v;set('x-tdir');return true;
+    case 'x-temo':c.emo=c.emo===v?'':v;sheet.querySelectorAll('[data-sa="x-temo"]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===c.emo));return true;
+    case 'x-ttag':{c.tags=c.tags||[];const i=c.tags.indexOf(v);if(i>=0)c.tags.splice(i,1);else c.tags.push(v);b.setAttribute('aria-pressed',c.tags.includes(v));return true}
+    case 'x-shot-del':c.shots.splice(+b.dataset.i,1);renderSheet();return true;
+    case 'x-atype':c.type=v;renderSheet();return true;
+    case 'x-trade-save':{const p=projById(c.p);const d=PD(c.p);const n=s=>{const x=numx(s);return isNaN(x)?null:x};let pnl=n(c.pnl);
+      if(pnl==null&&n(c.entry)!=null&&n(c.exit)!=null&&n(c.size)!=null){const I=INSTR().find(x=>x[0]===guessInstr(c.sym))||INSTR()[0];const pv=typeof I[2]==='number'?I[2]:1;pnl=Math.round(((c.dir==='Short'?-1:1)*(n(c.exit)-n(c.entry))*n(c.size)*pv-(n(c.fees)||0))*100)/100}
+      if(pnl==null){toast(T('Enter the result, or entry, exit and size','Fyll i resultatet, eller entry, exit och storlek'));return true}if(isFuture(parseD(c.d))){toast(T('That date is in the future','Datumet ligger i framtiden'));return true}
+      const tr={id:c.id,d:c.d,tm:c.tm||'',xtm:c.xtm||'',sym:String(c.sym||'').toUpperCase(),dir:c.dir||'Long',acct:c.acct||'main',size:n(c.size),entry:n(c.entry),exit:n(c.exit),stop:n(c.stop),target:n(c.target),fees:n(c.fees),pnl,r:n(c.r),setup:(c.setup||'').trim(),emo:c.emo||'',tags:c.tags||[],rules:c.rules!==false,bt:!!c.bt,note:(c.note||'').trim(),shots:c.shots||[]};
+      const i=d.trades.findIndex(x=>x.id===c.id);if(i>=0)d.trades[i]={...d.trades[i],...tr};else{d.trades.push(tr);linkTicket(p,d,tr)}savePD(c.p);closeSheet();sfx(pnl>=0?'coin':'untick');if(pnl>0)burst(innerWidth/2,innerHeight/2,30);return true}
+    case 'x-trade-del':{const d=PD(c.p);d.trades=d.trades.filter(x=>x.id!==c.id);savePD(c.p);closeSheet();return true}
+    case 'x-setup-save':{if(!(c.name||'').trim()){toast(T('Give the setup a name','Ge setupen ett namn'));return true}const p=projById(c.p);p.playbook=p.playbook||[];const s={id:c.id,name:c.name.trim(),market:(c.market||'').trim(),tf:(c.tf||'').trim(),desc:(c.desc||'').trim(),criteria:String(c.critText||'').split('\n').map(x=>x.trim()).filter(Boolean),shots:c.shots||[]};const i=p.playbook.findIndex(x=>x.id===c.id);if(i>=0)p.playbook[i]=s;else p.playbook.push(s);saveCfg();closeSheet();return true}
+    case 'x-setup-del':{const p=projById(c.p);p.playbook=(p.playbook||[]).filter(x=>x.id!==c.id);saveCfg();closeSheet();return true}
+    case 'x-acct-save':{if(!(c.name||'').trim()){toast(T('Name the account','Namnge kontot'));return true}const p=projById(c.p);const A=accountsOf(p);const n=s=>{const x=numx(s);return isNaN(x)?0:x};const a={id:c.id,name:c.name.trim(),firm:(c.firm||'').trim(),type:c.type,size:n(c.size)};
+      if(c.type==='eval'||c.type==='funded'){const pr=c.prop||{};a.prop={target:n(pr.target),maxDaily:n(pr.maxDaily),maxDD:n(pr.maxDD),minDays:Math.round(n(pr.minDays)),start:pr.start||dkey(today()),trailing:!!pr.trailing}}
+      const i=A.findIndex(x=>x.id===c.id);if(i>=0)A[i]=a;else A.push(a);saveCfg();closeSheet();return true}
+    case 'x-acct-del':{const p=projById(c.p);p.accounts=accountsOf(p).filter(x=>x.id!==c.id);if(S.tacct)S.tacct[c.p]='all';saveCfg();closeSheet();return true}
+  }return false}
+function tSheetInput(e,t,c){if(t.dataset.xc){setPath(c,t.dataset.xc,t.checked);return true}
+  if(t.dataset.tshot&&e.type==='change'){const files=[...(t.files||[])].slice(0,6);if(!files.length)return true;c.busy=true;renderSheet();(async()=>{c.shots=c.shots||[];for(const f of files){try{c.shots.push(await putShot(f))}catch(err){toast(T('Could not save the image','Kunde inte spara bilden'))}}c.busy=false;if(sheet)renderSheet()})();return true}
+  return false}
+/* ---- actions ---- */
+function tAct(a,b,e,date,t){const pid=b.dataset.p;const p=pid&&projById(pid);
+  switch(a){
+    case 'x-tsub':S.tsub=b.dataset.v;render(false);return true;
+    case 'x-tacct':S.tacct=S.tacct||{};S.tacct[pid]=b.dataset.v;render(false);return true;
+    case 'x-tcal':{const c=S.tcal||new Date(t.getFullYear(),t.getMonth(),1);S.tcal=new Date(c.getFullYear(),c.getMonth()+ +b.dataset.v,1);S.tday=null;render(false);return true}
+    case 'x-tday':S.tday=S.tday===b.dataset.v?null:b.dataset.v;render(false);return true;
+    case 'x-tcurve':S.tcurve=b.dataset.v;render(false);return true;
+    case 'x-tfilter':S.tfilter={k:b.dataset.v};render(false);return true;
+    case 'x-tbias':{const d=PD(pid);d.days=d.days||{};const k=dkey(t);d.days[k]=d.days[k]||{};d.days[k].bias=d.days[k].bias===b.dataset.v?'':b.dataset.v;savePD(pid);render(false);return true}
+    case 'x-tgrade':{const d=PD(pid);d.days=d.days||{};const k=dkey(t);d.days[k]=d.days[k]||{};d.days[k].grade=b.dataset.v;savePD(pid);render(false);return true}
+    case 'x-trade-new':openSheet('trade',{isNew:true,id:uid(),p:pid,d:dkey(t),tm:hm(new Date()),dir:'Long',acct:tAcct(p)==='all'?'main':tAcct(p),tags:[],rules:true,shots:[]});return true;
+    case 'x-trade-open':{if(e.target.closest('.del'))return true;const x=PD(pid).trades.find(y=>y.id===b.dataset.id);if(x)openSheet('trade',{isNew:false,p:pid,...clone(x),tags:(x.tags||[]).slice(),shots:(x.shots||[]).slice()});return true}
+    case 'x-setup-new':openSheet('setup',{isNew:true,id:uid(),p:pid,name:'',critText:'',shots:[]});return true;
+    case 'x-setup-edit':{const s=(p.playbook||[]).find(x=>x.id===b.dataset.id);if(s)openSheet('setup',{isNew:false,p:pid,...clone(s),critText:(s.criteria||[]).join('\n')});return true}
+    case 'x-acct-new':openSheet('acct',{isNew:true,id:'a'+uid(),p:pid,name:'',type:'eval',size:'',prop:{}});return true;
+    case 'x-acct-edit':{const a=accountsOf(p).find(x=>x.id===b.dataset.id);if(a)openSheet('acct',{isNew:false,p:pid,...clone(a),prop:clone(a.prop||{})});return true}
+    case 'x-ledger-del':p.ledger=(p.ledger||[]).filter(x=>x.id!==b.dataset.id);saveCfg();render(false);return true;
+  }return false}
+function tSubmit(k,f,g){if(k!=='ledger')return false;const p=projById(f.dataset.p);const amt=numx(g('amount'));if(!p||!(amt>0)){toast(T('Enter an amount','Fyll i ett belopp'));return true}p.ledger=p.ledger||[];p.ledger.push({id:uid(),kind:g('kind'),amount:amt,acct:g('acct'),d:g('d')||dkey(today()),note:g('note')});saveCfg();render(false);sfx(g('kind')==='payout'?'coin':'tick');if(g('kind')==='payout'){rain();toast(T('Payout logged. Well earned.','Utbetalning loggad. Välförtjänt.'))}return true}
+let tdayT=null;
+function tInput(e,t){if(t.dataset.tday){clearTimeout(tdayT);const pid=t.dataset.p,k=t.dataset.tday,v=t.value;tdayT=setTimeout(()=>{const d=PD(pid);d.days=d.days||{};const dk=dkey(today());d.days[dk]=d.days[dk]||{};d.days[dk][k]=v.trim();savePD(pid)},e.type==='change'?0:700);return true}
+  if(t.dataset.tkc!=null){S.ticket=S.ticket||{checks:{},crit:{}};S.ticket.crit=S.ticket.crit||{};S.ticket.crit[t.dataset.tkc]=t.checked;if(t.checked)sfx('tick');updTicket();return true}
+  if(t.dataset.tk==='setup'&&t.tagName==='SELECT'&&e.type==='change'){S.ticket.setup=t.value;S.ticket.crit={};render(false);return true}
+  if(['rc-inst','rc-fx','tr-maxl','tr-maxw'].includes(t.id)){if(e.type!=='change'){calcRisk();return true}const rc=document.getElementById('riskcalc');const p=rc&&projById(rc.dataset.p);if(p){p.extra=p.extra||{};const key={'rc-inst':'inst','rc-fx':'fxr','tr-maxl':'maxLoss','tr-maxw':'maxWeek'}[t.id];p.extra[key]=t.id==='rc-inst'?t.value:(numx(t.value)||0);saveCfg();if(t.id==='tr-maxl'||t.id==='tr-maxw')render(false);else calcRisk()}return true}
+  return false}
+
+/* ================= v12: sessions clock and live markets ================= */
+function zoned(y,m,d,h,mi,tz){let ts=Date.UTC(y,m,d,h,mi);for(let i=0;i<2;i++){const p=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).formatToParts(new Date(ts)).reduce((o,x)=>(o[x.type]=x.value,o),{});const asUTC=Date.UTC(+p.year,+p.month-1,+p.day,+p.hour%24,+p.minute);ts+=Date.UTC(y,m,d,h,mi)-asUTC}return new Date(ts)}
+function SESSIONS(){return [['sydney','Sydney','Australia/Sydney',7,0,16,0,'var(--sand)'],['tokyo',T('Tokyo','Tokyo'),'Asia/Tokyo',9,0,18,0,'var(--heather)'],['london',T('London','London'),'Europe/London',8,0,17,0,'var(--sky)'],['ny','New York','America/New_York',8,0,17,0,'var(--moss)'],['nyse',T('NYSE cash','NYSE kassa'),'America/New_York',9,30,16,0,'var(--amber)']]}
+function sessionSpans(){const now=new Date();const out=[];SESSIONS().forEach(([k,l,tz,h1,m1,h2,m2,c])=>{for(const off of [-1,0,1]){const base=addDays(today(),off);const s=zoned(base.getFullYear(),base.getMonth(),base.getDate(),h1,m1,tz);const e=zoned(base.getFullYear(),base.getMonth(),base.getDate(),h2,m2,tz);const wd=new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(s);if(wd==='Sat'||wd==='Sun')continue;out.push({k,l,s,e,c,open:now>=s&&now<e})}});return out}
+function sessionsCard(compact){const now=new Date();const d0=new Date(now);d0.setHours(0,0,0,0);const d1=addDays(d0,1);const sp=sessionSpans();const rows={};sp.forEach(x=>{(rows[x.k]=rows[x.k]||{l:x.l,c:x.c,seg:[],open:false});if(x.e>d0&&x.s<d1)rows[x.k].seg.push(x);if(x.open)rows[x.k].open=true});
+  const pctOf=t=>Math.max(0,Math.min(100,(t-d0)/864000));const nowP=pctOf(now);
+  const next=sp.filter(x=>x.s>now).sort((a,b)=>a.s-b.s)[0];const openL=Object.values(rows).filter(r=>r.open).map(r=>r.l);
+  const lnyO=zoned(now.getFullYear(),now.getMonth(),now.getDate(),2,0,'America/New_York'),lnyC=zoned(now.getFullYear(),now.getMonth(),now.getDate(),5,0,'America/New_York'),nyO=zoned(now.getFullYear(),now.getMonth(),now.getDate(),7,0,'America/New_York'),nyC=zoned(now.getFullYear(),now.getMonth(),now.getDate(),10,0,'America/New_York');
+  return `<div class="card sessc"><h3 class="${openL.length?'led-on':''}">${T('Market sessions','Marknadssessioner')}<span class="grow"></span><span class="aside num">${hm(now)}</span></h3>
+  <p class="sess-now">${openL.length?`${T('Open now','Öppet nu')}: <b>${openL.join(', ')}</b>`:T('All major sessions closed','Alla stora sessioner är stängda')}${next?` · ${next.l} ${T('opens','öppnar')} <b class="num">${hm(next.s)}</b>`:''}</p>
+  <div class="sbar-wrap"><div class="sbar-hours num">${[0,6,12,18,24].map(h=>`<span style="left:${h/24*100}%">${pad(h%24)}</span>`).join('')}</div>
+  ${Object.values(rows).map(r=>`<div class="srow"><span class="sl ${r.open?'on':''}">${r.l}</span><div class="strack">${r.seg.map(x=>`<i style="left:${pctOf(x.s)}%;width:${Math.max(.5,pctOf(x.e)-pctOf(x.s))}%;--sc:${x.c}" class="${x.open?'on':''}" title="${hm(x.s)}–${hm(x.e)}"></i>`).join('')}<b class="nowl" style="left:${nowP}%"></b></div></div>`).join('')}
+  ${compact?'':`<div class="srow kz"><span class="sl">${T('Kill zones','Kill zones')}</span><div class="strack">${[[lnyO,lnyC],[nyO,nyC]].map(([s,e])=>`<i style="left:${pctOf(s)}%;width:${pctOf(e)-pctOf(s)}%;--sc:var(--lingon)" title="${hm(s)}–${hm(e)}"></i>`).join('')}<b class="nowl" style="left:${nowP}%"></b></div></div>`}</div>
+  <p class="empty-note" style="margin:8px 0 0">${T('All times in your time zone. Forex sessions; NYSE shows the stock market’s cash hours.','Alla tider i din tidszon. Forexsessioner; NYSE visar börsens öppettider.')}</p></div>`}
+setInterval(()=>{document.querySelectorAll('[data-countdown]').forEach(el=>{const ms=Math.max(0,+el.dataset.countdown-Date.now());el.textContent=`${Math.floor(ms/3600000)} h ${pad(Math.floor(ms%3600000/60000))} min`})},30000);
+/* ---- live markets (TradingView widgets, app version only) ---- */
+function WL_PRESETS(){return {
+  forex:['FX:EURUSD','FX:GBPUSD','FX:USDJPY','FX:AUDUSD','FX:USDCAD','FX:USDCHF','FX:NZDUSD','FX:EURJPY','FX:GBPJPY','OANDA:XAUUSD','TVC:DXY'],
+  indices:['OANDA:NAS100USD','OANDA:SPX500USD','OANDA:US30USD','OANDA:DE30EUR','OANDA:UK100GBP','TVC:VIX'],
+  crypto:['BINANCE:BTCUSDT','BINANCE:ETHUSDT','BINANCE:SOLUSDT','BINANCE:XRPUSDT','BINANCE:BNBUSDT'],
+  commodities:['OANDA:XAUUSD','OANDA:XAGUSD','TVC:USOIL','TVC:UKOIL','OANDA:NATGASUSD'],
+  stocks:['NASDAQ:AAPL','NASDAQ:NVDA','NASDAQ:TSLA','NASDAQ:MSFT','NASDAQ:AMZN','NASDAQ:META']}}
+function WL_NAMES(){return [['forex','Forex'],['indices',T('Indices','Index')],['crypto',T('Crypto','Krypto')],['commodities',T('Commodities','Råvaror')],['stocks',T('US stocks','USA-aktier')]]}
+function defaultWatch(){const tp=S.cfg.projects.find(p=>p.type==='trading');const mk=String(((tp||{}).extra||{}).market||'').toLowerCase();const P=WL_PRESETS();
+  if(/krypto|crypto/.test(mk))return P.crypto.slice(0,4).concat(['OANDA:XAUUSD','OANDA:NAS100USD']);if(/aktie|stock|index|futures|terminer/.test(mk))return P.indices.slice(0,4).concat(['OANDA:XAUUSD','FX:EURUSD']);return ['FX:EURUSD','FX:GBPUSD','FX:USDJPY','OANDA:XAUUSD','OANDA:NAS100USD','TVC:DXY']}
+function watchList(){S.cfg.watch=S.cfg.watch&&S.cfg.watch.length?S.cfg.watch:defaultWatch();return S.cfg.watch}
+function normSym(s){s=String(s||'').trim().toUpperCase().replace(/\s/g,'');if(!s)return '';if(s.includes(':'))return s;s=s.replace('/','');
+  const map={NQ:'OANDA:NAS100USD',NAS100:'OANDA:NAS100USD',US100:'OANDA:NAS100USD',ES:'OANDA:SPX500USD',SPX:'OANDA:SPX500USD',US500:'OANDA:SPX500USD',YM:'OANDA:US30USD',US30:'OANDA:US30USD',DAX:'OANDA:DE30EUR',GER40:'OANDA:DE30EUR',GOLD:'OANDA:XAUUSD',XAUUSD:'OANDA:XAUUSD',SILVER:'OANDA:XAGUSD',XAGUSD:'OANDA:XAGUSD',OIL:'TVC:USOIL',WTI:'TVC:USOIL',CL:'TVC:USOIL',DXY:'TVC:DXY',VIX:'TVC:VIX',BTC:'BINANCE:BTCUSDT',ETH:'BINANCE:ETHUSDT',SOL:'BINANCE:SOLUSDT'};
+  if(map[s])return map[s];if(/^[A-Z]{6}$/.test(s)&&/(USD|EUR|GBP|JPY|CHF|CAD|AUD|NZD|SEK|NOK)$/.test(s))return 'FX:'+s;if(/USDT$/.test(s))return 'BINANCE:'+s;if(/^(BTC|ETH|SOL|XRP|ADA|DOGE|BNB)USD$/.test(s))return 'BINANCE:'+s.replace(/USD$/,'USDT');return s}
+const symLabel=s=>s.split(':').pop().replace('NAS100USD','NAS100').replace('SPX500USD','SPX500').replace('US30USD','US30').replace('DE30EUR','DAX').replace('UK100GBP','FTSE').replace('USDT','');
+function tvTheme(){return document.documentElement.dataset.skin==='bone'?'light':'dark'}
+function tvLocale(){return LANG==='sv'?'sv_SE':'en'}
+function tvMount(el,script,cfg){if(!el)return;el.innerHTML='<div class="tradingview-widget-container__widget"></div>';el.className='tradingview-widget-container tvw';const s=document.createElement('script');s.type='text/javascript';s.async=true;s.src='https://s3.tradingview.com/external-embedding/embed-widget-'+script+'.js';s.text=JSON.stringify(cfg);el.appendChild(s)}
+function renderMarkets(force){const W=watchList();const sel=S.msym&&W.includes(S.msym)?S.msym:W[0];S.msym=sel;const sig=JSON.stringify([W,sel,tvTheme(),LANG,S.mnews||'market',S.mmarket||'forex',CAN_NET]);
+  if(!force&&V.markets.dataset.sig===sig){const sc=V.markets.querySelector('#m-sess');if(sc)sc.outerHTML=sessionsCard().replace('class="card sessc"','id="m-sess" class="card sessc"');return}
+  V.markets.dataset.sig=sig;const P=WL_PRESETS();
+  V.markets.innerHTML=`<div class="page-head"><h2>${T('Markets','Marknader')}</h2><span class="sub">${T('Live prices, charts and news','Livepriser, grafer och nyheter')}</span></div>
+  ${CAN_NET?`<div id="tv-tape" class="tvbox tape"></div>`:''}
+  <div class="card wl"><h3>${T('Your watchlist','Din bevakningslista')}<span class="grow"></span><span class="chips">${WL_NAMES().map(([k,l])=>`<button data-act="x-wl-preset" data-v="${k}">${l}</button>`).join('')}</span></h3>
+    <div class="wl-chips">${W.map(s=>`<span class="wlc ${s===sel?'on':''}"><button data-act="x-msym" data-v="${esc(s)}">${esc(symLabel(s))}</button><button class="del" data-act="x-wl-del" data-v="${esc(s)}" aria-label="${T('Remove','Ta bort')}">×</button></span>`).join('')}
+    <form class="wl-add" data-xform="wl"><input name="s" placeholder="${T('Add: EURUSD, NQ, BTC, AAPL…','Lägg till: EURUSD, NQ, BTC, AAPL…')}" maxlength="30" autocomplete="off" aria-label="${T('Add symbol','Lägg till symbol')}"><button class="btn small" type="submit">+</button></form></div></div>
+  ${CAN_NET?`<div class="mk-grid"><div class="card mk-chart"><h3 class="led-on">${esc(symLabel(sel))}<span class="aside">${esc(sel)}</span></h3><div id="tv-chart" class="tvbox chart"></div></div>
+    <div class="stack"><div class="card"><h3>${T('Prices','Priser')}</h3><div id="tv-quotes" class="tvbox quotes"></div></div>${sessionsCard().replace('class="card sessc"','id="m-sess" class="card sessc"')}</div></div>
+  <div class="two"><div class="card"><h3 class="led-hot">${T('Live news','Livenyheter')}<span class="grow"></span><span class="seg"><button data-act="x-mnews" data-v="market" aria-pressed="${(S.mnews||'market')==='market'}">${T('Market','Marknad')}</button><button data-act="x-mnews" data-v="symbol" aria-pressed="${S.mnews==='symbol'}">${esc(symLabel(sel))}</button></span></h3>${(S.mnews||'market')==='market'?`<div class="chips" style="margin-bottom:10px">${[['forex','Forex'],['crypto',T('Crypto','Krypto')],['stock',T('Stocks','Aktier')],['index',T('Indices','Index')],['futures','Futures']].map(([k,l])=>`<button data-act="x-mmarket" data-v="${k}" aria-pressed="${(S.mmarket||'forex')===k}">${l}</button>`).join('')}</div>`:''}<div id="tv-news" class="tvbox news"></div></div>
+    <div class="card"><h3 class="led-mid">${T('Economic calendar','Ekonomisk kalender')}</h3><div id="tv-cal" class="tvbox cal"></div></div></div>
+  <p class="empty-note">${T('Market data and news by TradingView. Prices can be delayed depending on the exchange.','Marknadsdata och nyheter från TradingView. Priser kan vara fördröjda beroende på börs.')}</p>`
+  :`<div class="card"><p class="empty-note" style="margin:0 0 12px">${T('Live prices, charts and news need the app version of Arete, because this view inside Claude cannot load outside data.','Livepriser, grafer och nyheter kräver app-versionen av Arete, eftersom den här vyn i Claude inte kan hämta data utifrån.')}</p><a class="btn primary" href="https://pablo523.github.io/Arete/" target="_blank" rel="noopener">${T('Open the app version','Öppna app-versionen')} →</a></div>${sessionsCard()}`}`;
+  if(!CAN_NET)return;const th=tvTheme(),lc=tvLocale();
+  tvMount(document.getElementById('tv-tape'),'ticker-tape',{symbols:W.map(s=>({proName:s,title:symLabel(s)})),showSymbolLogo:true,isTransparent:true,displayMode:'adaptive',colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-chart'),'advanced-chart',{autosize:true,symbol:sel,interval:'15',timezone:Intl.DateTimeFormat().resolvedOptions().timeZone||'Etc/UTC',theme:th,style:'1',locale:lc,allow_symbol_change:true,hide_side_toolbar:false,withdateranges:true,support_host:'https://www.tradingview.com',backgroundColor:th==='dark'?'rgba(0,0,0,0)':'rgba(255,255,255,0)'});
+  tvMount(document.getElementById('tv-quotes'),'market-quotes',{width:'100%',height:'100%',symbolsGroups:[{name:T('Watchlist','Bevakning'),symbols:W.map(s=>({name:s,displayName:symLabel(s)}))}],showSymbolLogo:true,isTransparent:true,colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-news'),'timeline',(S.mnews||'market')==='market'?{feedMode:'market',market:S.mmarket||'forex',isTransparent:true,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc}:{feedMode:'symbol',symbol:sel,isTransparent:true,displayMode:'regular',width:'100%',height:'100%',colorTheme:th,locale:lc});
+  tvMount(document.getElementById('tv-cal'),'events',{colorTheme:th,isTransparent:true,width:'100%',height:'100%',locale:lc,importanceFilter:'0,1',countryFilter:'us,eu,gb,jp,ch,au,ca,cn,se'})}
+function mAct(a,b){switch(a){
+  case 'x-msym':S.msym=b.dataset.v;renderMarkets();return true;
+  case 'x-wl-del':S.cfg.watch=watchList().filter(x=>x!==b.dataset.v);saveCfg();renderMarkets();return true;
+  case 'x-wl-preset':S.cfg.watch=WL_PRESETS()[b.dataset.v].slice();S.msym=S.cfg.watch[0];saveCfg();renderMarkets();return true;
+  case 'x-mnews':S.mnews=b.dataset.v;renderMarkets();return true;
+  case 'x-mmarket':S.mmarket=b.dataset.v;renderMarkets();return true;}return false}
+function mSubmit(k,f,g){if(k!=='wl')return false;const s=normSym(g('s'));if(!s)return true;const W=watchList();if(!W.includes(s))W.push(s);if(W.length>24)W.shift();S.msym=s;saveCfg();renderMarkets();sfx('pop');return true}
 /* ================= standalone build ================= */
 const LOCAL_DL={async save({filename,data}){const blob=data instanceof Blob?data:new Blob([data],{type:'application/octet-stream'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return {ok:true}}};
 function backupAll(){const out={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('stigen:'))out[k]=localStorage.getItem(k)}return {app:'arete',v:1,at:new Date().toISOString(),data:out}}
@@ -3453,7 +3930,7 @@ function countUp(root){if(!root||FX.reduce)return;root.querySelectorAll('[data-c
 function moveInd(){const nav=document.querySelector('.tabs');const ind=nav&&nav.querySelector('.ind');if(!ind)return;let b=nav.querySelector('button[aria-selected="true"]:not(.more-btn)');if(!b||b.offsetParent===null||getComputedStyle(b).display==='none')b=nav.querySelector('.more-btn[aria-selected="true"]');
   if(!b||b.offsetWidth===0){ind.style.width='0px';return}ind.style.width=b.offsetWidth+'px';ind.style.transform=`translateX(${b.offsetLeft-5}px)`}
 function stagger(root){if(!root||FX.reduce)return;requestAnimationFrame(()=>{let i=0;root.querySelectorAll(':scope > *, :scope > .dash > .stack > *, :scope > .two > *, :scope > .cols > *').forEach(el=>{if(i>18)return;el.classList.remove('rise');void el.offsetWidth;el.style.animationDelay=(i++*45)+'ms';el.classList.add('rise')})})}
-function openMore(){closeMore();const L=[['projects',T('Projects','Projekt'),'<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V4.5h6V7"/>'],['goals',T('Journey','Resan'),'<path d="M3 20 10 6l4 7 2.5-4L21 20z"/>'],['insights',T('Insights','Insikter'),'<path d="M4 20V11M10 20V5M16 20v-6M2.5 20.5h19"/>']];
+function openMore(){closeMore();const L=[['projects',T('Projects','Projekt'),'<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V4.5h6V7"/>'],['goals',T('Journey','Resan'),'<path d="M3 20 10 6l4 7 2.5-4L21 20z"/>'],['insights',T('Insights','Insikter'),'<path d="M4 20V11M10 20V5M16 20v-6M2.5 20.5h19"/>'],['markets',T('Markets','Marknader'),'<path d="M3 17l5-6 4 3 6-8 3 3"/><path d="M3 21h18"/>']];
   const el=document.createElement('div');el.className='more';el.id='more';el.innerHTML=L.map(([v,l,p])=>`<button data-act="tab" data-v="${v}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>${l}</button>`).join('');document.body.appendChild(el);
   setTimeout(()=>document.addEventListener('click',moreAway,true),0)}
 function moreAway(e){if(!e.target.closest('#more')&&!e.target.closest('#tab-more'))closeMore()}

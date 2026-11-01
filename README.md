@@ -22,6 +22,9 @@
 - **What if?:** see what your result would have been if you had followed every rule, stopped after two losses, only taken your best setups and more
 - **Practice mode:** a flight simulator for trading. Trade a random historical day candle by candle, with keyboard shortcuts, scored in R
 - **Automatic rules:** max trades, pause after a loss, no trades near red news, max loss in R and more, checked on every trade
+- **Trading home:** its own tab with a live strip (sessions, next red news), animated result curve in money or R, and a focus mode for market hours
+- **Weekly story card:** a 9:16 image of your week in R and discipline, ready for Instagram or TikTok
+- **Themes and backgrounds:** Graphite, Bone, Terminal, Amber and Midnight, plus 18 backgrounds
 - **Public profile:** share discipline, win rate, average R and your R curve at `?u=your-name`. Never amounts
 - Trading journal, playbook, accounts, statistics, Monte Carlo, tilt lock, weekly review, reports, position size calculator
 - Markets: TradingView charts and prices, news and the ForexFactory calendar

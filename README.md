@@ -3,7 +3,7 @@
 **A personal command center for becoming a better version of yourself.**
 Habits, tasks, money, training, reading, trading and goals in one place, with levels, seasons and a design that feels like an instrument, not a spreadsheet.
 
-**Open the app:** https://pablo523.github.io/arete/
+**Open the app:** https://pablo523.github.io/Arete/
 
 ## Install on your phone
 
@@ -33,7 +33,7 @@ Use **Profile → Save backup** now and then, and **Restore backup** to move to 
 
 **En personlig kontrollpanel för att bli en bättre version av dig själv.**
 
-**Öppna appen:** https://pablo523.github.io/arete/
+**Öppna appen:** https://pablo523.github.io/Arete/
 
 - **iPhone:** öppna länken i Safari → Dela → *Lägg till på hemskärmen*.
 - **Android:** öppna länken i Chrome → *Installera app*.

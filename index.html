@@ -1397,6 +1397,88 @@ html[data-bg="horizon"] #bgfx::before{content:"";position:absolute;left:-50%;rig
 @keyframes hz{to{background-position:0 60px,0 0}}
 [data-bgp="horizon"]{background:linear-gradient(color-mix(in oklab,var(--moss) 60%,transparent) 1px,transparent 1px) 0 60%/100% 8px,linear-gradient(90deg,color-mix(in oklab,var(--moss) 60%,transparent) 1px,transparent 1px) 0 0/10px 100%,linear-gradient(180deg,var(--bg) 50%,color-mix(in oklab,var(--moss) 20%,var(--bg)))!important}
 :root[data-skin="bone"]:is([data-bg="candles"],[data-bg="waves"]) #bgfx{filter:invert(1)}
+
+/* v18 trading-first shell */
+html.pro .top{display:none}
+html.pro .tabs{display:none!important}
+#pside,#pbar,#pfab{display:none}
+html.pro #pside{display:flex}
+html.pro body{padding-left:calc(248px + 32px);padding-right:32px}
+#pside{position:fixed;left:0;top:0;bottom:0;width:248px;z-index:45;flex-direction:column;gap:18px;padding:22px 16px max(18px,env(safe-area-inset-bottom));background:color-mix(in oklab,var(--chassis) 88%,transparent);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-right:1px solid var(--line);overflow-y:auto}
+.ps-brand{display:flex;align-items:center;gap:11px;padding:2px 8px 8px}.ps-brand svg{width:36px;height:36px;filter:drop-shadow(0 8px 18px var(--glow))}.ps-brand .wordmark{font-size:1.35rem}
+.ps-nav{display:flex;flex-direction:column;gap:3px}
+.pn{display:flex;align-items:center;gap:13px;border:0;background:none;color:var(--muted);padding:11px 12px;border-radius:12px;font-weight:600;font-size:.95rem;text-align:left;position:relative;transition:background .2s,color .2s}
+.pn svg{width:20px;height:20px;flex:none}.pn:hover{color:var(--ink);background:var(--surface-2)}
+.pn.on{color:var(--ink);background:linear-gradient(90deg,color-mix(in oklab,var(--moss) 16%,transparent),transparent 80%)}
+.pn.on::before{content:"";position:absolute;left:-16px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--moss);box-shadow:0 0 12px var(--glow)}
+.pn.on svg{color:var(--moss)}
+.ps-act{display:flex;flex-direction:column;gap:8px;padding-top:4px}.ps-act .btn{width:100%}
+.ps-grow{flex:1}
+.ps-life{display:flex;flex-direction:column;gap:2px;padding:12px 4px;border-top:1px solid var(--line)}.ps-life .label{padding:0 8px 6px}
+.pl{border:0;background:none;color:var(--muted);text-align:left;padding:7px 8px;border-radius:9px;font-size:.86rem}.pl:hover,.pl.on{color:var(--ink);background:var(--surface-2)}
+.ps-me{display:flex;gap:11px;align-items:center;border:0;background:var(--surface-2);box-shadow:0 0 0 1px var(--line);border-radius:14px;padding:10px 12px;text-align:left;color:var(--ink)}
+.ps-me>span:last-child{display:flex;flex-direction:column;min-width:0}.ps-me b{font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ps-me .sync{font-size:.58rem}
+html.pro #ptop{position:sticky;top:0;z-index:40;display:flex;flex-direction:column;gap:10px;padding:18px 0 12px;margin-bottom:-6px}
+html.pro #ptop::before{content:"";position:absolute;inset:0 -32px;background:color-mix(in oklab,var(--bg) 80%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid var(--line);z-index:-1}
+.pt-row{display:flex;align-items:center;gap:14px}
+.pt-title{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.04em;line-height:1}
+.pt-logo,.pt-av{display:none}.pt-logo svg{width:30px;height:30px}
+.pt-acct select{border:0;border-radius:999px;background:var(--surface-2);box-shadow:0 0 0 1px var(--line-2);padding:7px 12px;font-size:.8rem;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+html.pro .wrap{gap:18px}
+html.pro #v-markets>.page-head{display:none}
+.seg-tabs{display:inline-flex;align-self:flex-start;gap:2px;padding:4px;border-radius:999px;background:var(--chassis);box-shadow:inset 0 2px 6px var(--sh),0 0 0 1px var(--line);-webkit-mask-image:none;mask-image:none;max-width:100%}
+.seg-tabs button{background:none!important;box-shadow:none!important;color:var(--muted)!important;padding:8px 16px!important;font-weight:600}
+.seg-tabs button[aria-pressed="true"]{background:var(--raise)!important;color:var(--ink)!important;box-shadow:inset 0 1px 0 var(--hi),0 3px 10px var(--sh)!important}
+/* command bar */
+.cmd{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:20px 22px;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(120deg,color-mix(in oklab,var(--cmdc,var(--pos)) 14%,var(--surface)),var(--surface) 55%);box-shadow:inset 0 1px 0 var(--hi),0 0 0 1px color-mix(in oklab,var(--cmdc,var(--pos)) 30%,var(--line)),0 24px 50px -28px color-mix(in oklab,var(--cmdc,var(--pos)) 50%,transparent)}
+.cmd.amber{--cmdc:var(--amber)}.cmd.red{--cmdc:var(--neg)}
+.cmd-light{display:flex;gap:16px;align-items:center;flex:1 1 300px;min-width:0}
+.cmd-light i{width:18px;height:18px;border-radius:50%;flex:none;background:var(--cmdc,var(--pos));box-shadow:0 0 0 6px color-mix(in oklab,var(--cmdc,var(--pos)) 16%,transparent),0 0 24px var(--cmdc,var(--pos));animation:cmdp 2.6s ease-in-out infinite}
+@keyframes cmdp{50%{box-shadow:0 0 0 10px color-mix(in oklab,var(--cmdc,var(--pos)) 6%,transparent),0 0 30px var(--cmdc,var(--pos))}}
+.cmd-light small{display:block;font-family:var(--f-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.cmd-light b{display:block;font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.035em;line-height:1.1}
+.cmd-light span{color:var(--muted);font-size:.92rem}.cmd-light em{font-style:normal;color:var(--faint)}
+.cmd-ks{display:grid;grid-template-columns:repeat(4,auto);gap:26px}
+.cmd-k small{display:block;font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);white-space:nowrap}
+.cmd-k b{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.65rem;letter-spacing:-.04em;white-space:nowrap}.cmd-k b small{font-size:.9rem;color:var(--muted);display:inline;letter-spacing:0;font-family:var(--f-body);font-stretch:100%}
+.home-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);gap:18px;align-items:start}
+.hg-main,.hg-side{display:flex;flex-direction:column;gap:18px;min-width:0}
+.eqh.empty{min-height:150px}
+.ins-card p{margin:0;line-height:1.55}
+.checkin .ci-sleep{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;color:var(--muted);font-size:.84rem}
+.checkin .sleep-now{display:flex;align-items:center;gap:12px}.checkin .sleep-now b{min-width:52px;text-align:center}
+.start-card{max-width:640px;margin:40px auto;text-align:center;padding:40px 28px;display:flex;flex-direction:column;align-items:center;gap:14px}.start-card h2{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:2.4rem;letter-spacing:-.04em}
+/* hub */
+#v-hub section{display:flex;flex-direction:column;gap:12px}
+.hub-l{padding-left:4px}
+.hub-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.hub-t{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:2px;align-items:center;text-align:left;border:0;padding:16px;border-radius:18px;color:var(--ink);background:linear-gradient(175deg,var(--surface),color-mix(in oklab,var(--surface) 92%,var(--bg)));box-shadow:inset 0 1px 0 var(--hi),0 0 0 1px var(--line);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
+.hub-t:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 var(--hi),0 0 0 1px var(--line-2),0 14px 30px -16px var(--sh)}
+.hub-i svg{width:21px;height:21px}
+.hub-i{grid-row:1/3;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:1.15rem;color:var(--moss);background:color-mix(in oklab,var(--moss) 13%,var(--chassis));box-shadow:0 0 0 1px color-mix(in oklab,var(--moss) 25%,transparent)}
+.hub-t b{font-weight:700}.hub-t small{color:var(--muted);font-size:.8rem;line-height:1.35}
+/* tablet + phone */
+@media (max-width:1000px){
+  html.pro #pside{display:none}
+  html.pro body{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  html.pro #pbar{display:flex;position:fixed;left:max(10px,env(safe-area-inset-left,0px));right:max(10px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:50;padding:6px;border-radius:22px;background:color-mix(in oklab,var(--raise) 90%,transparent);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);box-shadow:inset 0 1px 0 var(--hi),0 18px 40px -10px rgb(0 0 0 / .7),0 0 0 1px var(--line-2)}
+  #pbar .pn{flex:1;flex-direction:column;gap:3px;padding:8px 0;font-size:.62rem;justify-content:center;align-items:center;border-radius:16px}
+  #pbar .pn svg{width:22px;height:22px}#pbar .pn.on{background:color-mix(in oklab,var(--moss) 14%,transparent)}#pbar .pn.on::before{display:none}#pbar .pn.on span{color:var(--moss)}
+  html.pro #pfab:not([hidden]){display:grid;place-items:center;position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:49;width:58px;height:58px;border-radius:50%;border:0;color:var(--on-accent);background:linear-gradient(160deg,color-mix(in oklab,var(--moss) 80%,#fff),var(--moss));box-shadow:0 14px 30px -8px var(--glow),0 0 0 1px color-mix(in oklab,var(--moss) 60%,#000)}
+  #pfab svg{width:26px;height:26px}
+  html.pro #ptop{padding-top:max(14px,env(safe-area-inset-top,0px))}
+  html.pro #ptop::before{inset:0 -16px}
+  .pt-logo,.pt-av{display:grid}.pt-av{width:36px;height:36px}
+  .pt-title{font-size:1.5rem}
+  .home-grid{grid-template-columns:1fr}
+  .cmd-ks{grid-template-columns:repeat(2,1fr);gap:14px 20px;width:100%}
+  .cmd-focus{width:100%}
+}
+@media (max-width:760px){.hub-g{grid-template-columns:1fr}.cmd{padding:18px}}
+.pfab:active{transform:scale(.95)}
+.pt-row{min-width:0}.pt-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pt-acct{min-width:0;flex:0 1 auto}.pt-acct select{max-width:100%;text-overflow:ellipsis}.pt-av,.pt-logo{flex:none}
+@media (max-width:1000px){.pt-acct select{max-width:38vw}}
 </style>
 
 </head>
@@ -1404,10 +1486,11 @@ html[data-bg="horizon"] #bgfx::before{content:"";position:absolute;left:-50%;rig
 <div id="bgfx" aria-hidden="true"></div>
 <div class="wrap">
   <header class="top">
-    <div class="brand" aria-label="Arelo"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="vt2-t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2A28"/><stop offset="1" stop-color="#0D0D0C"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#vt2-t)"/><rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".14"/><defs><linearGradient id="vt2-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A4C"/><stop offset="1" stop-color="#F0420A"/></linearGradient><radialGradient id="vt2-f" cx=".5" cy=".72" r=".6"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#FFE2C4"/><stop offset="1" stop-color="#FF9A5A"/></radialGradient><radialGradient id="vt2-g"><stop offset="0" stop-color="#FF7A30" stop-opacity=".55"/><stop offset="1" stop-color="#FF7A30" stop-opacity="0"/></radialGradient></defs><g transform="translate(.8 .4)"><path d="M14 20.5v11.5" stroke="#F3F1EC" stroke-width="1.3" stroke-linecap="round" opacity=".38"/><rect x="11.7" y="23" width="4.6" height="6.4" rx="1.2" fill="#F3F1EC" opacity=".34"/><path d="M24.5 12.6v20.4" stroke="#FF7A3A" stroke-width="1.5" stroke-linecap="round"/><rect x="21.3" y="15.6" width="6.4" height="13.6" rx="1.7" fill="url(#vt2-c)"/><circle cx="24.5" cy="8.4" r="7" fill="url(#vt2-g)"/><path d="M24.5 3.6c2 2.3 3.1 4.1 3.1 5.7a3.1 3.1 0 0 1-6.2 0c0-1.6 1.1-3.4 3.1-5.7z" fill="url(#vt2-f)"/></g></svg><span class="wordmark">arelo</span></div>
+    <div class="brand" aria-label="Arelo"><svg aria-hidden="true" viewBox="0 0 40 40"><defs><linearGradient id="vt2-t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26221F"/><stop offset="1" stop-color="#0B0A09"/></linearGradient><linearGradient id="vt2-o" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F0420A"/><stop offset="1" stop-color="#FFA36B"/></linearGradient><radialGradient id="vt2-g"><stop offset="0" stop-color="#FF7A30" stop-opacity=".6"/><stop offset="1" stop-color="#FF7A30" stop-opacity="0"/></radialGradient></defs><rect width="40" height="40" rx="11" fill="url(#vt2-t)"/><rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".12"/><circle cx="26" cy="9" r="7" fill="url(#vt2-g)"/><path d="M9.6 31.6 L19.4 8.6" fill="none" stroke="#F3F1EC" stroke-width="3.7" stroke-linecap="round"/><path d="M13.9 23.2h8.2" stroke="#F3F1EC" stroke-width="3.3" stroke-linecap="round"/><path d="M26.2 6.4v27.2" stroke="#FF8A4C" stroke-width="1.6" stroke-linecap="round"/><rect x="22.7" y="10.6" width="7" height="17.6" rx="2.1" fill="url(#vt2-o)"/><rect x="23.5" y="11.4" width="1.6" height="15.8" rx=".8" fill="#fff" opacity=".18"/></svg><span class="wordmark">arelo</span></div>
     <nav class="tabs" role="tablist" aria-label="Views"><i class="ind" aria-hidden="true"></i>
       <button role="tab" id="tab-today" data-act="tab" data-v="today" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="8" height="10" rx="2"/><rect x="13" y="3" width="8" height="6" rx="2"/><rect x="13" y="11" width="8" height="10" rx="2"/><rect x="3" y="15" width="8" height="6" rx="2"/></svg><span>Today</span></button>
       <button role="tab" id="tab-trade" data-act="tab" data-v="trade" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 3v18M17 5v14"/><rect x="4.5" y="7" width="5" height="9" rx="1.2"/><rect x="14.5" y="9" width="5" height="6" rx="1.2"/></svg><span>Trading</span></button>
+      <button role="tab" id="tab-hub" data-act="tab" data-v="hub" aria-selected="false" hidden><span>Mer</span></button>
       <button role="tab" id="tab-habits" data-act="tab" data-v="habits" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="12" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><circle cx="18" cy="12" r="2.2"/><circle cx="6" cy="18" r="2.2" fill="currentColor"/><circle cx="12" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2" fill="currentColor"/></svg><span>Habits</span></button>
       <button role="tab" id="tab-week" data-act="tab" data-v="week" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Week</span></button>
       <button role="tab" id="tab-life" data-act="tab" data-v="life" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-8-4.6-8-10.4A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.5c0 5.8-8 10.4-8 10.4z"/></svg><span>Life</span></button>
@@ -1432,6 +1515,7 @@ html[data-bg="horizon"] #bgfx::before{content:"";position:absolute;left:-50%;rig
   <main id="main">
     <section id="v-today" class="view"></section>
     <section id="v-trade" class="view" hidden></section>
+    <section id="v-hub" class="view" hidden></section>
     <section id="v-habits" class="view" hidden></section>
     <section id="v-week" class="view" hidden></section>
     <section id="v-life" class="view" hidden></section>
@@ -1466,7 +1550,7 @@ const CAL='Google Calendar';
 const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>';
 const ARROW_L='<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
 const ARROW_R='<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
-const LOGO='<svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="vt-t" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2A28"/><stop offset="1" stop-color="#0D0D0C"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#vt-t)"/><rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".14"/><defs><linearGradient id="vt-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A4C"/><stop offset="1" stop-color="#F0420A"/></linearGradient><radialGradient id="vt-f" cx=".5" cy=".72" r=".6"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#FFE2C4"/><stop offset="1" stop-color="#FF9A5A"/></radialGradient><radialGradient id="vt-g"><stop offset="0" stop-color="#FF7A30" stop-opacity=".55"/><stop offset="1" stop-color="#FF7A30" stop-opacity="0"/></radialGradient></defs><g transform="translate(.8 .4)"><path d="M14 20.5v11.5" stroke="#F3F1EC" stroke-width="1.3" stroke-linecap="round" opacity=".38"/><rect x="11.7" y="23" width="4.6" height="6.4" rx="1.2" fill="#F3F1EC" opacity=".34"/><path d="M24.5 12.6v20.4" stroke="#FF7A3A" stroke-width="1.5" stroke-linecap="round"/><rect x="21.3" y="15.6" width="6.4" height="13.6" rx="1.7" fill="url(#vt-c)"/><circle cx="24.5" cy="8.4" r="7" fill="url(#vt-g)"/><path d="M24.5 3.6c2 2.3 3.1 4.1 3.1 5.7a3.1 3.1 0 0 1-6.2 0c0-1.6 1.1-3.4 3.1-5.7z" fill="url(#vt-f)"/></g></svg>';
+const LOGO='<svg aria-hidden="true" viewBox="0 0 40 40"><defs><linearGradient id="vt-t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26221F"/><stop offset="1" stop-color="#0B0A09"/></linearGradient><linearGradient id="vt-o" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F0420A"/><stop offset="1" stop-color="#FFA36B"/></linearGradient><radialGradient id="vt-g"><stop offset="0" stop-color="#FF7A30" stop-opacity=".6"/><stop offset="1" stop-color="#FF7A30" stop-opacity="0"/></radialGradient></defs><rect width="40" height="40" rx="11" fill="url(#vt-t)"/><rect x=".5" y=".5" width="39" height="39" rx="10.5" fill="none" stroke="#fff" stroke-opacity=".12"/><circle cx="26" cy="9" r="7" fill="url(#vt-g)"/><path d="M9.6 31.6 L19.4 8.6" fill="none" stroke="#F3F1EC" stroke-width="3.7" stroke-linecap="round"/><path d="M13.9 23.2h8.2" stroke="#F3F1EC" stroke-width="3.3" stroke-linecap="round"/><path d="M26.2 6.4v27.2" stroke="#FF8A4C" stroke-width="1.6" stroke-linecap="round"/><rect x="22.7" y="10.6" width="7" height="17.6" rx="2.1" fill="url(#vt-o)"/><rect x="23.5" y="11.4" width="1.6" height="15.8" rx=".8" fill="#fff" opacity=".18"/></svg>';
 const MEDAL='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="14" r="6.5"/><path d="M8.6 8.6 6 2.5h4l2 3.5 2-3.5h4l-2.6 6.1"/><path d="M12 11v6M9 14h6" opacity=".6"/></svg>';
 const pad=n=>String(n).padStart(2,'0');
 const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
@@ -1578,7 +1662,7 @@ function seedExample(){
 
 /* ================= state & docs ================= */
 const T0=today();
-const VIEWS=['today','trade','habits','week','life','projects','markets','goals','insights'];
+const VIEWS=['today','trade','hub','habits','week','life','projects','markets','goals','insights'];
 const S={view:'today',cfg:null,docs:{},loaded:new Set(),y:T0.getFullYear(),m:T0.getMonth(),week:mondayOf(T0),year:T0.getFullYear(),repY:T0.getFullYear(),repM:T0.getMonth(),
   caps:{},meName:'',meId:'',events:{},chat:[],chatBusy:false,proj:null,ciSeg:null,
   shared:{on:false,db:null,challenges:[],peers:{},names:{}},timer:{dur:25,left:1500,running:false,endAt:0,task:'',proj:''}};
@@ -2515,7 +2599,7 @@ function applyPlan(){const D=IV.d,P=IV.plan;
   P.goals.filter(g=>g.pick).forEach(g=>S.cfg.goals.push({id:'g'+uid(),name:g.name,deadline:dkey(addDays(today(),Math.round(g.months*30.4))),habitIds:[],ms:g.ms.map(t=>({id:uid(),text:t,done:false}))}));
   D.ptypes.forEach(t=>{const x=D.proj[t];const pl=P.projects[t]||{};S.cfg.projects.push({id:'p'+uid(),type:t,name:(x.name||'').trim()||PT(t).label,stage:x.stage,goal:(x.goal||'').trim(),obstacle:(x.obstacle||'').trim(),hoursGoal:(+x.hours||5)*60,extra:{market:x.market,capital:+x.capital||0,maxLoss:+x.maxLoss||0,niche:x.niche,risk:1,metricName:METRIC_DEF_()[t]||''},checklist:(pl.checklist&&pl.checklist.length?pl.checklist:TPL_CHECK_()[t]).map(s=>({id:uid(),text:s,done:false})),rules:t==='trading'?(pl.rules&&pl.rules.length?pl.rules:TPL_RULES_()):[],premarket:t==='trading'?PRE_DEF_():[]})});
   const mk=dkey(today()).slice(0,7);S.cfg.wheel=S.cfg.wheel.filter(w=>w.date!==mk);S.cfg.wheel.push({date:mk,scores:{...D.wheel}});
-  S.cfg.flags.interviewed=true;S.cfg.flags.ivSkipped=false;saveCfg();applyAccent();const nm=firstName();closeOverlay();setView('today');render(true);window.scrollTo(0,0);toast(nm?T(`Welcome, ${nm}.`,`Välkommen, ${nm}.`):T('Your plan is ready.','Din plan är klar.'))}
+  S.cfg.flags.interviewed=true;S.cfg.flags.ivSkipped=false;saveCfg();applyAccent();const nm=firstName();closeOverlay();if(isPro()&&trProj()){S.tsub='overview';setView('trade')}else setView('today');render(true);window.scrollTo(0,0);toast(nm?T(`Welcome, ${nm}.`,`Välkommen, ${nm}.`):T('Your plan is ready.','Din plan är klar.'))}
 
 /* ================= events ================= */
 function setView(v){S.view=v;try{localStorage.setItem('stigen:view',v)}catch(e){}VIEWS.forEach(k=>{V[k].hidden=k!==v;document.getElementById('tab-'+k).setAttribute('aria-selected',k===v)});const mb=document.getElementById('tab-more');if(mb)mb.setAttribute('aria-selected',['projects','markets','goals','insights'].includes(v));closeMore();requestAnimationFrame(moveInd);stagger(V[v])}
@@ -2639,6 +2723,7 @@ function render(nav){
   if(S.view==='week'){renderWeek();const dd=document.getElementById('days');if(dd){if(keepDays!=null)dd.scrollLeft=keepDays;else{const ti=sameDay(mondayOf(today()),S.week)?wdIdx(today()):0;const el=dd.children[ti];if(el&&dd.scrollWidth>dd.clientWidth)dd.scrollLeft=el.offsetLeft-dd.offsetLeft-(dd.clientWidth-el.offsetWidth)/2}dd.addEventListener('scroll',onDaysScroll,{passive:true});onDaysScroll()}}
   if(S.view==='projects'){renderProjects();calcRisk()}
   if(S.view==='trade'){renderTrade();calcRisk()}
+  if(S.view==='hub')renderHub();
   if(S.view==='life')renderLife();
   if(S.view==='markets')renderMarkets();
   if(S.view==='goals'){renderGoals();journeyExtras()}
@@ -4219,7 +4304,7 @@ function calcRisk(){const v=id=>numx((document.getElementById(id)||{}).value);co
   ${rr!=null?`<div class="co-row"><span>R:R</span><b class="num ${wrongSide?'neg':rr<1.5?'neg':'pos'}">${wrongSide?T('target on the wrong side','målet på fel sida'):fmtN(Math.round(rr*100)/100)}</b></div>`:''}
   ${I[3]==='contract'&&raw<1?`<p class="neg" style="margin:8px 0 0">${T('Even one contract is too much risk here. Use the micro contract or a wider account.','Även ett kontrakt är för stor risk här. Använd micro-kontraktet.')}</p>`:''}`}
 /* ================= v14: wiring ================= */
-function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
+function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAct6(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
   switch(a){
     case 'x-breathe':openBreathe(pid||S.proj,'');return true;
     case 'x-treview':openSheet('treview',{p:pid,off:0});return true;
@@ -4973,10 +5058,89 @@ function tAct5(a,b){switch(a){
   case 'x-eq':if(b.dataset.k==='mode')S.eqMode=b.dataset.v;else S.eqPer=b.dataset.v;render(false);return true;
   case 'x-wkcard':{const p=projById(b.dataset.p);if(p)storyCard(p).catch(e=>toast(T('Could not create the image','Kunde inte skapa bilden')+(e&&e.message?': '+e.message:'')));return true}
 }return false}
+/* ================= v18: trading-first shell ================= */
+const PICO={
+  home:'<path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/>',
+  journal:'<rect x="4.5" y="3.5" width="15" height="17" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/>',
+  analysis:'<path d="M4 20V10M10 20V4M16 20v-7M21 20.5H3"/>',
+  markets:'<path d="M7 3v18M17 5v14"/><rect x="4.5" y="7" width="5" height="9" rx="1.2"/><rect x="14.5" y="9" width="5" height="6" rx="1.2"/>',
+  hub:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/>'};
+const HICO={"practice": "<path d=\"M8 5.5v13l10-6.5z\"/>", "league": "<path d=\"M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7\"/>", "routine": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4\"/>", "accounts": "<rect x=\"3.5\" y=\"6\" width=\"17\" height=\"13\" rx=\"2.5\"/><path d=\"M3.5 10h17M16 14.5h1.5\"/>", "tools": "<path d=\"M5 6h14M5 12h14M5 18h14\"/><circle cx=\"9\" cy=\"6\" r=\"2\" fill=\"currentColor\"/><circle cx=\"15\" cy=\"12\" r=\"2\" fill=\"currentColor\"/><circle cx=\"8\" cy=\"18\" r=\"2\" fill=\"currentColor\"/>", "playbook": "<path d=\"M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3z\"/><path d=\"M5 17a3 3 0 0 1 3-3h10\"/>", "today": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4a8 8 0 0 0 0 16z\" fill=\"currentColor\"/>", "habits": "<path d=\"M5 12.5l4.5 4.5L19 7\"/>", "week": "<rect x=\"3\" y=\"4.5\" width=\"18\" height=\"16\" rx=\"3\"/><path d=\"M3 9.5h18M8 2.5v4M16 2.5v4\"/>", "life": "<path d=\"M12 20.5s-8-4.6-8-10.4A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.5c0 5.8-8 10.4-8 10.4z\"/>", "goals": "<path d=\"M3 20 10 6l4 7 2.5-4L21 20z\"/>", "insights": "<path d=\"M4 20V11M10 20V5M16 20v-6M2.5 20.5h19\"/>", "projects": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M9 7V4.5h6V7\"/>", "profile": "<circle cx=\"12\" cy=\"8.5\" r=\"3.5\"/><path d=\"M5 20a7 7 0 0 1 14 0\"/>", "cloud": "<path d=\"M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 11a3.5 3.5 0 0 0 1 7z\"/>"};
+const ico=(k,cls)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${cls?`class="${cls}"`:''}>${PICO[k]||k}</svg>`;
+function SECS(){return [['home',T('Today','Idag')],['journal','Journal'],['analysis',T('Analysis','Analys')],['markets',T('Markets','Marknader')],['hub',T('More','Mer')]]}
+const SEC_SUBS={home:['overview','routine'],journal:['journal','calendar'],analysis:['stats','playbook'],hub:['practice','league','accounts','tools']};
+function SUBL(){return {overview:T('Dashboard','Översikt'),routine:T('Routine','Rutin'),journal:'Trades',calendar:T('Calendar','Kalender'),stats:T('Statistics','Statistik'),playbook:T('Playbook','Spelbok'),practice:T('Practice','Träna'),league:T('League','Liga'),accounts:T('Accounts','Konton'),tools:T('Tools and rules','Verktyg och regler')}}
+function isPro(){return document.documentElement.classList.contains('pro')}
+function secOf(sub){for(const [k,a] of Object.entries(SEC_SUBS))if(a.includes(sub))return k;return 'home'}
+function curSec(){if(S.view==='markets')return 'markets';if(S.view==='trade')return secOf(S.tsub||'overview');return 'hub'}
+function TSUBS(){const L=SUBL();if(!isPro())return Object.keys(L).filter(k=>k!=='routine').map(k=>[k,L[k]]);const s=secOf(S.tsub||'overview');return SEC_SUBS[s].map(k=>[k,L[k]])}
+function viewTitle(){const v=S.view;if(v==='trade'){const s=curSec();return s==='hub'?SUBL()[S.tsub]:SECS().find(x=>x[0]===s)[1]}
+  return {markets:T('Markets','Marknader'),hub:T('More','Mer'),today:T('Life overview','Livsöversikt'),habits:T('Habits','Vanor'),week:T('Week','Veckan'),life:T('Life','Livet'),projects:T('Projects','Projekt'),goals:T('Journey','Resan'),insights:T('Insights','Insikter')}[v]||'Arelo'}
+
+/* ---------- chrome ---------- */
+function proChrome(){if(!document.getElementById('pside')){
+    const side=document.createElement('aside');side.id='pside';side.setAttribute('aria-label',T('Main menu','Huvudmeny'));document.body.appendChild(side);
+    const bar=document.createElement('nav');bar.id='pbar';bar.setAttribute('aria-label',T('Main menu','Huvudmeny'));document.body.appendChild(bar);
+    const top=document.createElement('div');top.id='ptop';const wrap=document.querySelector('.wrap');wrap.insertBefore(top,wrap.firstChild.nextSibling);
+    const fab=document.createElement('button');fab.id='pfab';fab.className='pfab';fab.dataset.act='x-quick';fab.setAttribute('aria-label',T('Log a trade','Logga en trade'));fab.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';document.body.appendChild(fab)}
+  const sec=curSec();const p=trProj();const sy=document.getElementById('sync');const pr=S.cfg.profile||{};
+  const nav=SECS().map(([k,l])=>`<button class="pn ${sec===k?'on':''}" data-act="pnav" data-v="${k}" ${sec===k?'aria-current="page"':''}>${ico(k)}<span>${l}</span></button>`).join('');
+  document.getElementById('pside').innerHTML=`<div class="ps-brand">${LOGO}<span class="wordmark">arelo</span></div><nav class="ps-nav">${nav}</nav>
+    ${p?`<div class="ps-act"><button class="btn primary" data-act="x-quick">+ ${T('Log trade','Logga trade')}</button><button class="btn" data-act="x-focus" data-p="${p.id}">${T('Focus mode','Fokusläge')}</button></div>`:''}
+    <div class="ps-grow"></div><div class="ps-life"><p class="label">${T('Life','Livet')}</p>${[['today',T('Overview','Översikt')],['habits',T('Habits','Vanor')],['week',T('Week','Veckan')],['life',T('Life','Livet')]].map(([v,l])=>`<button class="pl ${S.view===v?'on':''}" data-act="tab" data-v="${v}">${l}</button>`).join('')}</div>
+    <button class="ps-me" data-act="profile"><span class="avatar sm">${esc(initials(pr.name))}</span><span><b>${esc(pr.name||T('Your profile','Din profil'))}</b><small class="sync" data-s="${sy?sy.dataset.s:'local'}"><i></i>${esc(sy?sy.textContent.trim():'')}</small></span></button>`;
+  document.getElementById('pbar').innerHTML=nav;
+  document.getElementById('ptop').innerHTML=`<div class="pt-row"><span class="pt-logo">${LOGO}</span><h1 class="pt-title">${esc(viewTitle())}</h1>${p&&S.view==='trade'?acctPick(p):''}<span class="grow"></span><button class="avatar pt-av" data-act="profile" aria-label="${T('Your profile','Din profil')}">${esc(initials(pr.name))}</button></div><div class="livestrip" id="livestrip" aria-live="off">${liveStrip()}</div>`;
+  const fab=document.getElementById('pfab');if(fab)fab.hidden=!p||!['trade','markets'].includes(S.view);
+  if(CAN_NET&&p&&!S.ffcal&&!S.calLoad){S.calLoad=1;try{loadCal().then(()=>{const el=document.getElementById('livestrip');if(el)el.innerHTML=liveStrip()})}catch(e){}}}
+function acctPick(p){const A=accountsOf(p);if(A.length<2)return '';const cur=tAcct(p);return `<label class="pt-acct"><span class="sr">${T('Account','Konto')}</span><select data-pacct="${p.id}" class="inline">${[['all',T('All accounts','Alla konton')],...A.map(a=>[a.id,a.name])].map(([k,l])=>`<option value="${esc(k)}" ${cur===k?'selected':''}>${esc(l)}</option>`).join('')}</select></label>`}
+
+/* ---------- trading home ---------- */
+function renderTrade(){const p=trProj();if(!p){V.trade.innerHTML=startCard();return}V.trade.innerHTML=`<div class="tr-body" data-p="${p.id}">${tradingModule(p,PD(p.id))}</div>`;scrollSubs()}
+function startCard(){return `<div class="card start-card"><p class="eyebrow">${T('Welcome to Arelo','Välkommen till Arelo')}</p><h2>${T('Start your trading journal','Starta din tradingjournal')}</h2><p class="lead">${T('One place for your trades, your rules and the days behind them. Takes ten seconds.','Ett ställe för dina trades, dina regler och dagarna bakom dem. Tar tio sekunder.')}</p><button class="btn primary lg" data-act="x-mk-trade">${T('Create my journal','Skapa min journal')} →</button></div>`}
+function greet(){const h=new Date().getHours();return h<5?T('Late night','Sen natt'):h<10?T('Good morning','God morgon'):h<17?T('Good afternoon','God eftermiddag'):T('Good evening','God kväll')}
+function proHead(p){const S2=TSUBS();return `${S2.length>1?`<div class="tsubs chips seg-tabs" role="tablist">${S2.map(([k,l])=>`<button data-act="x-tsub" data-v="${k}" aria-pressed="${S.tsub===k}">${l}</button>`).join('')}</div>`:''}`}
+function homeBody(p,d){const L=lockState(p,d);const r=readiness(p,d);const F=focusData(p,d);const tk=dkey(today());const ds=discScore(p,d,tk);const disc=ds&&ds.s!=null?Math.max(0,ds.s):null;const pr=S.cfg.profile||{};
+  const lab=L?T('Locked','Låst'):{green:T('Green light','Grönt ljus'),amber:T('Yellow light','Gult ljus'),red:T('Red light','Rött ljus')}[r.level];
+  const adv=L?T('Take the break. The market is still here tomorrow.','Ta pausen. Marknaden finns kvar imorgon.'):{green:T('Normal size. Follow the plan.','Normal storlek. Följ planen.'),amber:T('Half size, best setups only.','Halv storlek, bara bästa setups.'),red:T('Sit out or trade demo today.','Stå över eller kör demo idag.')}[r.level];
+  const recent=sortTr(liveTrades(p,d)).reverse().slice(0,6);const ins=coachInsights(p,d)[0];
+  return `${L?lockBanner(L):''}${tradeGuard(p,liveD(d))}
+  <section class="cmd ${L?'red':r.level}"><div class="cmd-light"><i aria-hidden="true"></i><div><small>${greet()}${pr.name?', '+esc(pr.name.split(' ')[0]):''}</small><b>${lab}</b><span>${adv}${r.why.length&&!L?` <em>· ${esc(r.why.join(', '))}</em>`:''}</span></div></div>
+    <div class="cmd-ks"><div class="cmd-k"><small>${T('Today','Idag')}</small><b class="num ${F.net<0?'neg':F.net>0?'pos':''}">${money(F.net)}</b></div><div class="cmd-k"><small>Trades</small><b class="num ${F.maxT&&F.tr.length>=F.maxT?'neg':''}">${F.tr.length}${F.maxT?`<small>/${F.maxT}</small>`:''}</b></div><div class="cmd-k"><small>${T('Left to lose','Kvar att förlora')}</small><b class="num">${F.left==null?'–':money(F.left)}</b></div><div class="cmd-k"><small>${T('Discipline','Disciplin')}</small><b class="num">${disc??'–'}</b></div></div>
+    <button class="btn cmd-focus" data-act="x-focus" data-p="${p.id}">${T('Focus mode','Fokusläge')} →</button></section>
+  <div class="home-grid"><div class="hg-main">${equityHero(p,d)||`<div class="card eqh empty"><p class="label">${T('Your curve','Din kurva')}</p><p class="empty-note" style="margin:6px 0 0">${T('Log two trades and your result curve draws itself here.','Logga två trades så ritar sig din resultatkurva här.')}</p></div>`}
+    <div class="card"><h3>${T('Latest trades','Senaste trades')}<span class="grow"></span><button class="btn small ghost" data-act="pnav" data-v="journal">${T('Journal','Journal')} →</button></h3>${recent.length?tradeTable(p,recent):`<p class="empty-note" style="margin:0">${T('No trades yet. Log your first one on the right, or tap +.','Inga trades än. Logga din första till höger, eller tryck på +.')}</p>`}</div></div>
+   <div class="hg-side">${quickLog(p)}${propCoachCard(p,d)}${checkinCard()}${ins?`<div class="card ins-card"><h3 class="led-mid">${T('Coach insight','Coachens insikt')}<span class="grow"></span><button class="btn small ghost" data-act="pnav" data-v="analysis">${T('More','Mer')} →</button></h3><p>${ins.h}</p></div>`:''}</div></div>`}
+function checkinCard(){const t=today();let sl=null;try{sl=TRN().sleep[dkey(t)]}catch(e){}
+  return `<div class="card checkin"><h3>${T('Check-in','Incheckning')}<span class="aside">${T('feeds your coach','matar din coach')}</span></h3><div class="ci-sleep"><span>${T('Sleep','Sömn')}</span><div class="sleep-now"><button class="icon-btn sm" data-act="x-sleep" data-v="-0.5" aria-label="${T('Less','Mindre')}">−</button><b class="num">${sl?fmtN(sl)+' h':'–'}</b><button class="icon-btn sm" data-act="x-sleep" data-v="0.5" aria-label="${T('More','Mer')}">+</button></div></div><div class="rates">${rateRow('mood',T('Mood','Humör'),t)}${rateRow('energy',T('Energy','Energi'),t)}</div></div>`}
+function routineBody(p,d){return `<div class="two">${ticketCard(p,d)}${sessionCard(p,d)}</div>${reviewCard(p,d)}<div class="two">${discCard(p,d)}${tchCard(p,d)}</div>${coachLetterCard(p,d)}`}
+{const orig=tradingModule;tradingModule=function(p,d){if(!isPro())return orig(p,d);accountsOf(p);const sub=S.tsub||'overview';const head=proHead(p);
+  if(sub==='overview')return head+homeBody(p,d);if(sub==='routine')return head+routineBody(p,d);if(sub==='stats')return head+coachCard(p,d)+whatIfCard(p,d)+statsTab(p,d);
+  let h=orig(p,d).replace(/<div class="chips acct-chips">[\s\S]*?<\/div>/,'').replace('class="tsubs chips"','class="tsubs chips seg-tabs"');if(sub==='journal')h=h.replace(`<h3>${T('Journal','Journal')}</h3>`,'<span></span>');return h}}
+
+/* ---------- hub ---------- */
+function renderHub(){const p=trProj();const tile=(act,attrs,ic,t,s)=>`<button class="hub-t" data-act="${act}" ${attrs}><span class="hub-i">${ic}</span><b>${t}</b><small>${s}</small></button>`;
+  const tr=p?[['practice',ico(HICO.practice),T('Practice','Träna'),T('Trade a random past day','Trada en slumpad dag ur historiken')],['league',ico(HICO.league),T('League','Liga'),T('Compete on discipline','Tävla i disciplin')],['routine',ico(HICO.routine),T('Routine','Rutin'),T('Pre-market, ticket and weekly review','Morgonrutin, biljett och veckogenomgång')],['accounts',ico(HICO.accounts),T('Accounts','Konton'),T('Personal, prop and funded','Eget, prop och finansierat')],['tools',ico(HICO.tools),T('Tools and rules','Verktyg och regler'),T('Position size, limits, automatic rules','Positionsstorlek, gränser, automatiska regler')],['playbook',ico(HICO.playbook),T('Playbook','Spelbok'),T('Your setups','Dina setups')]]:[];
+  V.hub.innerHTML=`${p?`<section><p class="label hub-l">Trading</p><div class="hub-g">${tr.map(([s,i,t,d])=>tile('pgo',`data-v="trade" data-sub="${s}"`,i,t,d)).join('')}</div></section>`:''}
+  <section><p class="label hub-l">${T('Life','Livet')}</p><div class="hub-g">${[['today',ico(HICO.today),T('Life overview','Livsöversikt'),T('Your day beyond the charts','Din dag utanför graferna')],['habits',ico(HICO.habits),T('Habits','Vanor'),T('Small things, every day','Små saker, varje dag')],['week',ico(HICO.week),T('Week','Veckan'),T('Plan the week','Planera veckan')],['life',ico(HICO.life),T('Life','Livet'),T('Training, reading, money and more','Träning, läsning, ekonomi med mera')],['goals',ico(HICO.goals),T('Journey','Resan'),T('Goals, levels and medals','Mål, nivåer och medaljer')],['insights',ico(HICO.insights),T('Insights','Insikter'),T('Patterns and reports','Mönster och rapporter')],['projects',ico(HICO.projects),T('Projects','Projekt'),T('Side projects and business','Sidoprojekt och företag')]].map(([v,i,t,d])=>tile('tab',`data-v="${v}"`,i,t,d)).join('')}</div></section>
+  <section><p class="label hub-l">${T('Settings','Inställningar')}</p><div class="hub-g">${tile('profile','',ico(HICO.profile),T('Profile and look','Profil och utseende'),T('Theme, background, sounds','Tema, bakgrund, ljud'))}${S.sb?`<button class="hub-t" data-cloud="open"><span class="hub-i">${ico(HICO.cloud)}</span><b>${T('Account and sync','Konto och synk')}</b><small>${S.cloudUser?esc(S.cloudUser.email||''):T('Sync phone and computer','Synka mobil och dator')}</small></button>`:''}</div></section>`}
+
+/* ---------- boot, render hooks, actions ---------- */
+function proBoot(){document.documentElement.classList.add('pro');if(trProj()){S.proInit=1;if(S.view==='today'){S.view='trade';S.tsub='overview'}}}
+{const o=afterRender;afterRender=function(nav){o(nav);try{if(isPro()){if(!S.proInit&&S.view==='today'&&trProj()&&!sheet&&!document.getElementById('iv')){S.proInit=1;S.tsub='overview';setView('trade');render(true);return}proChrome();S.lastSub=S.lastSub||{};if(S.view==='trade')S.lastSub[curSec()]=S.tsub}}catch(e){}}}
+function goSec(v){if(v==='markets'){setView('markets');render(true);return}if(v==='hub'){setView('hub');render(true);return}
+  const p=trProj();if(!p){setView('trade');render(true);return}const ls=(S.lastSub||{})[v];S.tsub=ls&&SEC_SUBS[v].includes(ls)?ls:SEC_SUBS[v][0];setView('trade');render(true);scrollTo({top:0})}
+function tAct6(a,b){switch(a){
+  case 'pnav':goSec(b.dataset.v);sfx('click');return true;
+  case 'pgo':S.tsub=b.dataset.sub;setView(b.dataset.v);render(true);scrollTo({top:0});return true;
+  case 'x-quick':{const p=trProj();if(!p)return true;const t=today();openSheet('trade',{isNew:true,id:uid(),p:p.id,d:dkey(t),tm:hm(new Date()),dir:'Long',acct:tAcct(p)==='all'?'main':tAcct(p),tags:[],rules:true,shots:[]});return true}
+  case 'x-mk-trade':openSheet('proj',{isNew:true,type:'trading',name:PT('trading').label,stage:0,goal:'',obstacle:'',hours:5,extra:{}});return true;
+}return false}
+document.addEventListener('change',e=>{const s=e.target.closest&&e.target.closest('[data-pacct]');if(!s)return;S.tacct=S.tacct||{};S.tacct[s.dataset.pacct]=s.value;render(false)});
 /* ================= boot ================= */
 function afterConfig(){if(S.cfg.lang)setLang(S.cfg.lang);applyAccent();fxPrefs();applyBg()}
 function gate(){if(document.getElementById('iv'))return;if(!S.cfg.lang){showLanguage();return}if(needInterview())startInterview()}
-initFx();S.cfg=normCfg(Store.lsGet('config')||seedExample());afterConfig();if(pubSlug()){publicView(pubSlug());return}setView(S.view);render(true);
+initFx();S.cfg=normCfg(Store.lsGet('config')||seedExample());afterConfig();if(pubSlug()){publicView(pubSlug());return}proBoot();setView(S.view);render(true);
 (async function connect(){
   try{
     if(!window.claude||!window.claude.use){S.caps.downloads=LOCAL_DL;render(false);await initCloud();gate();return}

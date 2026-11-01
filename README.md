@@ -2,7 +2,7 @@
 
 ![Arelo](icons/arelo-logo.png)
 
-**A trading journal and life coach in one.** Sleep, mood, habits, money, training and trades in the same app, so you can see what actually drives your results.
+**The discipline journal for traders.** Your trades, your rules and the days behind them in one place: a command center for today, a journal, analysis and live markets, with sleep, mood and habits feeding your coach.
 
 **Open the app:** https://pablo523.github.io/Arete/ · **Landing page:** https://pablo523.github.io/Arete/landing.html
 
@@ -10,6 +10,10 @@
 
 - **iPhone:** open the link in Safari → Share → *Add to Home Screen*.
 - **Android:** open the link in Chrome → *Install app*.
+
+## Layout
+
+Five sections: **Today** (command bar with today's light, result curve, quick log and check-in), **Journal**, **Analysis**, **Markets** and **More** (practice, league, accounts, tools, routine and the life modules). Sidebar on desktop, bottom bar and a + button on the phone.
 
 ## What is inside
 

@@ -6,5 +6,5 @@
    row level security rules in supabase/setup.sql. */
 window.ARETE_CLOUD = {
   url: 'https://nqbdylperlboanfmnslw.supabase.co',
-  key: ''
+  key: 'sb_publishable_jMA6iMq_J2h9HfF_5tFBbA_9LrvYQaL'
 };

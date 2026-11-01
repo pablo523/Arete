@@ -19,6 +19,9 @@
 - **Voice log:** say what happened and the trade is filled in
 - **Replay:** watch a crypto trade play out candle by candle
 - **Price alerts:** crypto alerts, live from Binance, while the app is open
+- **What if?:** see what your result would have been if you had followed every rule, stopped after two losses, only taken your best setups and more
+- **Practice mode:** a flight simulator for trading. Trade a random historical day candle by candle, with keyboard shortcuts, scored in R
+- **Automatic rules:** max trades, pause after a loss, no trades near red news, max loss in R and more, checked on every trade
 - **Public profile:** share discipline, win rate, average R and your R curve at `?u=your-name`. Never amounts
 - Trading journal, playbook, accounts, statistics, Monte Carlo, tilt lock, weekly review, reports, position size calculator
 - Markets: TradingView charts and prices, news and the ForexFactory calendar

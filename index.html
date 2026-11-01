@@ -1310,6 +1310,24 @@ body.pubmode{background:#0B0B0B;color:#F3F1EC;min-height:100vh}
 .lg-tbl th,.lg-tbl td{background:none;box-shadow:none;border-radius:0}
 .lg-team h3{flex-wrap:wrap;row-gap:8px}
 .pub-cta,.pub-cta:hover{text-decoration:none}
+.ar-list{display:flex;flex-direction:column;gap:6px}
+.ar-row{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;background:var(--surface-2);box-shadow:0 0 0 1px var(--line);flex-wrap:wrap}
+.ar-row.on{box-shadow:0 0 0 1px color-mix(in oklab,var(--moss) 45%,var(--line))}
+.ar-l{flex:1;min-width:160px;font-size:.9rem}.ar-l small{font-family:var(--f-mono);font-size:.7rem;margin-left:6px}
+.ar-in{display:flex;gap:6px}.ar-in input{width:84px;border:0;border-radius:10px;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line);padding:7px 10px;font:inherit;color:var(--ink)}
+.ar-tog{width:40px;height:24px;border-radius:999px;border:0;padding:3px;background:var(--chassis);box-shadow:inset 0 2px 5px var(--sh),0 0 0 1px var(--line-2);flex:none;display:flex}
+.ar-tog i{width:18px;height:18px;border-radius:50%;background:var(--faint);transition:transform .2s,background .2s}
+.ar-tog[aria-pressed="true"]{background:color-mix(in oklab,var(--moss) 35%,var(--chassis))}.ar-tog[aria-pressed="true"] i{transform:translateX(16px);background:var(--moss);box-shadow:0 0 10px var(--glow)}
+.ar-warn{margin:0 0 14px;padding:12px 14px;border-radius:12px;background:color-mix(in oklab,var(--neg) 12%,var(--surface));box-shadow:0 0 0 1px color-mix(in oklab,var(--neg) 45%,transparent);display:flex;flex-direction:column;gap:3px;font-size:.88rem}.ar-warn b{color:var(--neg)}
+.wi-chips{margin-bottom:14px}.wi-big{font-size:1.05rem;margin:4px 0 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px}.wi-big b{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.7rem;letter-spacing:-.03em}
+.wi-svg{width:100%;height:170px;display:block;color:var(--ink);margin-bottom:6px}
+.wi-leg{display:flex;gap:16px;font-family:var(--f-mono);font-size:.66rem;text-transform:uppercase;color:var(--muted);margin-bottom:12px}.wi-leg i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.pr-opts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+#pr-cv{display:block;width:100%;height:320px}
+.pr-ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pr-ctl kbd{font-family:var(--f-mono);font-size:.6rem;opacity:.6;margin-left:4px}
+.pr-long{color:var(--pos)!important}.pr-short{color:var(--neg)!important}
+.pr-score{margin:10px 0 0;color:var(--muted);font-size:.86rem}
+@media (hover:none){.pr-ctl kbd{display:none}}
 </style>
 
 </head>
@@ -3735,7 +3753,7 @@ function quickLog(p){const A=accountsOf(p);const tk=dkey(today());const PB=p.pla
     <label class="check"><input type="checkbox" id="tr-rules" name="rules" checked><span>${T('I followed my rules','Jag följde mina regler')}</span></label><label class="check"><input type="checkbox" id="tr-bt" name="bt"><span>${T('Backtest (not a live trade)','Backtest (inte en livetrade)')}</span></label>
     <input class="fwide" id="tr-note" name="note" placeholder="${T('Note (optional)','Anteckning (valfritt)')}" maxlength="200" autocomplete="off"><button class="btn primary" type="submit">${T('Save trade','Spara trade')}</button></form></div>`}
 /* ---- the module ---- */
-function TSUBS(){return [['overview',T('Overview','Översikt')],['journal',T('Journal','Journal')],['calendar',T('Calendar','Kalender')],['stats',T('Statistics','Statistik')],['playbook',T('Playbook','Spelbok')],['accounts',T('Accounts','Konton')],['league',T('League','Liga')],['tools',T('Tools','Verktyg')]]}
+function TSUBS(){return [['overview',T('Overview','Översikt')],['journal',T('Journal','Journal')],['calendar',T('Calendar','Kalender')],['stats',T('Statistics','Statistik')],['practice',T('Practice','Träna')],['playbook',T('Playbook','Spelbok')],['accounts',T('Accounts','Konton')],['league',T('League','Liga')],['tools',T('Tools','Verktyg')]]}
 function tradingModule(p,d0){accountsOf(p);const d=d0;S.tsub=S.tsub||'overview';const sub=S.tsub;const tr=liveTrades(p,d);const t=today(),tk=dkey(t);
   const mk=tk.slice(0,7);const mon=tradeStats({trades:tr},x=>x.d.startsWith(mk));const td=tradeStats({trades:tr},x=>x.d===tk);const L=lockState(p,d);
   const head=`<div class="tsubs chips" role="tablist">${TSUBS().map(([k,l])=>`<button data-act="x-tsub" data-v="${k}" aria-pressed="${sub===k}">${l}</button>`).join('')}</div>${acctChips(p)}`;
@@ -3753,11 +3771,12 @@ function tradingModule(p,d0){accountsOf(p);const d=d0;S.tsub=S.tsub||'overview';
     <div class="chips">${[['all',T('All','Alla')],['win',T('Winners','Vinster')],['loss',T('Losers','Förluster')],['mist',T('Mistakes','Misstag')],['bt','Backtest']].map(([k,l])=>`<button data-act="x-tfilter" data-v="${k}" aria-pressed="${(F.k||'all')===k}">${l}</button>`).join('')}</div>
     <div class="card">${list.length?tradeTable(p,list.slice(0,200)):`<p class="empty-note" style="margin:0">${T('No trades here yet.','Inga trades här än.')}</p>`}</div>${chartReviewCard(p,liveD(d))}`}
   else if(sub==='calendar')body=pnlCalendar(p,d)+discCard(p,d);
-  else if(sub==='stats')body=statsTab(p,d);
+  else if(sub==='stats')body=whatIfCard(p,d)+statsTab(p,d);
+  else if(sub==='practice')body=practiceTab(p,d);
   else if(sub==='playbook')body=playbookTab(p,d);
   else if(sub==='accounts')body=accountsTab(p,d);
   else if(sub==='league')body=leagueTab(p,d);
-  else if(sub==='tools')body=`<div class="two">${calcCard(p)}${limitsCard(p)}</div><div class="two">${sessionsCard()}<div class="card"><h3>${T('My rules','Mina regler')}</h3><ol class="rules">${(p.rules||[]).map((r,i)=>`<li><span>${esc(r)}</span> <button class="del" data-act="rule-del" data-p="${p.id}" data-i="${i}" aria-label="${T('Delete rule','Ta bort regel')}">×</button></li>`).join('')}</ol><form class="addf2" data-form="rule" data-p="${p.id}"><input id="rule-new" name="r" placeholder="${T('Add a rule','Lägg till en regel')}" maxlength="100" autocomplete="off"></form></div></div>
+  else if(sub==='tools')body=`<div class="two">${calcCard(p)}${limitsCard(p)}</div>${autoRulesCard(p,d)}<div class="two">${sessionsCard()}<div class="card"><h3>${T('My rules','Mina regler')}</h3><ol class="rules">${(p.rules||[]).map((r,i)=>`<li><span>${esc(r)}</span> <button class="del" data-act="rule-del" data-p="${p.id}" data-i="${i}" aria-label="${T('Delete rule','Ta bort regel')}">×</button></li>`).join('')}</ol><form class="addf2" data-form="rule" data-p="${p.id}"><input id="rule-new" name="r" placeholder="${T('Add a rule','Lägg till en regel')}" maxlength="100" autocomplete="off"></form></div></div>
     <div class="two">${questionsCard(p)}<div class="stack"><div class="card"><h3>${T('Reports','Rapporter')}</h3><p class="empty-note" style="margin:0 0 12px">${T('A clean printable report. Save it as PDF from the print dialog.','En snygg utskriftsbar rapport. Spara som PDF i utskriftsrutan.')}</p><div class="export"><button class="btn small" data-act="x-report" data-p="${p.id}" data-v="week">${T('This week','Den här veckan')}</button><button class="btn small" data-act="x-report" data-p="${p.id}" data-v="last">${T('Last week','Förra veckan')}</button><button class="btn small" data-act="x-report" data-p="${p.id}" data-v="month">${T('This month','Den här månaden')}</button><button class="btn small ghost" data-act="x-treview" data-p="${p.id}">${T('Weekly review','Veckogenomgång')}</button></div></div>${yearCard(p,d)}</div></div>
     ${toolsExtra(p,d)}<div class="card"><h3>${T('Live markets and news','Livemarknader och nyheter')}</h3><p class="empty-note" style="margin:0 0 12px">${T('Prices, charts, news and the economic calendar are under Markets.','Priser, grafer, nyheter och ekonomisk kalender finns under Marknader.')}</p><button class="btn" data-act="tab" data-v="markets">${T('Open Markets','Öppna Marknader')} →</button></div>`;
   return head+body}
@@ -4024,7 +4043,7 @@ function lockBanner(L){const ms=Math.max(0,L.until-new Date());const cd=`<b clas
   const H={day:T('Daily loss limit reached','Dagens förlustgräns är nådd'),week:T('Weekly loss limit reached','Veckans förlustgräns är nådd'),goal:T('Done for today: goal reached','Klar för idag: målet är nått'),tilt:T('Short break','Kort paus')}[L.kind];
   const sub=L.kind==='tilt'?T('Signs of tilt. Take the breathing break before the next trade.','Tecken på tilt. Ta andningspausen innan nästa trade.'):L.net!=null?`${money(L.net)} / −${money(L.lim)}`:T('You chose to protect the day’s profit.','Du valde att skydda dagens vinst.');
   return `<div class="lockb ${L.kind==='goal'?'goal':''}"><span class="lk-ic">${L.kind==='goal'?'🏁':L.kind==='tilt'?'🫁':'🔒'}</span><div><b>${H}</b><small>${sub} · ${T('Opens in','Öppnar om')} ${cd}</small></div>${L.kind==='tilt'?`<button class="btn small" data-act="x-breathe">${T('Start break','Starta paus')}</button>`:''}</div>`}
-function afterTrade(p,d,tr){if(!tr||tr.bt)return;const ex=p.extra||{};const tk=dkey(today());const T2=d.trades.filter(x=>!x.bt&&x.d===tk).sort((a,b)=>(a.tm||'')<(b.tm||'')?-1:1);
+function afterTrade(p,d,tr){if(!tr||tr.bt)return;ruleAfter(p,d,tr);const ex=p.extra||{};const tk=dkey(today());const T2=d.trades.filter(x=>!x.bt&&x.d===tk).sort((a,b)=>(a.tm||'')<(b.tm||'')?-1:1);
   const mins=x=>{if(!x.tm)return null;const [h,m]=x.tm.split(':').map(Number);return h*60+m};const now=mins(tr)||new Date().getHours()*60+new Date().getMinutes();
   const recent=T2.filter(x=>mins(x)!=null&&now-mins(x)<=30&&now-mins(x)>=0);const last2=T2.slice(-2);let why='';
   if(last2.length===2&&last2.every(x=>x.pnl<0)&&mins(last2[0])!=null&&now-mins(last2[0])<=30)why=T('two losses within 30 minutes','två förluster inom 30 minuter');
@@ -4128,7 +4147,7 @@ function calcRisk(){const v=id=>numx((document.getElementById(id)||{}).value);co
   ${rr!=null?`<div class="co-row"><span>R:R</span><b class="num ${wrongSide?'neg':rr<1.5?'neg':'pos'}">${wrongSide?T('target on the wrong side','målet på fel sida'):fmtN(Math.round(rr*100)/100)}</b></div>`:''}
   ${I[3]==='contract'&&raw<1?`<p class="neg" style="margin:8px 0 0">${T('Even one contract is too much risk here. Use the micro contract or a wider account.','Även ett kontrakt är för stor risk här. Använd micro-kontraktet.')}</p>`:''}`}
 /* ================= v14: wiring ================= */
-function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
+function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
   switch(a){
     case 'x-breathe':openBreathe(pid||S.proj,'');return true;
     case 'x-treview':openSheet('treview',{p:pid,off:0});return true;
@@ -4146,7 +4165,7 @@ function tSheetClick2(a,b,c){if(tSheetClick3(a,b,c))return true;switch(a){
   case 'x-share-hide':S.shareHide=!S.shareHide;b.setAttribute('aria-pressed',!!S.shareHide);return true;
 }return false}
 function tSubmit2(k,f,g){if(k!=='tq')return false;const p=projById(f.dataset.p);const q=g('q');if(p&&q){p.tq=p.tq||[];p.tq.push(q);saveCfg();render(false)}return true}
-function tInput2(e,t){if(t.dataset.tyear&&e.type==='change'){S.tyear=t.value;render(false);return true}
+function tInput2(e,t){if(tInput3(e,t))return true;if(t.dataset.tyear&&e.type==='change'){S.tyear=t.value;render(false);return true}
   if(['tr-goal','rc-acur'].includes(t.id)){if(e.type!=='change'){calcRisk();return true}const box=t.closest('[data-p]');const p=box&&projById(box.dataset.p);if(p){p.extra=p.extra||{};if(t.id==='tr-goal')p.extra.dayGoal=numx(t.value)||0;else p.extra.acur=t.value;saveCfg();if(t.id==='rc-acur')render(false)}return true}
   if(['tr-maxl','tr-maxw','tr-maxt','tr-cool'].includes(t.id)){if(e.type!=='change')return true;const box=t.closest('[data-p]');const p=box&&projById(box.dataset.p);if(p){p.extra=p.extra||{};const key={'tr-maxl':'maxLoss','tr-maxw':'maxWeek','tr-maxt':'maxTrades','tr-cool':'cooldown'}[t.id];p.extra[key]=Math.max(0,numx(t.value)||0);saveCfg();toast(T('Saved','Sparat'))}return true}
   if(['rc-cap','rc-risk','rc-fx','rc-inst','rc-entry','rc-stop','rc-tgt'].includes(t.id)){calcRisk();if(e.type==='change'&&['rc-cap','rc-risk','rc-fx','rc-inst'].includes(t.id)){const p=projById((document.getElementById('riskcalc')||{}).dataset.p);if(p){p.extra=p.extra||{};const key={'rc-cap':'capital','rc-risk':'risk','rc-fx':'fxr','rc-inst':'inst'}[t.id];p.extra[key]=t.id==='rc-inst'?t.value:(numx(t.value)||0);saveCfg()}}return true}
@@ -4411,6 +4430,146 @@ function tSheetClick3(a,b,c){switch(a){
 function tSheetInput3(e,t,c){if(t.id==='vc-t'){c.text=t.value;const pv=document.getElementById('vc-prev');if(pv)pv.innerHTML=voicePrev(parseVoice(c.text));return true}return false}
 setTimeout(alertsConnect,1500);
 setTimeout(function lgBoot(){if(S.sb&&S.cloudUser){if(!S.lg||!S.lg.t)lgLoad(true)}else if(!S.lgTries||S.lgTries<6){S.lgTries=(S.lgTries||0)+1;setTimeout(lgBoot,5000)}},6000);
+/* ================= v16: what-if simulator, practice mode, automatic rules ================= */
+/* ---------- automatic rules ---------- */
+function ARDEF(){return [
+  {k:'maxTrades',l:T('Max trades per day','Max trades per dag'),v:3,step:1},
+  {k:'stopAfter',l:T('Stop after this many losses in a row','Sluta efter så här många förluster i rad'),v:2,step:1},
+  {k:'cool',l:T('Minutes of pause after a loss','Minuters paus efter en förlust'),v:15,step:5},
+  {k:'noOpen',l:T('No trades the first minutes after the open','Inga trades första minuterna efter öppning'),v:15,step:5,at:'15:30'},
+  {k:'lastTime',l:T('No new trades after','Inga nya trades efter'),v:'20:00',time:true},
+  {k:'maxLossR',l:T('Never lose more than (R)','Förlora aldrig mer än (R)'),v:1.2,step:.1},
+  {k:'news',l:T('Minutes away from red news','Minuter från röda nyheter'),v:5,step:1},
+  {k:'needStop',l:T('Every trade has a stop logged','Varje trade har en stop loggad'),bool:true},
+  {k:'playbook',l:T('Only setups from the playbook','Bara setups från spelboken'),bool:true}]}
+function arCfg(p){p.arules=p.arules||{};return p.arules}
+function arOn(p,k){const R=arCfg(p);return !!(R[k]&&R[k].on)}
+function arVal(p,k){const R=arCfg(p);const d=ARDEF().find(x=>x.k===k)||{};return R[k]&&R[k].v!=null&&R[k].v!==''?R[k].v:d.v}
+function ruleViol(p,d,tr){if(!tr||tr.bt)return [];const R=arCfg(p);if(!Object.values(R).some(x=>x&&x.on))return [];const out=[];const add=(k,t)=>out.push({k,t});
+  const day=sortTr(d.trades.filter(x=>!x.bt&&x.d===tr.d&&acctOf(x)===acctOf(tr)));let idx=day.findIndex(x=>x.id===tr.id);const before=idx<0?day.filter(x=>(x.tm||'')<=(tr.tm||'')&&x.id!==tr.id):day.slice(0,idx);const s=tmMin(tr.tm);
+  if(arOn(p,'maxTrades')&&before.length>=+arVal(p,'maxTrades'))add('maxTrades',T(`Trade number ${before.length+1} today, your max is ${arVal(p,'maxTrades')}`,`Trade nummer ${before.length+1} idag, ditt max är ${arVal(p,'maxTrades')}`));
+  if(arOn(p,'stopAfter')){const N=+arVal(p,'stopAfter');let run=0,hit=false;before.forEach(x=>{run=x.pnl<0?run+1:0;if(run>=N)hit=true});if(hit)add('stopAfter',T(`Taken after ${N} losses in a row`,`Tagen efter ${N} förluster i rad`))}
+  if(arOn(p,'cool')){const last=before[before.length-1];if(last&&last.pnl<0){const e=tmMin(last.xtm||last.tm);if(e!=null&&s!=null&&s-e>=0&&s-e<+arVal(p,'cool'))add('cool',T(`Only ${s-e} min after a loss`,`Bara ${s-e} min efter en förlust`))}}
+  if(arOn(p,'noOpen')){const o=tmMin((R.noOpen||{}).at||'15:30');if(o!=null&&s!=null&&s>=o&&s-o<+arVal(p,'noOpen'))add('noOpen',T(`${s-o} min after the open`,`${s-o} min efter öppningen`))}
+  if(arOn(p,'lastTime')){const l=tmMin(arVal(p,'lastTime'));if(l!=null&&s!=null&&s>l)add('lastTime',T(`Taken after ${arVal(p,'lastTime')}`,`Tagen efter ${arVal(p,'lastTime')}`))}
+  if(arOn(p,'maxLossR')){const r=rOf(tr);const m=Math.abs(+arVal(p,'maxLossR'));if(r!=null&&r<-m)add('maxLossR',T(`Lost ${fmtN(-r)}R, your max is ${fmtN(m)}R`,`Förlorade ${fmtN(-r)}R, ditt max är ${fmtN(m)}R`))}
+  if(arOn(p,'news')&&tr.newsHit)add('news',T(`Close to red news: ${tr.newsHit}`,`Nära röd nyhet: ${tr.newsHit}`));
+  if(arOn(p,'needStop')&&!(+tr.stop))add('needStop',T('No stop logged','Ingen stop loggad'));
+  if(arOn(p,'playbook')&&(p.playbook||[]).length&&!(p.playbook||[]).some(x=>x.name===tr.setup))add('playbook',T('Setup is not in your playbook','Setupen finns inte i din spelbok'));
+  return out}
+function newsNear(tr,mins){if(!S.ffcal||!S.ffcal.length||tmMin(tr.tm)==null)return '';const t=new Date(tr.d+'T'+String(tr.tm).slice(0,5)+':00').getTime();const e=S.ffcal.find(x=>x.imp==='high'&&Math.abs(x.t-t)<=mins*60000);return e?`${e.c} ${e.title}`:''}
+function ruleAfter(p,d,tr){if(!tr||tr.bt)return;if(arOn(p,'news')){const h=newsNear(tr,+arVal(p,'news'));if(h)tr.newsHit=h}const V=ruleViol(p,d,tr);
+  if(V.length){tr.rules=false;tr.auto=V.map(x=>x.k);savePD(p.id);setTimeout(()=>toast(T('Rule broken: ','Regelbrott: ')+V[0].t+(V.length>1?` (+${V.length-1})`:'')),500)}}
+function autoRulesCard(p,d){const R=arCfg(p);const since=dkey(addDays(today(),-30));const tr=tradesAll(d).filter(x=>x.d>=since);const cnt={},net={};let any=0;
+  tr.forEach(x=>{ruleViol(p,d,x).forEach(v=>{cnt[v.k]=(cnt[v.k]||0)+1;net[v.k]=(net[v.k]||0)+x.pnl;any++})});
+  return `<div class="card arc" data-p="${p.id}"><h3 class="led-hot">${T('Automatic rules','Automatiska regler')}<span class="aside">${T('checked on every trade','kontrolleras på varje trade')}</span></h3>
+  <p class="empty-note" style="margin:0 0 12px">${T('Turn on the rules you want Arelo to check for you. A trade that breaks one is marked as a rule break automatically, so your statistics stay honest.','Slå på reglerna du vill att Arelo kontrollerar åt dig. En trade som bryter en markeras automatiskt som regelbrott, så att din statistik förblir ärlig.')}</p>
+  <div class="ar-list">${ARDEF().map(r=>{const c=R[r.k]||{};const on=!!c.on;return `<div class="ar-row ${on?'on':''}"><button class="ar-tog" data-act="x-ar-tog" data-p="${p.id}" data-v="${r.k}" aria-pressed="${on}" aria-label="${esc(r.l)}"><i></i></button><span class="ar-l">${r.l}${cnt[r.k]?` <small class="neg">${cnt[r.k]}× · ${money(net[r.k])}</small>`:''}</span>${r.bool?'':`<span class="ar-in">${r.k==='noOpen'?`<input type="time" data-ar="${r.k}" data-f="at" data-p="${p.id}" value="${esc(c.at||r.at)}" aria-label="${T('Market open','Öppning')}">`:''}<input ${r.time?'type="time"':'inputmode="decimal"'} data-ar="${r.k}" data-f="v" data-p="${p.id}" value="${esc(String(c.v??r.v))}" aria-label="${esc(r.l)}"></span>`}</div>`}).join('')}</div>
+  ${any?`<p class="empty-note" style="margin:12px 0 0">${T('Last 30 days: number of breaks and what those trades made in total.','Senaste 30 dagarna: antal brott och vad de traderna gav totalt.')}</p>`:''}</div>`}
+{const _tr=XSHEET.trade;XSHEET.trade=function(box,c){_tr(box,c);if(c.isNew)return;const p=projById(c.p);if(!p)return;const d=PD(p.id);const t=d.trades.find(x=>x.id===c.id);const V=t?ruleViol(p,d,t):[];if(!V.length)return;const h=box.querySelector('h3');if(!h)return;const div=document.createElement('div');div.className='ar-warn';div.innerHTML=`<b>${T('Rules broken','Brutna regler')}</b>${V.map(v=>`<span>${esc(v.t)}</span>`).join('')}`;h.after(div)}}
+
+/* ---------- what-if simulator ---------- */
+function WIS(){return [
+  ['rules',T('Followed every rule','Följt alla regler')],
+  ['stop2',T('Stopped after 2 losses in a row','Slutat efter 2 förluster i rad')],
+  ['max3',T('Max 3 trades a day','Max 3 trades per dag')],
+  ['cool',T('No trade within 20 min of a loss','Ingen trade inom 20 min efter förlust')],
+  ['best',T('Only your 2 best setups','Bara dina 2 bästa setups')],
+  ['hour',T('Skipped your worst hour','Hoppat över din sämsta timme')],
+  ['cap',T('Never lost more than 1R','Aldrig förlorat mer än 1R')]]}
+function wiApply(k,tr){const byDay=a=>{const m={};a.forEach(x=>(m[x.d]=m[x.d]||[]).push(x));return Object.values(m)};
+  switch(k){
+    case 'rules':return tr.filter(x=>x.rules);
+    case 'stop2':return byDay(tr).flatMap(a=>{const o=[];let run=0;for(const x of a){if(run>=2)break;o.push(x);run=x.pnl<0?run+1:0}return o});
+    case 'max3':return byDay(tr).flatMap(a=>a.slice(0,3));
+    case 'cool':return byDay(tr).flatMap(a=>a.filter((x,i)=>{const pv=a[i-1];if(!pv||pv.pnl>=0)return true;const e=tmMin(pv.xtm||pv.tm),s=tmMin(x.tm);return !(e!=null&&s!=null&&s-e>=0&&s-e<20)}));
+    case 'best':{const S2={};tr.forEach(x=>{if(x.setup)(S2[x.setup]=S2[x.setup]||[]).push(x.pnl)});const top=Object.entries(S2).filter(([,a])=>a.length>=3).sort((a,b)=>b[1].reduce((s,v)=>s+v,0)-a[1].reduce((s,v)=>s+v,0)).slice(0,2).map(x=>x[0]);return top.length?tr.filter(x=>top.includes(x.setup)):tr}
+    case 'hour':{const H={};tr.forEach(x=>{const m=tmMin(x.tm);if(m!=null)(H[Math.floor(m/60)]=H[Math.floor(m/60)]||[]).push(x.pnl)});const w=Object.entries(H).filter(([,a])=>a.length>=4).sort((a,b)=>a[1].reduce((s,v)=>s+v,0)-b[1].reduce((s,v)=>s+v,0))[0];return w&&w[1].reduce((s,v)=>s+v,0)<0?tr.filter(x=>{const m=tmMin(x.tm);return m==null||Math.floor(m/60)!==+w[0]}):tr}
+    case 'cap':return tr.map(x=>{const r=rOf(x);return r!=null&&r<-1&&x.pnl<0?{...x,pnl:x.pnl*(-1/r)}:x});
+  }return tr}
+function wiStats(a){let eq=0,pk=0,dd=0;const c=[0];a.forEach(x=>{eq+=x.pnl;pk=Math.max(pk,eq);dd=Math.max(dd,pk-eq);c.push(eq)});return {net:eq,n:a.length,win:a.length?a.filter(x=>x.pnl>0).length/a.length:0,dd,c}}
+function wiSvg(A,B){const all=A.concat(B);const lo=Math.min(0,...all),hi=Math.max(0,...all);const r=hi-lo||1,W=600,H=170;const pt=(c)=>c.map((v,i)=>`${(i/Math.max(1,c.length-1)*W).toFixed(1)},${(H-(v-lo)/r*H).toFixed(1)}`).join(' ');const z=H-(0-lo)/r*H;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="wi-svg" aria-hidden="true"><line x1="0" x2="${W}" y1="${z}" y2="${z}" stroke="currentColor" stroke-opacity=".18" stroke-dasharray="3 4"/><polyline points="${pt(A)}" fill="none" stroke="var(--faint)" stroke-width="2" vector-effect="non-scaling-stroke"/><polyline points="${pt(B)}" fill="none" stroke="var(--moss)" stroke-width="2.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>`}
+function whatIfCard(p,d){const per=S.wiPer??90;const since=per?dkey(addDays(today(),-per)):'0';const tr=sortTr(liveTrades(p,d).filter(x=>x.d>=since));
+  const sel=S.wiSel||(S.wiSel=['rules']);
+  const head=`<h3 class="led-hot">${T('What if?','Tänk om?')}<span class="aside">${T('your own trades, other choices','dina egna trades, andra val')}</span><span class="grow"></span><span class="seg">${[[30,'30d'],[90,'90d'],[0,T('All','Alla')]].map(([v,l])=>`<button data-act="x-wi-per" data-v="${v}" aria-pressed="${per===v}">${l}</button>`).join('')}</span></h3>`;
+  if(tr.length<5)return `<div class="card wi">${head}<p class="empty-note" style="margin:0">${T('Log at least 5 trades in this period and see what other choices would have given you.','Logga minst 5 trades under perioden och se vad andra val hade gett dig.')}</p></div>`;
+  let sim=tr;sel.forEach(k=>sim=wiApply(k,sim));const A=wiStats(tr),B=wiStats(sim);const diff=B.net-A.net;
+  return `<div class="card wi">${head}<div class="chips wi-chips">${WIS().map(([k,l])=>`<button data-act="x-wi" data-v="${k}" aria-pressed="${sel.includes(k)}">${l}</button>`).join('')}</div>
+  ${sel.length?`<p class="wi-big">${T('You would have had','Du hade haft')} <b class="num ${B.net>=0?'pos':'neg'}">${money(B.net)}</b> ${T('instead of','i stället för')} <b class="num ${A.net>=0?'pos':'neg'}">${money(A.net)}</b>${Math.abs(diff)>=1?` <span class="pill ${diff>0?'pos':'neg'}">${diff>0?'+':''}${money(diff)}</span>`:''}</p>`:`<p class="empty-note">${T('Pick one or more choices above.','Välj ett eller flera val ovan.')}</p>`}
+  ${wiSvg(A.c,B.c)}<div class="wi-leg"><span><i style="background:var(--faint)"></i>${T('What you did','Det du gjorde')}</span><span><i style="background:var(--moss)"></i>${T('What if','Tänk om')}</span></div>
+  <div class="pc-grid"><div><small>Trades</small><b class="num">${A.n} → ${B.n}</b></div><div><small>${T('Win rate','Träffsäkerhet')}</small><b class="num">${Math.round(A.win*100)}% → ${Math.round(B.win*100)}%</b></div><div><small>${T('Max drawdown','Max drawdown')}</small><b class="num">${money(A.dd)} → ${money(B.dd)}</b></div></div></div>`}
+
+/* ---------- practice mode ---------- */
+const PRSYMS=['BTCUSDT','ETHUSDT','SOLUSDT','XRPUSDT','BNBUSDT','DOGEUSDT'];
+function prState(){S.pr=S.pr||{sym:'BTCUSDT',tf:'5m',stopM:1.5,tgtR:2,speed:2};return S.pr}
+function prATR(K,i){const a=K.slice(Math.max(0,i-14),i);return a.length?a.reduce((s,k)=>s+(k.h-k.l),0)/a.length:0}
+async function prNew(){const P=prState();P.loading=true;P.err='';P.done=false;P.pos=null;P.closed=[];P.play=false;prUpd(true);
+  const ivm={'1m':1,'5m':5,'15m':15}[P.tf]||5;const back=(30+Math.random()*700)*86400000;let st=Date.now()-back;st-=st%(ivm*60000);
+  try{const r=await fetch(`${BN_REST}klines?symbol=${P.sym}&interval=${P.tf}&startTime=${Math.floor(st)}&limit=360`);if(!r.ok)throw 0;const j=await r.json();const K=j.map(k=>({t:k[0],o:+k[1],h:+k[2],l:+k[3],c:+k[4]}));if(K.length<150)throw 0;P.K=K;P.i=80;P.loading=false;sfx('tick')}
+  catch(e){P.loading=false;P.err=T('Could not load market data. Try again.','Kunde inte hämta marknadsdata. Försök igen.')}prUpd(true)}
+function prEnter(dir){const P=prState();if(!P.K||P.pos||P.done)return;const i=P.i-1,k=P.K[i];const atr=prATR(P.K,P.i)||k.c*.002;const dist=atr*P.stopM;const sg=dir==='Long'?1:-1;
+  const setup=(document.getElementById('pr-setup')||{}).value||'';P.pos={dir,entry:k.c,stop:k.c-sg*dist,target:k.c+sg*dist*P.tgtR,R:+P.tgtR,i0:i,setup};sfx('tick');prUpd()}
+function prClose(r,i){const P=prState();const p=P.pos;if(!p)return;P.closed.push({...p,r:Math.round(r*100)/100,i1:i});P.pos=null;sfx(r>0?'coin':'tick');prUpd()}
+function prStep(){const P=prState();if(!P.K||P.done)return;if(P.i>=P.K.length){prFinish();return}P.i++;const k=P.K[P.i-1];const p=P.pos;
+  if(p){const sg=p.dir==='Long'?1:-1;const hitS=sg>0?k.l<=p.stop:k.h>=p.stop,hitT=sg>0?k.h>=p.target:k.l<=p.target;if(hitS)prClose(-1,P.i-1);else if(hitT)prClose(p.R,P.i-1)}
+  if(P.i>=P.K.length)prFinish();else prInfo()}
+function prManual(){const P=prState();const p=P.pos;if(!p)return;const k=P.K[P.i-1];const sg=p.dir==='Long'?1:-1;prClose(sg*(k.c-p.entry)/Math.abs(p.entry-p.stop),P.i-1)}
+function prFinish(){const P=prState();if(P.done)return;if(P.pos)prManual();P.done=true;P.play=false;const tot=P.closed.reduce((s,x)=>s+x.r,0);const pr=trProj();
+  if(pr&&P.closed.length){const d=PD(pr.id);d.practice=d.practice||[];d.practice.push({at:dkey(today()),sym:P.sym,tf:P.tf,day:dkey(new Date(P.K[0].t)),n:P.closed.length,r:Math.round(tot*100)/100,w:P.closed.filter(x=>x.r>0).length});if(d.practice.length>200)d.practice=d.practice.slice(-200);savePD(pr.id)}
+  sfx(tot>0?'level':'done');if(tot>0&&typeof rain==='function')rain();prUpd(true)}
+function prPanel(){const P=prState();const pr=trProj();const PB=pr&&pr.playbook||[];const tot=(P.closed||[]).reduce((s,x)=>s+x.r,0);
+  if(P.loading)return `<p class="empty-note">${T('Loading a random day…','Laddar en slumpad dag…')}</p>`;
+  if(!P.K)return `<div class="pr-start"><p class="lead" style="margin:0">${T('Arelo picks a random day from the past. You see the chart candle by candle and trade it with your own rules. No money at risk.','Arelo plockar en slumpad dag ur historiken. Du ser grafen candle för candle och tradar den med dina egna regler. Inga pengar på spel.')}</p></div>`;
+  if(P.done)return `<div class="pr-sum"><p class="eyebrow">${T('Session done','Passet är klart')}</p><p class="wi-big"><b class="num ${tot>=0?'pos':'neg'}">${tot>0?'+':''}${fmtN(tot)}R</b> ${T('on','på')} ${P.closed.length} trades · ${P.closed.length?Math.round(P.closed.filter(x=>x.r>0).length/P.closed.length*100):0}% ${T('winners','vinnare')}</p><p class="empty-note" style="margin:0">${T('The day was','Dagen var')} ${esc(shortDate(new Date(P.K[0].t)))} ${new Date(P.K[0].t).getFullYear()} · ${esc(P.sym.replace('USDT',''))} ${P.tf}</p></div>`;
+  const p=P.pos;const k=P.K[P.i-1];const live=p?(p.dir==='Long'?1:-1)*(k.c-p.entry)/Math.abs(p.entry-p.stop):0;
+  return `<div class="pr-ctl">${p?`<span class="pill ${live>=0?'pos':'neg'}">${p.dir} · ${live>=0?'+':''}${fmtN(Math.round(live*100)/100)}R</span><button class="btn small" data-act="x-pr-close">${T('Close','Stäng')} <kbd>C</kbd></button>`:`<button class="btn small pr-long" data-act="x-pr-enter" data-v="Long">Long <kbd>L</kbd></button><button class="btn small pr-short" data-act="x-pr-enter" data-v="Short">Short <kbd>S</kbd></button>${PB.length?`<select id="pr-setup" class="inline" aria-label="Setup"><option value="">${T('Setup…','Setup…')}</option>${PB.map(s=>`<option ${P.lastSetup===s.name?'selected':''}>${esc(s.name)}</option>`).join('')}</select>`:''}`}
+    <span class="grow"></span><button class="btn small ghost" data-act="x-pr-next" aria-label="${T('Next candle','Nästa candle')}">▸ <kbd>→</kbd></button><button class="btn small ${P.play?'primary':''}" data-act="x-pr-play">${P.play?T('Pause','Pausa'):T('Play','Spela')} <kbd>␣</kbd></button><button class="btn small ghost" data-act="x-pr-end">${T('Finish','Avsluta')}</button></div>
+    <p class="pr-score">${T('This session','Det här passet')}: <b class="num ${tot>=0?'pos':'neg'}">${tot>0?'+':''}${fmtN(Math.round(tot*100)/100)}R</b> · ${P.closed.length} trades · ${T('candle','candle')} ${P.i}/${P.K.length}</p>`}
+function prInfo(){const el=document.getElementById('pr-panel');if(el)el.innerHTML=prPanel()}
+function prUpd(full){if(full&&S.tsub==='practice'){render(false);return}prInfo()}
+function practiceTab(p,d){if(!CAN_NET)return `<div class="card"><h3>${T('Practice mode','Träningsläge')}</h3><p class="empty-note" style="margin:0 0 12px">${T('Practice on real historical charts in the app version of Arelo.','Träna på riktiga historiska grafer i app-versionen av Arelo.')}</p><a class="btn primary" href="https://pablo523.github.io/Arete/" target="_blank" rel="noopener">${T('Open the app version','Öppna app-versionen')} →</a></div>`;
+  const P=prState();const H=(d.practice||[]).slice().reverse();const tot=H.reduce((s,x)=>s+x.r,0);
+  setTimeout(prLoop,0);
+  return `<div class="card pr-card"><h3 class="led-on">${T('Practice mode','Träningsläge')}<span class="aside">${T('a flight simulator for your trading','en flygsimulator för din trading')}</span></h3>
+  <div class="pr-opts"><select class="inline" data-pr="sym" aria-label="${T('Market','Marknad')}">${PRSYMS.map(s=>`<option value="${s}" ${P.sym===s?'selected':''}>${s.replace('USDT','')}</option>`).join('')}</select><select class="inline" data-pr="tf" aria-label="${T('Timeframe','Tidsram')}">${['1m','5m','15m'].map(s=>`<option ${P.tf===s?'selected':''}>${s}</option>`).join('')}</select>
+    <select class="inline" data-pr="stopM" aria-label="Stop">${[1,1.5,2,3].map(v=>`<option value="${v}" ${+P.stopM===v?'selected':''}>Stop ${fmtN(v)}× ATR</option>`).join('')}</select><select class="inline" data-pr="tgtR" aria-label="${T('Target','Mål')}">${[1,1.5,2,3,4].map(v=>`<option value="${v}" ${+P.tgtR===v?'selected':''}>${T('Target','Mål')} ${fmtN(v)}R</option>`).join('')}</select>
+    <span class="grow"></span><button class="btn small primary" data-act="x-pr-new">${P.K?T('New session','Nytt pass'):T('Start practising','Börja träna')} →</button></div>
+  ${P.err?`<p class="neg">${esc(P.err)}</p>`:''}
+  ${P.K&&!P.loading?`<div class="rp-wrap"><canvas id="pr-cv" height="320"></canvas></div>`:''}<div id="pr-panel">${prPanel()}</div></div>
+  <div class="card"><h3>${T('Your practice','Din träning')}<span class="aside">${H.length} ${T('sessions','pass')}</span></h3>${H.length?`<div class="pc-grid" style="margin-bottom:12px"><div><small>${T('Total','Totalt')}</small><b class="num ${tot>=0?'pos':'neg'}">${tot>0?'+':''}${fmtN(Math.round(tot*10)/10)}R</b></div><div><small>${T('Per session','Per pass')}</small><b class="num">${fmtN(Math.round(tot/H.length*100)/100)}R</b></div><div><small>${T('Practice days','Träningsdagar')}</small><b class="num">${new Set(H.map(x=>x.at)).size}</b></div></div>
+    <ul class="al-list">${H.slice(0,8).map(x=>`<li><b>${esc(x.sym.replace('USDT',''))} ${esc(x.tf)}</b><span>${esc(x.at)}</span><span class="num al-now ${x.r>=0?'pos':'neg'}">${x.r>0?'+':''}${fmtN(x.r)}R</span><span class="st">${x.n} trades</span></li>`).join('')}</ul>`:`<p class="empty-note" style="margin:0">${T('Fifteen minutes of practice a day builds the pattern recognition that live trading punishes you for lacking.','Femton minuters träning om dagen bygger den mönsterkänsla som live-trading straffar dig för att sakna.')}</p>`}</div>`}
+let PRL=0,PRacc=0,PRlast=0;
+function prLoop(){if(PRL)return;const tick=ts=>{const cv=document.getElementById('pr-cv');if(!cv||S.tsub!=='practice'){PRL=0;prState().play=false;return}const P=prState();
+  if(P.play&&!P.done){if(!PRlast)PRlast=ts;PRacc+=(ts-PRlast)/1000*P.speed;PRlast=ts;while(PRacc>=1&&P.play&&!P.done){PRacc-=1;prStep()}}else{PRlast=ts;PRacc=0}
+  prDraw(cv);PRL=requestAnimationFrame(tick)};PRL=requestAnimationFrame(tick)}
+function prDraw(cv){const P=prState();if(!P.K)return;const dpr=window.devicePixelRatio||1;const W=cv.clientWidth||600,H=320;if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);const css=getComputedStyle(document.body);const pos=css.getPropertyValue('--pos').trim()||'#35D08A',neg=css.getPropertyValue('--neg').trim()||'#FF5D5D',ink=css.getPropertyValue('--ink').trim()||'#F3F1EC';
+  const N=Math.min(90,P.i),a=P.i-N,V=P.K.slice(a,P.i);const p=P.pos;const lv=[];if(p)lv.push(p.entry,p.stop,p.target);
+  let lo=Math.min(...V.map(k=>k.l),...lv),hi=Math.max(...V.map(k=>k.h),...lv);const pd=(hi-lo)*.08||1;lo-=pd;hi+=pd;const PR=58,cw=(W-PR)/90;const y=v=>H-16-(v-lo)/(hi-lo)*(H-28);
+  g.font='10px system-ui';for(let i=0;i<=4;i++){const yy=12+i*(H-28)/4;g.strokeStyle='rgba(255,255,255,.06)';g.beginPath();g.moveTo(0,yy);g.lineTo(W-PR,yy);g.stroke();g.fillStyle='rgba(255,255,255,.35)';g.fillText(fmtPx(hi-(hi-lo)*i/4),W-PR+4,yy+3)}
+  V.forEach((k,j)=>{const x=j*cw+cw/2;const up=k.c>=k.o;g.strokeStyle=g.fillStyle=up?pos:neg;g.beginPath();g.moveTo(x,y(k.h));g.lineTo(x,y(k.l));g.stroke();const bw=Math.max(1,cw*.62);g.fillRect(x-bw/2,Math.min(y(k.o),y(k.c)),bw,Math.max(1,Math.abs(y(k.o)-y(k.c))))});
+  const line=(v,col,lab)=>{g.save();g.setLineDash([4,4]);g.strokeStyle=col;g.beginPath();g.moveTo(0,y(v));g.lineTo(W-PR,y(v));g.stroke();g.restore();g.fillStyle=col;g.font='600 10px system-ui';g.fillText(lab,4,y(v)-4)};
+  if(p){line(p.entry,ink,'Entry');line(p.stop,neg,'Stop');line(p.target,pos,T('Target','Mål'))}
+  (P.closed||[]).forEach(c=>{[[c.i0,c.entry,ink],[c.i1,null,c.r>0?pos:neg]].forEach(([ii,v,col])=>{if(ii<a||ii>=P.i)return;const k=P.K[ii];const x=(ii-a)*cw+cw/2;g.fillStyle=col;g.beginPath();g.arc(x,y(v??k.c),4.5,0,7);g.fill()})});
+  const last=V[V.length-1];g.fillStyle=ink;g.font='600 11px system-ui';g.fillText(fmtPx(last.c),W-PR+4,Math.min(H-4,Math.max(12,y(last.c)+4)))}
+document.addEventListener('keydown',e=>{if(S.tsub!=='practice'||!document.getElementById('pr-cv')||sheet)return;const t=e.target;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;const P=prState();if(!P.K||P.done)return;
+  const k=e.key.toLowerCase();if(k==='l'){prEnter('Long');e.preventDefault()}else if(k==='s'){prEnter('Short');e.preventDefault()}else if(k==='c'){prManual();e.preventDefault()}else if(k==='arrowright'){prStep();e.preventDefault()}else if(k===' '){P.play=!P.play;prInfo();e.preventDefault()}});
+
+/* ---------- wiring ---------- */
+function tAct4(a,b){const pid=b.dataset.p;const p=pid&&projById(pid);switch(a){
+  case 'x-ar-tog':{const R=arCfg(p);const k=b.dataset.v;R[k]=R[k]||{};R[k].on=!R[k].on;saveCfg();render(false);return true}
+  case 'x-wi':{const k=b.dataset.v;S.wiSel=S.wiSel||[];S.wiSel=S.wiSel.includes(k)?S.wiSel.filter(x=>x!==k):S.wiSel.concat(k);render(false);return true}
+  case 'x-wi-per':S.wiPer=+b.dataset.v;render(false);return true;
+  case 'x-pr-new':prNew();return true;
+  case 'x-pr-enter':{const se=document.getElementById('pr-setup');if(se)prState().lastSetup=se.value;prEnter(b.dataset.v);return true}
+  case 'x-pr-close':prManual();return true;
+  case 'x-pr-next':prStep();return true;
+  case 'x-pr-play':{const P=prState();P.play=!P.play;prInfo();return true}
+  case 'x-pr-end':prFinish();return true;
+}return false}
+function tInput3(e,t){if(t.dataset.ar){if(e.type!=='change')return true;const p=projById(t.dataset.p);if(!p)return true;const R=arCfg(p);const k=t.dataset.ar;R[k]=R[k]||{};R[k][t.dataset.f]=t.type==='time'?t.value:(numx(t.value)||0);saveCfg();toast(T('Saved','Sparat'));return true}
+  if(t.dataset.pr){if(e.type!=='change')return true;const P=prState();const f=t.dataset.pr;P[f]=f==='sym'||f==='tf'?t.value:+t.value;return true}return false}
 /* ================= standalone build ================= */
 const LOCAL_DL={async save({filename,data}){const blob=data instanceof Blob?data:new Blob([data],{type:'application/octet-stream'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return {ok:true}}};
 function backupAll(){const out={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('stigen:'))out[k]=localStorage.getItem(k)}return {app:'arete',v:1,at:new Date().toISOString(),data:out}}

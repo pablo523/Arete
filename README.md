@@ -17,7 +17,11 @@ A short guided intro: language, your name, what you trade, your style and a rule
 
 ## Home
 
-The first page has no cards: a 24-hour session clock with your markets as rings, a big status line (green, yellow or red light) with one plain sentence, today's numbers, a 5-second log bar, your prop progress, today's trades, the week, the coach and a 30-day curve. Tap *My markets* to pick the sessions you trade (Sydney, Tokyo, Frankfurt, London, New York forex, NYSE/CME cash, crypto 24/7). Times are shown in your own time zone, and the page switches between before, during and after your sessions on its own.
+The first page has no cards and also holds your day (habits, tasks, the week, quick-add, notes and links), so there is one home: a 24-hour session clock with your markets as rings, a big status line (green, yellow or red light) with one plain sentence, today's numbers, a 5-second log bar, your prop progress, today's trades, the week, the coach and a 30-day curve. Tap *My markets* to pick the sessions you trade (Sydney, Tokyo, Frankfurt, London, New York forex, NYSE/CME cash, crypto 24/7). Times are shown in your own time zone, and the page switches between before, during and after your sessions on its own.
+
+## Academy
+
+A learning section with courses built as step-by-step charts: Turtle Soup (from the original 20-day rule to the ICT and Romeo-style liquidity-sweep model: levels, time, the sweep, CISD/MSS confirmation, entry, stop and targets, and a full walkthrough), ICT foundations (structure, FVG, order blocks, premium/discount, power of three), Candle Range Theory, Silver Bullet and killzones. Each lesson has a chart you step through, a short read, key points and a check question. Courses with a setup can be added to your playbook with their checklist. Education only, not financial advice.
 
 ## Layout
 

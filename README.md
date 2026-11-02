@@ -15,6 +15,10 @@
 
 A short guided intro: language, your name, what you trade, your style and a rule template, your focus, then the app opens on your dashboard with everything set up. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
 
+## Home
+
+The first page has no cards: a 24-hour session clock with your markets as rings, a big status line (green, yellow or red light) with one plain sentence, today's numbers, a 5-second log bar, your prop progress, today's trades, the week, the coach and a 30-day curve. Tap *My markets* to pick the sessions you trade (Sydney, Tokyo, Frankfurt, London, New York forex, NYSE/CME cash, crypto 24/7). Times are shown in your own time zone, and the page switches between before, during and after your sessions on its own.
+
 ## Layout
 
 Five sections: **Today** (command bar with today's light, result curve, quick log and check-in), **Journal**, **Analysis**, **Markets** and **More** (practice, league, accounts, tools, routine and the life modules). Today is a tiled desk with a draggable column split, plus a Chart tab that draws your account as a candlestick chart (day, week or month candles with crosshair, zoom, MA20, trade-count volume and mistake markers; click a candle to open that day) with a floating HUD and risk gauge, a session bar that switches the dashboard between before the open (routine first), in session (risk and logging only) and after the close (today's timeline), and a Timeline that tells the day as a story (sleep, plan, every trade with the running result, revenge-window and limit warnings, review). On desktop the journal is a list with a detail pane and a trade map (stop, entry, target, exit and the range while in the trade), browsable with the arrow keys. Analysis reads as a numbered report. Settings → Layout → Airy brings back the classic cards. Tools are split into three tabs: calculators, rules and limits, and import, sharing and reports. Trading mode is calm by default: no confetti on trades. Sidebar on desktop, bottom bar and a + button on the phone.

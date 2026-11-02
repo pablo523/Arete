@@ -26,6 +26,11 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 - **Import preview:** CSV, Excel and MT5 HTML reports with a preview of columns, new trades and duplicates before anything is saved
 - **MetaTrader 5 auto-import:** the read-only [Arelo Sync robot](mt5/AreloSync.mq5) sends every closed trade to your journal
 - **Trust:** [privacy policy](privacy.html), [terms](terms.html), export all data, delete account, and error reports
+- **Setup library:** classic setups (ORB, VWAP reclaim, break & retest, London breakout and more) added to your playbook in one tap
+- **Notebook:** daily plan, weekly recap, trading plan and after-a-bad-day templates
+- **Trade grades A–F, process goals with streaks, fee analysis, a customizable home and an options calculator** (payoff, breakevens, greeks)
+- **Share a trade for feedback:** a link mentors and friends can open and comment on
+- **Verified badge:** public profiles show how many trades were synced automatically from MetaTrader
 - **Risk engine:** Kelly and simulated risk of ruin from your own trades
 - **Coach that sees the whole person:** a green, yellow or red light every morning from sleep, mood and yesterday's rule breaks, plus patterns between your life and your results (AI coach in the Claude version)
 - **Prop mode:** templates for common challenge types, live chance to pass (simulated from your own trades) and your max risk per trade today
@@ -49,8 +54,9 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 1. **SQL:** Supabase → *SQL Editor → New query*. New project: paste [`supabase/setup.sql`](supabase/setup.sql) and run. Already ran it before: paste only [`supabase/v15-leagues.sql`](supabase/v15-leagues.sql) and run.
 2. **News and calendar proxy:** Supabase → *Edge Functions → Deploy a new function → Via editor*. Name it exactly `feeds`, paste [`supabase/functions/feeds/index.ts`](supabase/functions/feeds/index.ts) and deploy. In the function's settings, turn **off** *Enforce JWT verification* (it only fetches public news).
 3. **Trust and MT5 sync (v21):** SQL Editor → paste [`supabase/v21-trust-and-sync.sql`](supabase/v21-trust-and-sync.sql) → Run. Then *Edge Functions → Deploy a new function → Via editor*, name it exactly `ingest`, paste [`supabase/functions/ingest/index.ts`](supabase/functions/ingest/index.ts), deploy, and turn **off** *Enforce JWT verification* (the robot authenticates with the user's sync key).
-4. **Authentication → URL Configuration:** *Site URL* `https://pablo523.github.io/Arete/`, and the same under *Redirect URLs*.
-5. Put the *Project URL* and *publishable* key in [`config.js`](config.js) (already done).
+4. **Trade sharing (v22):** SQL Editor → paste [`supabase/v22-sharing.sql`](supabase/v22-sharing.sql) → Run.
+5. **Authentication → URL Configuration:** *Site URL* `https://pablo523.github.io/Arete/`, and the same under *Redirect URLs*.
+6. Put the *Project URL* and *publishable* key in [`config.js`](config.js) (already done).
 
 The publishable key is public by design. Row level security makes sure each person only reads and writes their own data. Never share the *service_role / secret* key.
 

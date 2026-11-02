@@ -21,7 +21,7 @@ The first page has no cards and also holds your day (habits, tasks, the week, qu
 
 ## Academy
 
-A learning section with courses built as step-by-step charts: Turtle Soup (from the original 20-day rule to the ICT and Romeo-style liquidity-sweep model: levels, time, the sweep, CISD/MSS confirmation, entry, stop and targets, and a full walkthrough), ICT foundations (structure, FVG, order blocks, premium/discount, power of three), Candle Range Theory, Silver Bullet and killzones. Each lesson has a chart you step through, a short read, key points and a check question. Courses with a setup can be added to your playbook with their checklist. Education only, not financial advice.
+A learning section with courses built as step-by-step charts: Turtle Soup (from the original 20-day rule to the ICT and Romeo-style liquidity-sweep model: levels, time, the sweep, CISD/MSS confirmation, entry, stop and targets, and a full walkthrough), ICT foundations (structure, FVG, order blocks, premium/discount, power of three), Candle Range Theory, Silver Bullet and killzones. Each lesson has a chart you step through, a short read, key points and a check question. The Turtle Soup Masterclass has 17 lessons in five modules (foundation, timeframes, context, execution, mastery) with timeframe maps and pairs per trading style, the same setup shown on daily, 1H and 5m, daily bias, SMT divergence, risk and management, failed setups, a test after each module (with chart questions) and a 15-question final exam with a certificate at 80%. Courses with a setup can be added to your playbook with their checklist. Education only, not financial advice.
 
 ## Layout
 

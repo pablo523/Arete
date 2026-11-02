@@ -60,7 +60,7 @@ h2{font:800 clamp(30px,4.6vw,50px)/1.04 'Inter Tight',system-ui,sans-serif;lette
 .pc ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:8px;color:var(--mu);font-size:15px}.pc li:before{content:"✓  ";color:var(--pos)}
 .tag{display:inline-block;font:600 11px Inter;padding:3px 9px;border-radius:20px;background:rgba(255,106,42,.15);color:#FFB27F;margin-left:8px;vertical-align:middle}
 .final{text-align:center;padding:90px 0 110px}
-footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fa);font-size:13px}footer .wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fa);font-size:13px}footer .wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:center}footer a{color:var(--mu)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
 @media (max-width:860px){.mgrid,.split,.price{grid-template-columns:1fr}.feat{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.feat{grid-template-columns:1fr}header.hero{padding-top:40px}section{padding:60px 0}nav .hide-s{display:none}}
@@ -133,7 +133,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fa);font
 
 <div class="final reveal"><h2 data-sv="Högre bottnar. Varje vecka." data-en="Higher lows. Every week.">Högre bottnar. Varje vecka.</h2><p class="lead" data-sv="Du behöver inte en perfekt dag. Du behöver en plan du håller." data-en="You don't need a perfect day. You need a plan you keep.">Du behöver inte en perfekt dag. Du behöver en plan du håller.</p><a class="btn p" href="./" data-sv="Starta gratis →" data-en="Start free →">Starta gratis →</a></div>
 </div>
-<footer><div class="wrap"><span>© 2026 Arelo</span><span data-sv="Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar." data-en="Arelo does not give financial advice. Trading carries a risk of losing money.">Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Arelo</span><a href="./privacy.html" data-sv="Integritet" data-en="Privacy">Integritet</a><a href="./terms.html" data-sv="Villkor" data-en="Terms">Villkor</a><span data-sv="Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar." data-en="Arelo does not give financial advice. Trading carries a risk of losing money.">Arelo ger inte finansiell rådgivning. Trading innebär risk att förlora pengar.</span></div></footer>
 <script>
 (function(){var L='sv';try{L=localStorage.getItem('arelo:lp-lang')||((navigator.language||'').slice(0,2)==='sv'?'sv':'en')}catch(e){}
 function set(l){L=l;document.documentElement.lang=l;document.querySelectorAll('[data-sv]').forEach(function(el){el.innerHTML=el.getAttribute('data-'+l)});var b=document.getElementById('lang');b.textContent=l==='sv'?'EN':'SV';b.setAttribute('aria-label',l==='sv'?'Switch to English':'Byt till svenska');try{localStorage.setItem('arelo:lp-lang',l)}catch(e){}}

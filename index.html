@@ -1517,6 +1517,14 @@ html.pro #v-markets>.page-head{display:none}
 .jf-sum{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px}.jf-sum small{display:block;font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;color:var(--muted)}.jf-sum b{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:1.3rem;letter-spacing:-.03em}
 .bulk summary{cursor:pointer;font-weight:600}.bulk-r{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:12px}.bulk-r label{display:flex;flex-direction:column;gap:4px;font-size:.76rem;color:var(--muted)}.bulk-r select,.bulk-r input{border:0;border-radius:10px;background:var(--chassis);box-shadow:0 0 0 1px var(--line-2);padding:8px 10px}
 @media (max-width:760px){.edge-g{grid-template-columns:1fr}.radar{margin:0 auto}.edge-ms{grid-template-columns:1fr}.sim-r{margin-left:0}}
+/* v21 */
+.btn.danger{color:#fff;background:linear-gradient(170deg,#ff6a6a,var(--neg));box-shadow:0 8px 22px -8px color-mix(in oklab,var(--neg) 60%,transparent)}
+.eyebrow.neg{color:var(--neg)}
+.err-list{display:flex;flex-direction:column;gap:8px;max-height:44vh;overflow:auto}.err-list div{padding:10px 12px;border-radius:10px;background:var(--chassis)}.err-list small{display:block;font-family:var(--f-mono);font-size:.62rem;color:var(--muted)}.err-list code{font-family:var(--f-mono);font-size:.74rem;color:var(--neg);word-break:break-word}
+.imp-map{margin:4px 0}.imp-map summary{cursor:pointer;color:var(--muted);font-size:.84rem}.imp-map p{font-size:.82rem;color:var(--muted);line-height:1.7}.imp-map b{color:var(--ink)}
+.mt5-steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px;line-height:1.5}.mt5-steps a{color:var(--moss)}
+.mt5-c{display:block;margin:6px 0;padding:8px 10px;border-radius:9px;background:var(--chassis);font-family:var(--f-mono);font-size:.74rem;word-break:break-all;box-shadow:0 0 0 1px var(--line)}
+.legal-n{font-size:.76rem;color:var(--muted);margin:8px 0 0}.legal-n a{color:var(--moss)}
 </style>
 
 </head>
@@ -1565,7 +1573,6 @@ html.pro #v-markets>.page-head{display:none}
 </div>
 <canvas id="fx" aria-hidden="true"></canvas>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 <script>
 (function(){
 /* ================= language ================= */
@@ -4342,7 +4349,7 @@ function calcRisk(){const v=id=>numx((document.getElementById(id)||{}).value);co
   ${rr!=null?`<div class="co-row"><span>R:R</span><b class="num ${wrongSide?'neg':rr<1.5?'neg':'pos'}">${wrongSide?T('target on the wrong side','målet på fel sida'):fmtN(Math.round(rr*100)/100)}</b></div>`:''}
   ${I[3]==='contract'&&raw<1?`<p class="neg" style="margin:8px 0 0">${T('Even one contract is too much risk here. Use the micro contract or a wider account.','Även ett kontrakt är för stor risk här. Använd micro-kontraktet.')}</p>`:''}`}
 /* ================= v14: wiring ================= */
-function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAct6(a,b)||tAct7(a,b)||tAct8(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
+function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAct6(a,b)||tAct7(a,b)||tAct8(a,b)||tAct9(a,b))return true;const pid=b.dataset.p;const p=pid&&projById(pid);
   switch(a){
     case 'x-breathe':openBreathe(pid||S.proj,'');return true;
     case 'x-treview':openSheet('treview',{p:pid,off:0});return true;
@@ -4350,7 +4357,7 @@ function tAct2(a,b,e,date,t){if(tAct3(a,b,e,date,t)||tAct4(a,b)||tAct5(a,b)||tAc
     case 'x-tq-del':p.tq=(p.tq||[]).filter((_,i)=>i!==+b.dataset.i);saveCfg();render(false);return true;
     case 'x-year-csv':{const y=b.dataset.v;const tr=PD(pid).trades.filter(x=>!x.bt&&x.d.startsWith(y));const rows=[['date','time','symbol','side','size','entry','exit','fees','result','setup']].concat(tr.map(x=>[x.d,x.tm||'',x.sym||'',x.dir,x.size??'',x.entry??'',x.exit??'',x.fees??'',x.pnl,x.setup||'']));const csv=rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');doDownload(`arelo-trades-${y}.csv`,new Blob(['﻿'+csv],{type:'text/csv'}));return true}
   }return false}
-function tSheetClick2(a,b,c){if(tSheetClick3(a,b,c))return true;switch(a){
+function tSheetClick2(a,b,c){if(tSheetClick3(a,b,c)||tSheetClick4(a,b,c))return true;switch(a){
   case 'x-goal-stop':{const d=PD(c.p);d.stopUntil=addDays(today(),1).getTime();savePD(c.p);closeSheet();sfx('done');rain();toast(T('Day locked in. Well played.','Dagen är inlåst. Snyggt spelat.'));return true}
   case 'x-goal-cont':{const p=projById(c.p);closeSheet();toast(T('Half size from here. Protect the day.','Halv storlek härifrån. Skydda dagen.'));return true}
   case 'x-review-save':{const d=PD(c.p);const [a1]=weekBounds(c.off);d.reviews=d.reviews||{};const prev=d.reviews[dkey(a1)]||{};d.reviews[dkey(a1)]={good:(c.good??prev.good??'').trim(),change:(c.change??prev.change??'').trim(),focus:(c.focus??prev.focus??'').trim(),at:dkey(today())};savePD(c.p);closeSheet();sfx('level');rain();checkTChallenges(projById(c.p),d);return true}
@@ -4812,7 +4819,7 @@ async function cloudAuth(mode,email,pw,out){email=(email||'').trim();if(!email||
 async function cloudReset(email,out){email=(email||'').trim();if(!email){out(T('Enter your email first.','Fyll i din e-post först.'));return}try{const {error}=await S.sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});if(error)throw error;out(T('We sent you a link to choose a new password.','Vi har skickat en länk där du väljer nytt lösenord.'),true)}catch(e){out(String(e.message||e))}}
 async function cloudSignOut(){flushAll();try{await S.sb.auth.signOut()}catch(e){}Object.keys(localStorage).filter(k=>k.startsWith('stigen:')).forEach(k=>localStorage.removeItem(k));location.reload()}
 function authForm(prefix){return `<div class="field"><label for="${prefix}-em">${T('Email','E-post')}</label><input id="${prefix}-em" type="email" autocomplete="email" inputmode="email"></div><div class="field"><label for="${prefix}-pw">${T('Password','Lösenord')}</label><input id="${prefix}-pw" type="password" autocomplete="current-password" minlength="6"></div><p class="note" id="${prefix}-out" hidden></p>
-  <div class="export"><button class="btn primary" type="button" data-cloud="login" data-pf="${prefix}">${T('Log in','Logga in')}</button><button class="btn" type="button" data-cloud="signup" data-pf="${prefix}">${T('Create account','Skapa konto')}</button><button class="linkbtn quiet" type="button" data-cloud="reset" data-pf="${prefix}">${T('Forgot password?','Glömt lösenordet?')}</button></div>`}
+  <div class="export"><button class="btn primary" type="button" data-cloud="login" data-pf="${prefix}">${T('Log in','Logga in')}</button><button class="btn" type="button" data-cloud="signup" data-pf="${prefix}">${T('Create account','Skapa konto')}</button><button class="linkbtn quiet" type="button" data-cloud="reset" data-pf="${prefix}">${T('Forgot password?','Glömt lösenordet?')}</button></div><p class="note legal-n">${T('By creating an account you accept the <a href="terms.html" target="_blank" rel="noopener">terms</a> and the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.','Genom att skapa konto godkänner du <a href="terms.html" target="_blank" rel="noopener">villkoren</a> och <a href="privacy.html" target="_blank" rel="noopener">integritetspolicyn</a>.')}</p>`}
 XSHEET.account=function(box){const u=S.cloudUser;
   if(!cloudReady()){box.innerHTML=`<h3>${T('Account','Konto')}</h3><p class="lead">${T('Accounts are not switched on for this copy of Arelo yet.','Konton är inte påslagna för den här versionen av Arelo än.')}</p><div class="foot"><button class="btn primary" data-sa="close">OK</button></div>`;return}
   if(u){box.innerHTML=`<h3>${T('Your account','Ditt konto')}</h3><p class="lead">${esc(u.email||'')}</p><p class="note">${T('Everything you log is saved to your account and synced between your phone and computer. Only you can read it.','Allt du loggar sparas på ditt konto och synkas mellan telefon och dator. Bara du kan läsa det.')}</p><div class="foot"><button class="btn ghost" data-cloud="signout" style="margin-right:auto;color:var(--neg)">${T('Log out','Logga ut')}</button><button class="btn primary" data-sa="close">${T('Done','Klar')}</button></div>`;return}
@@ -5247,8 +5254,8 @@ function askAnswer(p,d,q){const P=askParse(q,p,d);const a=P.list;const scope=P.d
     if(P.group==='trade'){const b=a.slice().sort((x,y)=>P.dirn*(y.pnl-x.pnl))[0];return {h:T(`Your ${P.dirn>0?'best':'worst'} trade (${scope}): <b>${money(b.pnl)}</b> on ${esc(b.d)}${b.sym?' in '+esc(b.sym):''}${b.setup?', setup '+esc(b.setup):''}.`,`Din ${P.dirn>0?'bästa':'sämsta'} trade (${scope}): <b>${money(b.pnl)}</b> den ${esc(b.d)}${b.sym?' i '+esc(b.sym):''}${b.setup?', setup '+esc(b.setup):''}.`),a:[b]}}
     const G={};a.forEach(x=>{const k=key(x);if(k!=null)(G[k]=G[k]||[]).push(x)});const rows=Object.entries(G).filter(([,v])=>v.length>=(P.group==='day'?1:2)).map(([k,v])=>[k,askStats(v),v]).sort((x,y)=>P.dirn*(y[1].net-x[1].net));
     if(!rows.length)return {h:T('Not enough trades per group to compare yet.','Inte tillräckligt många trades per grupp för att jämföra än.'),a};const [k,st,v]=rows[0];
-    return {h:T(`${P.dirn>0?'Best':'Worst'} ${({setup:'setup',wd:'weekday',hour:'hour',sym:'market',day:'day',emo:'emotion'})[P.group]}: <b>${esc(k)}</b> with <b>${money(st.net)}</b> over ${st.n} trades, ${pct(st.win)} winners, ${R(st.avgR)} per trade.`,`${P.dirn>0?'Bästa':'Sämsta'} ${({setup:'setup',wd:'veckodag',hour:'timme',sym:'marknad',day:'dag',emo:'känsla'})[P.group]}: <b>${esc(k)}</b> med <b>${money(st.net)}</b> på ${st.n} trades, ${pct(st.win)} vinnare, ${R(st.avgR)} per trade.`),a:v,rows:rows.slice(0,6)}}
-  const H={count:T(`<b>${s.n}</b> trades (${scope}).`,`<b>${s.n}</b> trades (${scope}).`),win:T(`Win rate <b>${pct(s.win)}</b> on ${s.n} trades (${scope}).`,`Träffsäkerhet <b>${pct(s.win)}</b> på ${s.n} trades (${scope}).`),avgR:T(`Average <b>${R(s.avgR)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${R(s.avgR)}</b> per trade på ${s.n} trades (${scope}).`),avg:T(`Average <b>${money(s.avg)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${money(s.avg)}</b> per trade på ${s.n} trades (${scope}).`),net:T(`Net <b>${money(s.net)}</b> on ${s.n} trades (${scope}).`,`Totalt <b>${money(s.net)}</b> på ${s.n} trades (${scope}).`),summary:T(`${scope}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} winners, ${R(s.avgR)} per trade, rules followed ${pct(s.rules)}.`,`${cap(scope)}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} vinnare, ${R(s.avgR)} per trade, följde reglerna ${pct(s.rules)}.`)};
+    return {h:T(`${P.dirn>0?'Best':'Worst'} ${({setup:'setup',wd:'weekday',hour:'hour',sym:'market',day:'day',emo:'emotion'})[P.group]}: <b>${esc(k)}</b> with <b>${money(st.net)}</b> over ${st.n} trades, ${pct(st.win)} winners${st.avgR==null?"":", "+R(st.avgR)+" per trade"}.`,`${P.dirn>0?'Bästa':'Sämsta'} ${({setup:'setup',wd:'veckodag',hour:'timme',sym:'marknad',day:'dag',emo:'känsla'})[P.group]}: <b>${esc(k)}</b> med <b>${money(st.net)}</b> på ${st.n} trades, ${pct(st.win)} vinnare${st.avgR==null?"":", "+R(st.avgR)+" per trade"}.`),a:v,rows:rows.slice(0,6)}}
+  const H={count:T(`<b>${s.n}</b> trades (${scope}).`,`<b>${s.n}</b> trades (${scope}).`),win:T(`Win rate <b>${pct(s.win)}</b> on ${s.n} trades (${scope}).`,`Träffsäkerhet <b>${pct(s.win)}</b> på ${s.n} trades (${scope}).`),avgR:T(`Average <b>${R(s.avgR)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${R(s.avgR)}</b> per trade på ${s.n} trades (${scope}).`),avg:T(`Average <b>${money(s.avg)}</b> per trade on ${s.n} trades (${scope}).`,`Snitt <b>${money(s.avg)}</b> per trade på ${s.n} trades (${scope}).`),net:T(`Net <b>${money(s.net)}</b> on ${s.n} trades (${scope}).`,`Totalt <b>${money(s.net)}</b> på ${s.n} trades (${scope}).`),summary:T(`${scope}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} winners${s.avgR==null?"":", "+R(s.avgR)+" per trade"}, rules followed ${pct(s.rules)}.`,`${cap(scope)}: <b>${s.n}</b> trades, <b>${money(s.net)}</b>, ${pct(s.win)} vinnare${s.avgR==null?"":", "+R(s.avgR)+" per trade"}, följde reglerna ${pct(s.rules)}.`)};
   return {h:H[P.metric],a,s}}
 function askCard(p,d){const A=S.ask&&S.ask.p===p.id?S.ask:null;const ex=[T('Win rate on Fridays','Vinstprocent på fredagar'),T('Best setup last 30 days','Bästa setup senaste 30 dagarna'),T('How many rule breaks this month','Hur många regelbrott den här månaden'),T('Average R before 10','Snitt R före 10'),T('Worst hour','Sämsta timme'),T('Total last week','Totalt förra veckan')];
   return `<div class="card ask"><h3 class="led-on">${T('Ask your journal','Fråga din journal')}<span class="aside">${T('plain language, instant answers','vanligt språk, svar direkt')}</span></h3>
@@ -5412,6 +5419,125 @@ function tAct8(a,b){switch(a){
   case 'x-jf-clear':S.jf={};render(false);return true;
   case 'x-bulk':{const p=projById(b.dataset.p);if(!p)return true;const d=PD(p.id);const list=jfApply(p,d);const tag=(document.getElementById('bk-tag')||{}).value,setup=((document.getElementById('bk-setup')||{}).value||'').trim(),rules=(document.getElementById('bk-rules')||{}).value;
     if(!tag&&!setup&&!rules){toast(T('Fill in what to change','Fyll i vad som ska ändras'));return true}list.forEach(x=>{if(tag){x.tags=x.tags||[];if(!x.tags.includes(tag))x.tags.push(tag)}if(setup)x.setup=setup;if(rules)x.rules=rules==='y'});savePD(p.id);toast(T(`${list.length} trades updated`,`${list.length} trades uppdaterade`));sfx('done');render(false);return true}
+}return false}
+/* ================= v21: trust, speed, import ================= */
+const GH_ISSUES='https://github.com/pablo523/Arete/issues';
+const LEGAL=()=>({privacy:'privacy.html',terms:'terms.html'});
+function loadScript(src){return new Promise((res,rej)=>{if(document.querySelector(`script[src="${src}"]`)&&window.XLSX)return res();const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+const XLSX_SRC='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+async function needXlsx(){if(window.XLSX)return true;try{await loadScript(XLSX_SRC);return !!window.XLSX}catch(e){return false}}
+{const o=exportXlsx;exportXlsx=async function(){await needXlsx();return o()}}
+
+/* ---------- error reporting ---------- */
+function logErr(msg,stack,src){try{const e={m:String(msg||'').slice(0,300),s:String(stack||'').slice(0,900),v:(S.view||'')+'/'+(S.tsub||''),t:new Date().toISOString(),src:src||''};if(!e.m||/ResizeObserver|Script error/.test(e.m))return;
+  let L=[];try{L=JSON.parse(localStorage.getItem('arelo:errs')||'[]')}catch(x){}L.push(e);try{localStorage.setItem('arelo:errs',JSON.stringify(L.slice(-30)))}catch(x){}
+  S.errSent=S.errSent||{};if(S.sb&&S.cloudUser&&!S.errSent[e.m]&&Object.keys(S.errSent).length<20){S.errSent[e.m]=1;S.sb.from('app_errors').insert({msg:e.m,stack:e.s,view:e.v,ua:navigator.userAgent.slice(0,200),app:'v21'}).then(()=>{},()=>{})}}catch(x){}}
+addEventListener('error',e=>logErr(e.message,e.error&&e.error.stack,'error'));
+addEventListener('unhandledrejection',e=>{const r=e.reason;logErr(r&&r.message||r,r&&r.stack,'promise')});
+{const o=errCard;errCard=function(where,e){logErr(where+': '+(e&&e.message||e),e&&e.stack,'card');return o(where,e)}}
+XSHEET.errs=function(box){let L=[];try{L=JSON.parse(localStorage.getItem('arelo:errs')||'[]').reverse()}catch(e){}
+  box.innerHTML=`<p class="eyebrow">${T('Support','Support')}</p><h3>${T('Problems and error reports','Problem och felrapporter')}</h3><p class="lead">${T('Errors are saved on this device'+(S.cloudUser?' and sent anonymously with your account so they can be fixed':'')+'. Nothing from your journal is included.','Fel sparas på den här enheten'+(S.cloudUser?' och skickas med ditt konto så att de kan rättas':'')+'. Inget från din journal skickas med.')}</p>
+  ${L.length?`<div class="err-list">${L.slice(0,12).map(e=>`<div><small>${esc(e.t.replace('T',' ').slice(0,16))} · ${esc(e.v)}</small><code>${esc(e.m)}</code></div>`).join('')}</div>`:`<p class="empty-note">${T('No errors recorded. Nice.','Inga fel registrerade. Snyggt.')}</p>`}
+  <div class="foot"><a class="btn ghost" href="${GH_ISSUES}" target="_blank" rel="noopener">${T('Report a problem','Rapportera ett problem')} ↗</a>${L.length?`<button class="btn ghost" data-sa="x-errs-copy">${T('Copy','Kopiera')}</button><button class="btn ghost" data-sa="x-errs-clear">${T('Clear','Rensa')}</button>`:''}<button class="btn primary" data-sa="close">${T('Close','Stäng')}</button></div>`};
+
+/* ---------- delete account ---------- */
+XSHEET.delacct=function(box,c){box.innerHTML=`<p class="eyebrow neg">${T('Delete account','Radera konto')}</p><h3>${T('Delete everything?','Radera allt?')}</h3>
+  <p class="lead">${T('This permanently deletes your account, your journal, screenshots, league memberships and public profile from the server, and clears this device. It cannot be undone.','Det här raderar ditt konto, din journal, skärmdumpar, ligamedlemskap och publika profil permanent från servern och rensar den här enheten. Det går inte att ångra.')}</p>
+  <p class="empty-note">${T('Want a copy first? Use Export my data.','Vill du ha en kopia först? Använd Exportera min data.')}</p>
+  <div class="field"><label for="del-c">${T('Type DELETE to confirm','Skriv RADERA för att bekräfta')}</label><input id="del-c" data-x="conf" autocomplete="off" value="${esc(c.conf||'')}"></div>
+  <div class="foot"><button class="btn ghost" data-sa="close">${T('Cancel','Avbryt')}</button><button class="btn danger" data-sa="x-del-go" ${c.busy?'disabled':''}>${c.busy?T('Deleting…','Raderar…'):T('Delete my account','Radera mitt konto')}</button></div>`};
+async function deleteAccount(c){if(!S.sb||!S.cloudUser)return;const want=T('DELETE','RADERA');if(String(c.conf||'').trim().toUpperCase()!==want){toast(T(`Type ${want} to confirm`,`Skriv ${want} för att bekräfta`));return}
+  c.busy=true;renderSheet();const uid=S.cloudUser.id;
+  try{for(let i=0;i<20;i++){const {data}=await S.sb.storage.from('shots').list(uid,{limit:100});if(!data||!data.length)break;await S.sb.storage.from('shots').remove(data.map(f=>uid+'/'+f.name))}}catch(e){}
+  const {error}=await S.sb.rpc('delete_my_account');if(error){c.busy=false;renderSheet();toast(T('Could not delete the account. Try again or report it.','Kunde inte radera kontot. Försök igen eller rapportera det.'));logErr('delete_my_account: '+error.message,'','acct');return}
+  try{Object.keys(localStorage).filter(k=>/^(stigen:|arelo:|vt-cache:)/.test(k)).forEach(k=>localStorage.removeItem(k))}catch(e){}try{await S.sb.auth.signOut()}catch(e){}
+  closeSheet();toast(T('Your account is deleted.','Ditt konto är raderat.'));setTimeout(()=>location.reload(),900)}
+async function exportAll(){const keys=Object.keys(localStorage).filter(k=>k.startsWith('stigen:'));const out={app:'Arelo',exported:new Date().toISOString(),data:{}};keys.forEach(k=>{try{out.data[k.slice(7)]=JSON.parse(localStorage.getItem(k))}catch(e){}});
+  if(Store.col&&S.sb&&S.cloudUser){try{const {data}=await S.sb.from('docs').select('key,data').eq('user_id',S.cloudUser.id);(data||[]).forEach(r=>out.data[r.key]=r.data)}catch(e){}}
+  doDownload(`arelo-data-${dkey(today())}.json`,new Blob([JSON.stringify(out,null,1)],{type:'application/json'}))}
+
+/* ---------- hub additions ---------- */
+{const o=renderHub;renderHub=function(){o();const g=[...V.hub.querySelectorAll('.hub-g')].pop();if(!g)return;const tile=(attrs,ic,t,s,tag='button')=>`<${tag} class="hub-t" ${attrs}><span class="hub-i">${ic}</span><b>${t}</b><small>${s}</small></${tag}>`;
+  g.insertAdjacentHTML('beforeend',tile('data-act="x-export-all"',ico('<path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/>'),T('Export my data','Exportera min data'),T('Everything, as a JSON file','Allt, som en JSON-fil'))
+   +tile('data-act="x-errs"',ico('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.4v.1"/>'),T('Problems and error reports','Problem och felrapporter'),T('See errors, report a problem','Se fel, rapportera ett problem'))
+   +tile(`href="${LEGAL().privacy}" target="_blank" rel="noopener"`,ico('<path d="M12 3.5 5 6.5v5c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9v-5z"/>'),T('Privacy','Integritet'),T('How your data is handled','Hur din data hanteras'),'a')
+   +tile(`href="${LEGAL().terms}" target="_blank" rel="noopener"`,ico('<path d="M6 3.5h9l3 3v14H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/>'),T('Terms','Villkor'),T('The rules for using Arelo','Reglerna för att använda Arelo'),'a')
+   +(S.sb&&S.cloudUser?tile('data-act="x-delacct"',ico('<path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13"/>'),T('Delete account','Radera konto'),T('Permanently, with all data','Permanent, med all data')):''))}}
+
+/* ---------- import: preview, more brokers, Excel ---------- */
+['realized profit','closed p&l','closed pnl','realized pnl','net $','net usd','net eur','pnl(usd)','profit/loss'].forEach(k=>IMP_KEYS.pnl.unshift(k));
+['close time(utc)','time(utc)','closed time','exit date','close date','closing date'].forEach(k=>IMP_KEYS.date.unshift(k));
+['open date','opening date','entry date'].forEach(k=>IMP_KEYS.open.push(k));
+['order side','trade side','position side','direction'].forEach(k=>IMP_KEYS.side.push(k));
+['pair','asset','product'].forEach(k=>IMP_KEYS.sym.push(k));
+['closing quantity','executed','filled','closed qty'].forEach(k=>IMP_KEYS.qty.push(k));
+['entry price','avg. entry','open price','average entry price','avg open price'].forEach(k=>{if(!IMP_KEYS.entry.includes(k))IMP_KEYS.entry.unshift(k)});
+['exit price','avg. exit','close price','average close price','avg close price','closing price'].forEach(k=>{if(!IMP_KEYS.exit.includes(k))IMP_KEYS.exit.unshift(k)});
+function importBtn(kind,pid){return `<label class="btn small upl-btn" data-cur="CSV"><input type="file" accept=".csv,text/csv,text/plain,.xlsx,.xls,.htm,.html" data-imp="${kind}"${pid?` data-p="${pid}"`:''}>${kind==='trades'?T('Import file','Importera fil'):T('Import CSV','Importera CSV')}</label>`}
+async function fileRows(file){const n=(file.name||'').toLowerCase();
+  if(/\.xlsx?$/.test(n)){if(!(await needXlsx()))throw new Error('xlsx');const wb=XLSX.read(await file.arrayBuffer(),{type:'array',cellDates:false});let best=null;wb.SheetNames.forEach(sn=>{const a=XLSX.utils.sheet_to_json(wb.Sheets[sn],{header:1,raw:false,defval:''});if(!best||a.length>best.length)best=a});return (best||[]).map(r=>r.map(c=>String(c??'')))}
+  if(/\.html?$/.test(n)){const doc=new DOMParser().parseFromString(await file.text(),'text/html');let best=[];doc.querySelectorAll('table').forEach(t=>{const rows=[...t.rows].map(r=>[...r.cells].map(c=>c.textContent.trim()));if(rows.length>best.length)best=rows});return best}
+  return parseCSV(await file.text())}
+function impPlan(p,R){let hi=R.findIndex(r=>findCol(r,IMP_KEYS.pnl)>=0&&findCol(r,IMP_KEYS.date.concat(IMP_KEYS.open))>=0);if(hi<0)hi=0;const H=(R[hi]||[]).map(x=>String(x).toLowerCase().trim());
+  const col=k=>findCol(H,IMP_KEYS[k]);let cD=col('date'),cO=col('open'),cP=col('pnl'),cS=col('sym'),cDir=col('side'),cQ=col('qty'),cE=col('entry'),cX=col('exit'),cF=col('fee'),cW=col('swap');const cSt=findCol(H,['setup','strategy','tag','strategi']);let fmt=T('Auto-detected','Känt igen automatiskt');
+  const times=H.map((h,i)=>h==='time'||h==='tid'?i:-1).filter(i=>i>=0),prices=H.map((h,i)=>h==='price'||h==='pris'?i:-1).filter(i=>i>=0);
+  if(times.length>=2&&H.some(h=>h==='position'||h==='s / l'||h==='s/l')){cO=times[0];cD=times[1];if(prices.length>=2){cE=prices[0];cX=prices[1]}cDir=H.findIndex(h=>h==='type');fmt='MetaTrader 5'}
+  return {hi,H,cD,cO,cP,cS,cDir,cQ,cE,cX,cF,cW,cSt,fmt}}
+function impBuild(p,R,M){const d=PD(p.id);const acct=tAcct(p)==='all'?'main':tAcct(p);const out=[];let dup=0,skip=0;const seen=new Set();
+  R.slice(M.hi+1).forEach(r=>{const ds=r[M.cD>=0?M.cD:M.cO];const dd=pDate(ds);let pnl=pNum(r[M.cP]);if(!dd||isNaN(pnl)){if(r.some(c=>String(c).trim()))skip++;return}
+    const fee=M.cF>=0?Math.abs(pNum(r[M.cF])||0):0,sw=M.cW>=0?(pNum(r[M.cW])||0):0;const netGiven=/net|fifo|realized|closed p/.test(M.H[M.cP]||'');if(!netGiven)pnl=pnl-fee+sw;pnl=Math.round(pnl*100)/100;
+    const tm=pTime(M.cO>=0?r[M.cO]:ds),xtm=M.cO>=0?pTime(ds):'';const sym=M.cS>=0?String(r[M.cS]||'').toUpperCase().replace(/\s+/g,'').slice(0,20):'';const k=dd+'|'+tm+'|'+sym+'|'+pnl;
+    if(seen.has(k)||d.trades.some(x=>x.d===dd&&Math.abs(x.pnl-pnl)<.01&&(x.sym||'')===sym&&(x.tm||'')===tm)){dup++;return}seen.add(k);
+    const dirRaw=M.cDir>=0?String(r[M.cDir]||''):'';const dir=/sell|short|sälj|ask/i.test(dirRaw)?'Short':'Long';const num=c=>c>=0?(pNum(r[c])||null):null;
+    out.push({id:uid(),d:dd,tm,xtm,sym,dir,pnl,size:M.cQ>=0?Math.abs(pNum(r[M.cQ]))||null:null,entry:num(M.cE),exit:num(M.cX),fees:fee||null,setup:M.cSt>=0?String(r[M.cSt]||'').slice(0,40):'',emo:'',rules:true,note:'',imp:1,acct,tags:[]})});
+  return {out,dup,skip}}
+async function importTrades(pid,file){const p=projById(pid);if(!p)return;let R;try{R=await fileRows(file)}catch(e){toast(T('Could not read that file','Kunde inte läsa filen'));return}
+  if(!R||R.length<2){toast(T('Could not read that file','Kunde inte läsa filen'));return}const M=impPlan(p,R);if((M.cD<0&&M.cO<0)||M.cP<0){toast(T('Need a date column and a profit column','Behöver en datumkolumn och en resultatkolumn'));return}
+  const B=impBuild(p,R,M);openSheet('imppv',{p:pid,M,B,name:file.name})}
+XSHEET.imppv=function(box,c){const {M,B}=c;const net=B.out.reduce((s,x)=>s+x.pnl,0);const lab=i=>i>=0?esc(M.H[i]):'–';const W=B.out.filter(x=>x.pnl>0).length;
+  box.innerHTML=`<p class="eyebrow">${T('Import','Import')} · ${esc(c.name||'')}</p><h3>${B.out.length} ${T('new trades','nya trades')}</h3><p class="lead">${esc(M.fmt)} · ${B.dup} ${T('duplicates skipped','dubbletter hoppas över')}${B.skip?` · ${B.skip} ${T('rows without date or result','rader utan datum eller resultat')}`:''}</p>
+  <div class="pc-grid"><div><small>${T('Net','Netto')}</small><b class="num ${net>=0?'pos':'neg'}">${money(net)}</b></div><div><small>${T('Win rate','Träffsäkerhet')}</small><b class="num">${B.out.length?Math.round(W/B.out.length*100):0}%</b></div><div><small>${T('From','Från')}</small><b class="num">${esc(B.out.length?B.out.map(x=>x.d).sort()[0]:'–')}</b></div><div><small>${T('To','Till')}</small><b class="num">${esc(B.out.length?B.out.map(x=>x.d).sort().pop():'–')}</b></div></div>
+  <details class="imp-map"><summary>${T('Columns used','Kolumner som används')}</summary><p>${T('Date','Datum')}: <b>${lab(M.cD>=0?M.cD:M.cO)}</b> · ${T('Open','Öppning')}: <b>${lab(M.cO)}</b> · ${T('Result','Resultat')}: <b>${lab(M.cP)}</b> · ${T('Symbol','Symbol')}: <b>${lab(M.cS)}</b> · ${T('Side','Riktning')}: <b>${lab(M.cDir)}</b> · ${T('Size','Storlek')}: <b>${lab(M.cQ)}</b> · Entry: <b>${lab(M.cE)}</b> · Exit: <b>${lab(M.cX)}</b> · ${T('Fees','Avgifter')}: <b>${lab(M.cF)}</b></p></details>
+  ${B.out.length?`<div class="scroll"><table class="tbl"><thead><tr><th>${T('Date','Datum')}</th><th>${T('Time','Tid')}</th><th>Symbol</th><th>${T('Side','Riktning')}</th><th class="r">${T('Result','Resultat')}</th></tr></thead><tbody>${B.out.slice(0,6).map(x=>`<tr><td>${esc(x.d)}</td><td>${esc(x.tm||'')}</td><td>${esc(x.sym)}</td><td>${x.dir}</td><td class="r num ${x.pnl>=0?'pos':'neg'}">${money(x.pnl)}</td></tr>`).join('')}</tbody></table></div>${B.out.length>6?`<p class="empty-note">+ ${B.out.length-6} ${T('more','till')}</p>`:''}`:''}
+  <div class="foot"><button class="btn ghost" data-sa="close">${T('Cancel','Avbryt')}</button><button class="btn primary" data-sa="x-imp-go" ${B.out.length?'':'disabled'}>${T(`Import ${B.out.length} trades`,`Importera ${B.out.length} trades`)}</button></div>`};
+
+/* ---------- MetaTrader 5 auto-sync ---------- */
+const MT5_EA='https://github.com/pablo523/Arete/blob/main/mt5/AreloSync.mq5';
+function ingestUrl(){const C=window.ARETE_CLOUD||{};return C.url?C.url.replace(/\/$/,'')+'/functions/v1/ingest':''}
+function mt5Card(p){const head=`<h3 class="led-on">${T('Auto-import from MetaTrader 5','Automatisk import från MetaTrader 5')}<span class="aside">${T('every closed trade, by itself','varje stängd trade, av sig själv')}</span></h3>`;
+  if(!S.sb)return `<div class="card mt5">${head}<p class="empty-note" style="margin:0">${T('Available in the app version with a free account.','Finns i app-versionen med ett gratis konto.')}</p></div>`;
+  if(!S.cloudUser)return `<div class="card mt5">${head}<p class="empty-note" style="margin:0 0 12px">${T('Sign in to connect MetaTrader 5.','Logga in för att koppla MetaTrader 5.')}</p><button class="btn primary" data-cloud="open">${T('Sign in','Logga in')}</button></div>`;
+  if(S.mtTok===undefined){S.mtTok=null;S.sb.from('ingest_tokens').select('token,created_at').eq('user_id',S.cloudUser.id).limit(1).then(r=>{S.mtTok=(r.data&&r.data[0])||false;render(false)}).catch(()=>{S.mtTok=false})}
+  const tk=S.mtTok;
+  return `<div class="card mt5">${head}${tk?`<ol class="mt5-steps"><li>${T('Download the Arelo Sync robot','Ladda ner roboten Arelo Sync')}: <a href="${MT5_EA}" target="_blank" rel="noopener">AreloSync.mq5 ↗</a>. ${T('In MT5: File → Open Data Folder → MQL5 → Experts, put the file there and restart MT5.','I MT5: Arkiv → Öppna datamapp → MQL5 → Experts, lägg filen där och starta om MT5.')}</li>
+     <li>${T('Tools → Options → Expert Advisors: tick "Allow WebRequest" and add this address','Verktyg → Alternativ → Expertrådgivare: kryssa i "Tillåt WebRequest" och lägg till den här adressen')}:<code class="mt5-c">${esc(ingestUrl().replace(/\/functions.*/,''))}</code></li>
+     <li>${T('Drag Arelo Sync onto any chart and paste your key','Dra Arelo Sync till valfri graf och klistra in din nyckel')}:<code class="mt5-c">${esc(tk.token)}</code><button class="btn small ghost" data-act="x-lg-copy" data-v="${esc(tk.token)}">${T('Copy key','Kopiera nyckel')}</button></li></ol>
+     <p class="empty-note" style="margin:8px 0 0">${T('Closed trades arrive the next time you open Arelo. Keep the key private. A new key stops the old one.','Stängda trades kommer in nästa gång du öppnar Arelo. Håll nyckeln hemlig. En ny nyckel stoppar den gamla.')}</p><div class="export" style="margin-top:10px"><button class="btn small" data-act="x-mt-pull">${T('Fetch now','Hämta nu')}</button><button class="btn small ghost" data-act="x-mt-new">${T('New key','Ny nyckel')}</button></div>`
+   :tk===null?SKEL(2):`<p class="empty-note" style="margin:0 0 12px">${T('A small robot in MT5 sends each closed trade to your journal. No more typing. Works with forex, indices, gold and crypto CFDs, demo and live, prop accounts included.','En liten robot i MT5 skickar varje stängd trade till din journal. Inget mer skrivande. Fungerar med forex, index, guld och krypto-CFD:er, demo och live, även prop-konton.')}</p><button class="btn primary" data-act="x-mt-new">${T('Create my sync key','Skapa min synknyckel')}</button>`}</div>`}
+function mtToken(){const a=new Uint8Array(18);crypto.getRandomValues(a);return 'arl_'+[...a].map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function mtNewKey(){if(!S.sb||!S.cloudUser)return;try{await S.sb.from('ingest_tokens').delete().eq('user_id',S.cloudUser.id);const token=mtToken();const {error}=await S.sb.from('ingest_tokens').insert({token,user_id:S.cloudUser.id});if(error)throw error;S.mtTok={token};sfx('level');render(false)}catch(e){toast(T('Could not create a key. Has the v21 SQL been run in Supabase?','Kunde inte skapa nyckel. Har v21-SQL:en körts i Supabase?'));logErr('ingest_tokens: '+(e&&e.message||e),'','mt5')}}
+async function mtPull(quiet){const p=trProj();if(!p||!S.sb||!S.cloudUser||S.mtBusy)return;S.mtBusy=1;try{const {data,error}=await S.sb.from('inbox').select('id,trade').eq('user_id',S.cloudUser.id).order('id').limit(500);if(error)throw error;
+  if(data&&data.length){const d=PD(p.id);let n=0;data.forEach(r=>{const t=r.trade||{};const id='mt5-'+t.ticket;if(d.trades.some(x=>x.id===id))return;const o=t.close_time?new Date(t.close_time*1000):null,i=t.open_time?new Date(t.open_time*1000):null;if(!o||isNaN(o))return;
+      const pnl=Math.round(((+t.profit||0)+(+t.commission||0)+(+t.swap||0))*100)/100;d.trades.push({id,d:dkey(o),tm:i?hm(i):'',xtm:hm(o),sym:String(t.symbol||'').toUpperCase().slice(0,20),dir:/sell|short/i.test(t.type)?'Short':'Long',size:+t.volume||null,entry:+t.open_price||null,exit:+t.close_price||null,stop:+t.sl||null,target:+t.tp||null,fees:Math.abs(+t.commission||0)||null,pnl,setup:'',emo:'',rules:true,note:'',imp:2,acct:tAcct(p)==='all'?'main':tAcct(p),tags:[]});n++});
+    savePD(p.id);await S.sb.from('inbox').delete().in('id',data.map(r=>r.id));if(n){sfx('coin');toast(T(`${n} trades imported from MetaTrader 5`,`${n} trades importerade från MetaTrader 5`));render(false)}else if(!quiet)toast(T('Nothing new from MT5','Inget nytt från MT5'))}
+  else if(!quiet)toast(T('Nothing new from MT5 yet','Inget nytt från MT5 än'))}catch(e){if(!quiet)toast(T('Could not fetch from MT5','Kunde inte hämta från MT5'))}S.mtBusy=0}
+setTimeout(function mtBoot(){if(S.sb&&S.cloudUser)mtPull(true);else if(!S.mtTries||S.mtTries<6){S.mtTries=(S.mtTries||0)+1;setTimeout(mtBoot,5000)}},7000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&S.sb&&S.cloudUser)mtPull(true)});
+
+/* ---------- placement and wiring ---------- */
+{const o=tradingModule;tradingModule=function(p,d){let h=o(p,d);if(isPro()&&(S.tsub||'')==='tools')h=safe('mt5',()=>mt5Card(p))+h;return h}}
+function tAct9(a,b){switch(a){
+  case 'x-errs':openSheet('errs',{});return true;
+  case 'x-delacct':openSheet('delacct',{conf:''});return true;
+  case 'x-export-all':exportAll();return true;
+  case 'x-mt-new':mtNewKey();return true;
+  case 'x-mt-pull':mtPull(false);return true;
+}return false}
+function tSheetClick4(a,b,c){switch(a){
+  case 'x-del-go':deleteAccount(c);return true;
+  case 'x-errs-clear':try{localStorage.removeItem('arelo:errs')}catch(e){}renderSheet();return true;
+  case 'x-errs-copy':{let L='';try{L=localStorage.getItem('arelo:errs')||''}catch(e){}(navigator.clipboard?navigator.clipboard.writeText(L):Promise.reject()).then(()=>toast(T('Copied','Kopierat'))).catch(()=>{});return true}
+  case 'x-imp-go':{const p=projById(c.p);if(!p)return true;const d=PD(p.id);c.B.out.forEach(x=>d.trades.push(x));savePD(p.id);closeSheet();sfx('coin');toast(T(`${c.B.out.length} trades imported`,`${c.B.out.length} trades importerade`));render(false);return true}
 }return false}
 /* ================= boot ================= */
 function afterConfig(){if(S.cfg.lang)setLang(S.cfg.lang);applyAccent();fxPrefs();applyBg()}

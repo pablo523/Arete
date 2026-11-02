@@ -35,6 +35,18 @@ h1 em{font-style:normal;background:linear-gradient(90deg,#FFB27F,#FF6A2A);-webki
 .lead{font-size:clamp(17px,2.2vw,20px);color:var(--mu);max-width:640px;margin:0 auto 30px;text-wrap:pretty}
 .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .free{margin-top:14px;color:var(--fa);font-size:13px}
+.shots{position:relative;margin:56px auto 0;max-width:1040px;padding:0 0 40px}
+.stabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--s);border:1px solid var(--line);margin-bottom:16px}
+.stabs button{font:inherit;font-size:.86rem;font-weight:600;color:var(--mut,#9a948c);background:none;border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
+.stabs button[aria-pressed=true]{background:#2a2622;color:#f3f1ec}
+.sdesk{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#141210;box-shadow:0 50px 140px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.03)}
+.sbar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);background:#1a1715}
+.sbar i{width:10px;height:10px;border-radius:50%;background:#3a3531}.sbar span{margin:0 auto;font-size:.72rem;font-family:ui-monospace,monospace;color:#8a847c;padding:3px 14px;border-radius:999px;background:#0f0d0c}
+.sdesk img{display:block;width:100%;height:auto;transition:opacity .25s}
+.sstage{position:relative}.sphone{position:absolute;right:-28px;bottom:-40px;width:23%;max-width:240px;border-radius:30px;overflow:hidden;border:6px solid #1c1917;box-shadow:0 40px 90px -20px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.06)}
+.sphone img{display:block;width:100%;height:auto}
+.snote{margin:58px 0 0;font-size:.8rem;color:#8a847c;text-align:center}
+@media (max-width:760px){.sphone{right:-6px;bottom:-24px;width:28%;border-width:3px;border-radius:16px}.shots{padding-bottom:12px}.snote{margin-top:40px;text-align:left;padding-right:32%}}
 .mock{margin:56px auto 0;max-width:920px;border-radius:24px;background:var(--s);border:1px solid var(--line);padding:18px;box-shadow:0 40px 120px -40px rgba(0,0,0,.9);text-align:left}
 .mgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
 .mc{background:var(--s2);border:1px solid var(--line);border-radius:16px;padding:16px}
@@ -80,17 +92,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fa);font
 <p class="eyebrow" data-sv="Tradingjournal + livscoach" data-en="Trading journal + life coach">Tradingjournal + livscoach</p>
 <h1 data-sv="Ditt resultat börjar <em>innan</em> du öppnar grafen." data-en="Your results start <em>before</em> you open the chart.">Ditt resultat börjar <em>innan</em> du öppnar grafen.</h1>
 <p class="lead" data-sv="Arelo kopplar ihop sömn, humör, vanor och trades. Du ser vad som faktiskt styr ditt resultat, och får en coach som säger hur stor risk du tål idag." data-en="Arelo connects sleep, mood, habits and trades. See what actually drives your results, with a coach that tells you how much risk you can handle today.">Arelo kopplar ihop sömn, humör, vanor och trades. Du ser vad som faktiskt styr ditt resultat, och får en coach som säger hur stor risk du tål idag.</p>
-<div class="cta"><a class="btn p" href="./" data-sv="Starta gratis →" data-en="Start free →">Starta gratis →</a><a class="btn g" href="#hur" data-sv="Se hur det funkar" data-en="See how it works">Se hur det funkar</a></div>
+<div class="cta"><a class="btn p" href="./" data-sv="Starta gratis →" data-en="Start free →">Starta gratis →</a><a class="btn g" href="./?demo=1" data-sv="Testa demon, utan konto" data-en="Try the demo, no account">Testa demon, utan konto</a></div>
 <p class="free" data-sv="Gratis. Inget kort. Funkar på mobil och dator." data-en="Free. No card. Works on phone and computer.">Gratis. Inget kort. Funkar på mobil och dator.</p>
-<div class="mock reveal"><div class="mgrid">
- <div class="mc"><h4><span class="dot"></span><span data-sv="Din coach" data-en="Your coach">Din coach</span></h4>
-  <div class="light"><i></i><div><b data-sv="Gult ljus" data-en="Yellow light">Gult ljus</b><span data-sv="Halv storlek och bara dina bästa setups idag. 5,5 h sömn." data-en="Half size and only your best setups today. 5.5 h sleep.">Halv storlek och bara dina bästa setups idag. 5,5 h sömn.</span></div></div>
-  <div class="ins" data-sv="Efter <b>6,5 h sömn eller mer</b> tjänar du i snitt <b>+1,2R</b> per dag, efter mindre sömn <b>−0,4R</b>." data-en="After <b>6.5 h+ sleep</b> you average <b>+1.2R</b> a day, after less sleep <b>−0.4R</b>.">Efter <b>6,5 h sömn eller mer</b> tjänar du i snitt <b>+1,2R</b> per dag, efter mindre sömn <b>−0,4R</b>.</div>
-  <div class="ins" data-sv="Trades <b>inom 20 min efter en förlust</b>: 31 % träffsäkerhet." data-en="Trades <b>within 20 min of a loss</b>: 31% win rate.">Trades <b>inom 20 min efter en förlust</b>: 31 % träffsäkerhet.</div></div>
- <div class="mc"><h4><span class="dot" style="background:var(--acc);box-shadow:0 0 10px var(--acc)"></span><span data-sv="Prop-coach · 50K" data-en="Prop coach · 50K">Prop-coach · 50K</span></h4>
-  <div class="bar"><i></i></div>
-  <div class="kp"><div><small data-sv="Kvar idag" data-en="Left today">Kvar idag</small><b>$840</b></div><div><small data-sv="Till drawdown" data-en="To drawdown">Till drawdown</small><b>$1 620</b></div><div style="outline:1px solid rgba(255,106,42,.5)"><small data-sv="Maxrisk per trade" data-en="Max risk per trade">Maxrisk per trade</small><b>$270</b></div><div><small data-sv="Chans att klara" data-en="Chance to pass">Chans att klara</small><b style="color:var(--pos)">68%</b></div></div></div>
-</div></div>
+<div class="shots reveal">
+ <div class="stabs" role="tablist"><button aria-pressed="true" data-shot="overview" data-sv="Idag" data-en="Today">Idag</button><button aria-pressed="false" data-shot="stats" data-sv="Analys" data-en="Analysis">Analys</button><button aria-pressed="false" data-shot="journal" data-sv="Journal" data-en="Journal">Journal</button></div>
+ <div class="sstage"><div class="sdesk"><div class="sbar"><i></i><i></i><i></i><span>pablo523.github.io/Arete</span></div>
+  <picture><source id="shot-src" type="image/webp" srcset="img/desk-overview.webp"><img id="shot-img" src="img/desk-overview.jpg" width="1600" height="1000" alt="Arelo, översikt med dagens läge, equity-kurva och snabblogg" data-alt-en="Arelo overview with today's status, equity curve and quick log"></picture></div>
+ <div class="sphone"><picture><source type="image/webp" srcset="img/phone-overview.webp"><img src="img/phone-overview.jpg" width="520" height="1125" alt="Arelo i mobilen" loading="lazy"></picture></div></div>
+ <p class="snote" data-sv="Riktiga skärmdumpar från demon, inga mockups." data-en="Real screenshots from the demo, not mockups.">Riktiga skärmdumpar från demon, inga mockups.</p>
+</div>
 </header>
 
 <section id="hur"><p class="eyebrow" data-sv="Allt i en app" data-en="All in one app">Allt i en app</p>
@@ -141,4 +151,5 @@ document.getElementById('lang').onclick=function(){set(L==='sv'?'en':'sv')};set(
 var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15}):null;
 document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});})();
 </script>
+<script>(function(){const img=document.getElementById('shot-img'),src=document.getElementById('shot-src');document.querySelectorAll('[data-shot]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-shot]').forEach(x=>x.setAttribute('aria-pressed',x===b));const n=b.dataset.shot;img.style.opacity=.3;src.srcset='img/desk-'+n+'.webp';img.src='img/desk-'+n+'.jpg';img.onload=()=>img.style.opacity=1}))})();</script>
 </body></html>

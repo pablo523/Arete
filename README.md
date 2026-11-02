@@ -4,16 +4,20 @@
 
 **The discipline journal for traders.** Your trades, your rules and the days behind them in one place: a command center for today, a journal, analysis and live markets, with sleep, mood and habits feeding your coach.
 
-**Open the app:** https://pablo523.github.io/Arete/ · **Landing page:** https://pablo523.github.io/Arete/landing.html
+**Open the app:** https://pablo523.github.io/Arete/ · **Landing page:** https://pablo523.github.io/Arete/landing.html · **Try the demo (no account):** https://pablo523.github.io/Arete/?demo=1
 
 ## Install on your phone
 
 - **iPhone:** open the link in Safari → Share → *Add to Home Screen*.
 - **Android:** open the link in Chrome → *Install app*.
 
+## First start
+
+A short guided intro: language, your name, what you trade, your style and a rule template, your focus, then the app opens on your dashboard with everything set up. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
+
 ## Layout
 
-Five sections: **Today** (command bar with today's light, result curve, quick log and check-in), **Journal**, **Analysis**, **Markets** and **More** (practice, league, accounts, tools, routine and the life modules). Sidebar on desktop, bottom bar and a + button on the phone.
+Five sections: **Today** (command bar with today's light, result curve, quick log and check-in), **Journal**, **Analysis**, **Markets** and **More** (practice, league, accounts, tools, routine and the life modules). Tools are split into three tabs: calculators, rules and limits, and import, sharing and reports. Trading mode is calm by default: no confetti on trades. Sidebar on desktop, bottom bar and a + button on the phone.
 
 ## What is inside
 

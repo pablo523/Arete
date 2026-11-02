@@ -27,6 +27,10 @@ A learning section with courses built as step-by-step charts: Turtle Soup (from 
 
 In the Academy: 10 freshly generated charts per session. Tap the sweep candle, decide trade or no trade, pick the CISD line and the stop. About four in ten charts are traps (breakouts or sweeps that never confirm). Score, streak, perfect rounds and your best result are saved.
 
+## Terminal layout
+
+On desktop the app uses a terminal frame: a slim icon rail, a market bar with your sessions and today's numbers, a quick panel on the right (5-second log, playbook checklist, today's trades, coach) and a command bar on Ctrl+K that navigates or logs a trade from text like "NQ long +2R orb". Profile → Frame → Classic restores the previous layout. The previous version is also kept on the `backup-v32-classic` branch.
+
 ## Layout
 
 Five sections: **Today** (command bar with today's light, result curve, quick log and check-in), **Journal**, **Analysis**, **Markets** and **More** (practice, league, accounts, tools, routine and the life modules). Today is a tiled desk with a draggable column split, plus a Chart tab that draws your account as a candlestick chart (day, week or month candles with crosshair, zoom, MA20, trade-count volume and mistake markers; click a candle to open that day) with a floating HUD and risk gauge, a session bar that switches the dashboard between before the open (routine first), in session (risk and logging only) and after the close (today's timeline), and a Timeline that tells the day as a story (sleep, plan, every trade with the running result, revenge-window and limit warnings, review). On desktop the journal is a list with a detail pane and a trade map (stop, entry, target, exit and the range while in the trade), browsable with the arrow keys. Analysis reads as a numbered report. Settings → Layout → Airy brings back the classic cards. Tools are split into three tabs: calculators, rules and limits, and import, sharing and reports. Trading mode is calm by default: no confetti on trades. Sidebar on desktop, bottom bar and a + button on the phone.

@@ -29,7 +29,7 @@ In the Academy: 10 freshly generated charts per session. Tap the sweep candle, d
 
 ## Terminal layout
 
-On desktop the app uses a terminal frame: a slim icon rail, a market bar with your sessions and today's numbers, a quick panel on the right (5-second log, playbook checklist, today's trades, coach) and a command bar on Ctrl+K that navigates or logs a trade from text like "NQ long +2R orb". Profile → Frame → Classic restores the previous layout. The previous version is also kept on the `backup-v32-classic` branch.
+On desktop the app uses a terminal frame: a slim icon rail, a market bar with your sessions and today's numbers, a quick panel on the right (5-second log, playbook checklist, today's trades, coach) and a command bar on Ctrl+K that navigates or logs a trade from text like "NQ long +2R orb". Profile → Frame → Classic restores the previous layout, and Wall Street switches to a navy-and-gold editorial theme with a newspaper masthead, ticker tape and serif figures. The previous version is also kept on the `backup-v32-classic` branch.
 
 ## Layout
 

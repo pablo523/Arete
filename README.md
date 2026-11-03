@@ -29,9 +29,9 @@ In the Academy: 10 freshly generated charts per session. Tap the sweep candle, d
 
 ## Terminal layout
 
-On desktop the app uses a terminal frame: a slim icon rail, a market bar with your sessions and today's numbers, a quick panel on the right (5-second log, playbook checklist, today's trades, coach) and a command bar on Ctrl+K that navigates or logs a trade from text like "NQ long +2R orb". Profile → Frame → Classic restores the previous layout, and Wall Street switches to a 1970s New York theme tuned for OLED screens: true black, hairline borders, burnt orange and amber accents, thin retro stripes, a ticker band, and an orange flip clock with a split-flap market board on the home page. The previous version is also kept on the `backup-v32-classic` branch.
+On desktop the app uses a terminal frame: a slim icon rail, a market bar with your sessions and today's numbers, a quick panel on the right (5-second log, playbook checklist, today's trades, coach) and a command bar on Ctrl+K that navigates or logs a trade from text like "NQ long +2R orb". There are four more complete themes to choose from under Profile → Frame, in the command bar, or from the theme dock at the bottom of the screen: Black luxe (true black, large Inter type, a 24-hour session timeline), Bloomberg (dense, amber on black, function-key navigation and a world sessions table), Private bank (black and champagne, Cormorant serif, a thin analog clock) and Wow (deep violet with a slow aurora and a glowing orbital session clock). Classic restores the older layout, and the `backup-v32-classic` branch keeps it too.
 
-The landing page has the same two looks: Wall Street by default, with the same 1970s New York look, a live market ticker and a flip clock with a split-flap board of the world's sessions, and Terminal one click away in the top bar. A new visitor who arrives from the Wall Street landing page opens the app in the Wall Street frame unless they have already picked a frame.
+The landing page has the same four themes plus the original look, switchable from the dock at the bottom of the page. Whichever theme a visitor picks there is the one the app opens in, unless they have already chosen a frame.
 
 ## Layout
 

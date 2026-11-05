@@ -29,7 +29,7 @@ In the Academy: 10 freshly generated charts per session. Tap the sweep candle, d
 
 ## Terminal layout
 
-The app has one look: the Classic frame with the Graphite finish. Earlier frames and themes (Terminal, Wall Street and the four themes) are kept on the `backup-v39-themes` branch, and the `backup-v32-classic` branch keeps an older version.
+The app has two looks, picked under Profile → Theme or from the theme dock at the bottom of the screen. **Home** (the default) is your base: a glowing curve of your own results across the top with "you are here", your setups with their own stats, your latest trades with your own comments, a clock with your markets in your time zone, today's light and limits, your rules and a lesson from your journal. The curve comes in five styles: Horizon, Landscape, Aurora, Candles and Pulse. **Classic** keeps the sidebar layout. Earlier frames and themes are kept on the `backup-v39-themes` branch.
 
 **Import from a screenshot.** Take a screenshot of the History tab (Positions) in the MetaTrader 5 app and tap Screenshot next to the 5-second log, or Journal → From screenshot. Arelo reads every closed trade, flags the ones already in your journal, and lets you fix any field before saving. In the Claude version Claude reads the picture. In the app version it is read on your device, or by Claude if you deploy the optional `vision` function (`supabase/functions/vision`, keep JWT verification on and add an `ANTHROPIC_API_KEY` secret).
 

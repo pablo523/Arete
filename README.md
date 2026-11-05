@@ -29,7 +29,7 @@ In the Academy: 10 freshly generated charts per session. Tap the sweep candle, d
 
 ## Terminal layout
 
-The app has one look, Classic: a sidebar with your sections on the left, today's light, clock and limits on the home page, and the analysis, journal and academy pages behind it. Earlier looks (Home, and the older frames and themes) are kept on the `backup-v42-hemma` and `backup-v39-themes` branches.
+The app has one look, Classic: a sidebar with your sections on the left, today's light, clock and limits on the home page, and the analysis, journal and academy pages behind it. Behind everything runs your own equity curve as a glowing background: it is built from your trades, grows every time you log one, and ends in a pulsing dot where you are now (before your first trades it shows a calm placeholder curve). Other backgrounds can be picked under Profile → Background. Earlier looks (Home, and the older frames and themes) are kept on the `backup-v42-hemma` and `backup-v39-themes` branches.
 
 **Import from a screenshot.** Take a screenshot of the History tab (Positions) in the MetaTrader 5 app and tap Screenshot next to the 5-second log, or Journal → From screenshot. Arelo reads every closed trade, flags the ones already in your journal, and lets you fix any field before saving. In the Claude version Claude reads the picture. In the app version it is read on your device, or by Claude if you deploy the optional `vision` function (`supabase/functions/vision`, keep JWT verification on and add an `ANTHROPIC_API_KEY` secret).
 

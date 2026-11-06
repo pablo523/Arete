@@ -13,7 +13,7 @@
 
 ## First start
 
-A short guided intro: language, your name, what you trade, your style and a rule template, your focus, then the app opens on your dashboard with everything set up. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
+A short guided intro where you mostly tap instead of type: language, your experience level, markets and instruments, account type (prop size and firm), setups, sessions, risk per trade, a rule template, your focus and an optional name. The app then opens on your dashboard with your instruments as quick-log chips, your sessions on the clock, matching playbooks and a course "Picked for you" in the Academy. The Swedish version keeps English trading terms (candle, wick, sweep, bias, FVG) and plain Swedish for everything else. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
 
 ## Home
 

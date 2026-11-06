@@ -16,6 +16,16 @@
 A short guided intro where you mostly tap instead of type: language, your experience level, markets and instruments, account type (prop size and firm), setups, sessions, risk per trade, a rule template, your focus and an optional name. "Redo interview" in your profile runs the same interview again with your previous answers pre-selected. The app then opens on your dashboard with your instruments as quick-log chips, your sessions on the clock, matching playbooks and a course "Picked for you" in the Academy. The Swedish version keeps English trading terms (candle, wick, sweep, bias, FVG) and plain Swedish for everything else. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
 
 
+
+## Version 53
+
+- **Perrong (Platform)** is a third look, light this time, in the style of railway signage.
+  - Colours: paper white, signage blue, signal yellow, go green and stop red. The typeface is Overpass.
+  - The clock is a departure board for your sessions. It shows open time, killzone and status (open with time left, opens soon, or closed until a given weekday), and its digits flip like split-flap signs.
+  - New pictogram icons, a wayfinding-arrow cursor that turns the way you move, and a ticket-punch hole wherever you click.
+  - Buttons press down like a ticket machine's.
+  - Switch looks in Profile → Theme (Classic, Tide or Platform), or try it with `?look=rail`.
+
 ## Version 52
 
 - **Your edge in numbers** (Analysis → Statistics): where you make and lose money by killzone, weekday, setup, instrument and side, with a weekday × killzone heat map in Swedish time. It shows how certain each finding is.

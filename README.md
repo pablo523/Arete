@@ -15,6 +15,27 @@
 
 A short guided intro where you mostly tap instead of type: language, your experience level, markets and instruments, account type (prop size and firm), setups, sessions, risk per trade, a rule template, your focus and an optional name. "Redo interview" in your profile runs the same interview again with your previous answers pre-selected. The app then opens on your dashboard with your instruments as quick-log chips, your sessions on the clock, matching playbooks and a course "Picked for you" in the Academy. The Swedish version keeps English trading terms (candle, wick, sweep, bias, FVG) and plain Swedish for everything else. The demo link opens a full sample journal (100 days of trades, a prop account, goals and notes) that is never saved.
 
+
+## Version 52
+
+- **Your edge in numbers** (Analysis → Statistics): where you make and lose money by killzone, weekday, setup, instrument and side, with a weekday × killzone heat map in Swedish time. It shows how certain each finding is.
+- **Prop guard:**
+  - A live warning at 50 / 70 / 90 % of the daily loss limit or max drawdown.
+  - Trading days left, and an estimate of when you reach the target at your pace.
+  - A best-day share check for consistency rules.
+  - Payouts minus fees per account and per firm.
+  - Prop traders now log to their prop account by default.
+- **Faster start:**
+  - The app code is now a separate cached file (`app.js`), so the page paints at once.
+  - The account library loads in the background.
+  - Clock time-zone math is cached.
+- **Tidvatten (Tide)** is a second complete look you can switch to in your profile (Theme), or try with `?look=tide`. It has:
+  - petrol water that changes colour with the live session;
+  - a 24-hour tide-line clock you can scrub, with the session open on the line;
+  - no cards;
+  - a floating buoy cursor with click ripples;
+  - magnetic buttons and bobbing icons.
+
 ## Home
 
 The first page has no cards and also holds your day (habits, tasks, the week, quick-add, notes and links), so there is one home: a 24-hour session clock with your markets as rings, a big status line (green, yellow or red light) with one plain sentence, today's numbers, a 5-second log bar, your prop progress, today's trades, the week, the coach and a 30-day curve. Tap *My markets* to pick the sessions you trade (Sydney, Tokyo, Frankfurt, London, New York forex, NYSE/CME cash, crypto 24/7). Times are shown in your own time zone, and the page switches between before, during and after your sessions on its own.

@@ -17,6 +17,16 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 58
+
+- **Night colours** are the default in the new layout:
+  - deep ink with a violet cast, and panels one step lighter;
+  - near-white bars and a white equity curve;
+  - sky blue for gains, peach for losses, and a lilac accent;
+  - the Plus Jakarta Sans typeface, with small-caps labels on figures;
+  - a soft violet wash on the greeting card.
+- Graphite with orange is still available in Profile → Colours.
+
 ## Version 57
 
 - The normal system mouse pointer is back in the new layout. The custom pointer could lag or disappear.

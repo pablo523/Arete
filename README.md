@@ -17,6 +17,24 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 56
+
+- **A cleaner design.** Graphite surfaces that sit close to the background, one flat orange accent, and soft mint and coral for results. One typeface (Geist), sentence-case labels, and no glow.
+- **Sidebar** in groups (Workspace, Performance, Learn) with a "Search or jump to ⌘K" field at the top.
+- **Same card everywhere**, with one radius, one border and one heading style.
+- **Today** is calmer:
+  - a flat world clock;
+  - "Green light" as a short line instead of a giant headline;
+  - the day's numbers as four tiles.
+- **Analysis** is rebuilt as one story, "Your edge, in numbers", with 30D / 90D / YTD / All:
+  - key figures: net, win rate, profit factor, expectancy and max drawdown;
+  - the equity curve and consistency (green days, best streak, best day);
+  - **When you trade:** killzone, weekday and hour, in Swedish time;
+  - **What you trade:** instrument, setup, long vs short and grade;
+  - **How you trade:** rules kept vs broken, what each mistake costs, R distribution, and the biggest wins and losses.
+  - Every chart ends with a plain sentence, such as "Thursday is your best day." or "62 % win rate when you follow your rules, 45 % when you don't."
+  - The older charts, the AI coach and what-if are under "More charts".
+
 ## Version 55
 
 - The Tide and Radar looks are gone; Arelo is Classic only. Classic has a **new layout**, and the original one is one tap away in Profile → Layout.

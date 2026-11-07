@@ -17,14 +17,16 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
-## Version 53
+## Version 54
 
-- **Perrong (Platform)** is a third look, light this time, in the style of railway signage.
-  - Colours: paper white, signage blue, signal yellow, go green and stop red. The typeface is Overpass.
-  - The clock is a departure board for your sessions. It shows open time, killzone and status (open with time left, opens soon, or closed until a given weekday), and its digits flip like split-flap signs.
-  - New pictogram icons, a wayfinding-arrow cursor that turns the way you move, and a ticket-punch hole wherever you click.
-  - Buttons press down like a ticket machine's.
-  - Switch looks in Profile → Theme (Classic, Tide or Platform), or try it with `?look=rail`.
+- The Platform look is gone. In its place is **Radar**, a dark HUD look.
+  - Colours: neon cyan, violet and magenta on deep space, with lime for profit. The typefaces are Chakra Petch and IBM Plex Sans.
+  - The clock is a radar. The 24-hour dish shows your sessions as glowing rings, killzones as blips, and a beam that points at now. A readout beside it shows time left in each session.
+  - A slim command rail with new line icons whose labels glitch on hover.
+  - The cursor is a reticle that locks on and frames whatever you can press, and clicks send out a hex shockwave.
+  - Headings and numbers decode from noise when they appear.
+  - Sections are framed by HUD corner marks instead of cards, and buttons have cut corners.
+  - Switch looks in Profile → Theme (Classic, Tide or Radar), or try it with `?look=radar`.
 
 ## Version 52
 

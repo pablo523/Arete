@@ -17,6 +17,17 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 57
+
+- The normal system mouse pointer is back in the new layout. The custom pointer could lag or disappear.
+- Cleaner still:
+  - The header shows only the title (the market strip is covered by the world clock).
+  - The sidebar has one action button.
+  - Today has no status pill, two buttons in the hero, and no check-in in the coach card.
+  - The week bars are neutral, and the Long/Short tags in lists are plain words.
+  - "Your day" starts folded.
+  - There is more space between cards.
+
 ## Version 56
 
 - **A cleaner design.** Graphite surfaces that sit close to the background, one flat orange accent, and soft mint and coral for results. One typeface (Geist), sentence-case labels, and no glow.

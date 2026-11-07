@@ -17,16 +17,17 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
-## Version 54
+## Version 55
 
-- The Platform look is gone. In its place is **Radar**, a dark HUD look.
-  - Colours: neon cyan, violet and magenta on deep space, with lime for profit. The typefaces are Chakra Petch and IBM Plex Sans.
-  - The clock is a radar. The 24-hour dish shows your sessions as glowing rings, killzones as blips, and a beam that points at now. A readout beside it shows time left in each session.
-  - A slim command rail with new line icons whose labels glitch on hover.
-  - The cursor is a reticle that locks on and frames whatever you can press, and clicks send out a hex shockwave.
-  - Headings and numbers decode from noise when they appear.
-  - Sections are framed by HUD corner marks instead of cards, and buttons have cut corners.
-  - Switch looks in Profile → Theme (Classic, Tide or Radar), or try it with `?look=radar`.
+- The Tide and Radar looks are gone; Arelo is Classic only. Classic has a **new layout**, and the original one is one tap away in Profile → Layout.
+  - The desktop sidebar now floats, with a new set of icons in rounded tiles. The page you are on gets an orange tile.
+  - On the phone, the nav is a floating dock with the same icons.
+  - A new **card system**: Today is built from cards in a grid (world clock, readiness, quick log, prop, latest, week, coach, curve, your day), and the same cards are used across the app.
+  - A **world clock** shows:
+    - your time;
+    - Sydney, Tokyo, London and New York, each with a small analogue dial that lights up in the market's colour when it is open;
+    - the hour difference from you, and the time left or the next open time for each city;
+    - the whole day as one timeline in your time, with session bars, killzones and a now marker. On days with no sessions, the next sessions are shown faded.
 
 ## Version 52
 

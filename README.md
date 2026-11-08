@@ -17,6 +17,21 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 60
+
+- **Today is a dashboard:**
+  - a search field in the top bar and a big greeting ("Hi Alex!") with today's result and the next session;
+  - four key figures with an icon and a change versus the previous period: this week, win rate, rules followed and average R;
+  - your curve (30D / 90D / All) next to the result per killzone or setup;
+  - three cards: Strengths, To improve (costly mistakes, weak setups) and Next steps, a daily checklist where each step links to the right place;
+  - the world clock, quick log, latest trades and "Your day".
+- The sidebar marks the page you are on with a solid lilac pill.
+- **The new logo everywhere:**
+  - share images (trade card, month film, story);
+  - the privacy and terms pages;
+  - the landing-page screenshots, retaken in the new design;
+  - the app splash colour.
+
 ## Version 59
 
 - **New logo:** a black "A" on a white tile, with a lilac candle as the crossbar. It replaces the logo in the app, on the landing page, in the app icons (192, 512, Apple touch and maskable) and in the share image.

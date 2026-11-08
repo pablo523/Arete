@@ -17,6 +17,14 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 59
+
+- **New logo:** a black "A" on a white tile, with a lilac candle as the crossbar. It replaces the logo in the app, on the landing page, in the app icons (192, 512, Apple touch and maskable) and in the share image.
+- **Night colours are now black, white and lilac:**
+  - no orange left;
+  - the world clock's sessions are grey, and open ones are lilac;
+  - the button icons are neutral.
+
 ## Version 58
 
 - **Night colours** are the default in the new layout:

@@ -19,10 +19,10 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 ## Version 61
 
-- **Privé** is the new default look: warm black like a private-bank lounge, ivory type and champagne gold used sparingly.
+- **Privé** is the new default look: deep black and near-white, monochrome with no gold. Greens and reds only for results. (Updated after v61: the gold was removed.)
   - Instrument Serif for the voice: greetings, page titles and the big amounts. Geist for everything else.
   - Today opens on a capital card with your net result all time in large gold serif, this year / this month / today, and your curve in gold.
-  - Cards have a hairline gold edge and soft depth. Primary buttons are gold, the sidebar is quiet with a gold marker, and the logo is now a champagne tile.
+  - Cards have a hairline gold edge and soft depth. Primary buttons are white, the sidebar is quiet with a light marker, and the logo is a dark tile with a white mark.
   - The landing page has the same look: a serif headline with gold italics, gold buttons, and new screenshots.
 - Night and Graphite are still available in Profile → Colours.
 

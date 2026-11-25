@@ -218,3 +218,11 @@ See [LAUNCH.md](LAUNCH.md) for the launch plan.
 - Ny logga: **candle i zonen** – en vit candle som tar sig igenom en lila zon, på mörk bricka. Nya app-ikoner, favicon och delningsbild (icons/pipzone-logo.png).
 - Sparad data ligger kvar: lagringsnycklarna (`arelo:`) och MT5-filen AreloSync är oförändrade så ingen förlorar något.
 - Kommande åtgärder på Idag får inte längre plats att flöda över på mobil.
+
+## Version 66 – Coach
+Ny flik **Coach** (mellan Mål och Marknader), byggd på idéerna i *The Daily Trading Coach*, med egna ord:
+- **Idag:** Spegeln, dagens coachövning, *Gör tvärtom* (logga suget att bryta en regel i stället för traden, med andel du stod emot) och *Ditt bästa jag som manus* som du läser före varje session, med streak.
+- **Mönster:** *Undantagen* – förlusterna där du inte hoppade in igen inom 15 min, och vad du gjorde annorlunda (sparas som ditt recept). *Trada marknaden du är i* – setups som tappat de senaste 14 dagarna. *Välmående* – sömn och humör mot resultat och regelföljning.
+- **Verktyg:** *Tanke-journalen* (situation, tanke, känsla, coachens svar), *Små experiment* (en förändring, 20 trades före mot efter, behåll eller släpp) och *En minut andning* (4 in, 4 håll, 6 ut).
+- Två förluster i rad i dag ger en lugn påminnelse på Idag och i Coach om att andas en minut.
+- Suget-knappen finns också direkt i snabbloggen. Mål-fliken heter nu Mål / Mentalt spel / Beslut / Planer.

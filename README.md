@@ -205,3 +205,10 @@ See [LAUNCH.md](LAUNCH.md) for the launch plan.
 ## Version 63
 - Inga kort: nytt "Sheet"-system i Studio – sektioner avgränsas med luft och hårlinjer, kolumner med en enda vertikal linje, som en finansiell rapport.
 - Ny flik **Mål**: daglig coachövning, veckans självutvärdering (5 områden), mål (process/utfall/färdighet) med dagliga check-ins, förslag från din egen data, om–då-planer, styrkor och reflektionsarkiv. Övningarna är egna, fritt inspirerade av idéerna i Brett N. Steenbargers *The Daily Trading Coach*.
+
+## Version 64
+- **Horisont-klockan** ligger högst upp på varje sida: din tid stort, dagen som en tidslinje där sessioner och killzones glider förbi ett fast "nu", och fyra städer med öppet/stängt. En liten klocka sitter alltid i menyn.
+- **Rensad Idag-sida:** kapital, nyckeltal, kommande åtgärder som en rad, kurva, logga trade och de tre senaste traderna.
+- **Mål i fyra flikar:** Coach, Mentalt spel (A/B/C-game och tilt-karta), Beslut (beslut mot utfall och block om 20 trades per setup) och Planer.
+- **Spegla traden:** såg/kände/gjorde direkt i snabbloggen, en mjuk påminnelse när du skriver dömande, och Spegeln i Coach som återger din dag utan betyg.
+- Övningarna är skrivna med egna ord, fritt inspirerade av Jared Tendler, Mark Douglas, Annie Duke och Brett N. Steenbarger.

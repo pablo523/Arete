@@ -201,3 +201,7 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 The publishable key is public by design. Row level security makes sure each person only reads and writes their own data. Never share the *service_role / secret* key.
 
 See [LAUNCH.md](LAUNCH.md) for the launch plan.
+
+## Version 63
+- Inga kort: nytt "Sheet"-system i Studio – sektioner avgränsas med luft och hårlinjer, kolumner med en enda vertikal linje, som en finansiell rapport.
+- Ny flik **Mål**: daglig coachövning, veckans självutvärdering (5 områden), mål (process/utfall/färdighet) med dagliga check-ins, förslag från din egen data, om–då-planer, styrkor och reflektionsarkiv. Övningarna är egna, fritt inspirerade av idéerna i Brett N. Steenbargers *The Daily Trading Coach*.

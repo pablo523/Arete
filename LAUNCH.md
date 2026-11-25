@@ -1,4 +1,4 @@
-# Arelo launch plan
+# Pipzone launch plan
 
 ## Positioning
 
@@ -6,7 +6,7 @@
 
 **Who it is for first:** funded and prop challenge traders (futures and forex), 18 to 35, who already journal a little and know their problem is discipline, not strategy.
 
-**Why they switch:** every other journal shows what happened. Arelo shows *why* (sleep, tilt, overtrading) and stops the next mistake (tilt lock, prop coach, max risk today).
+**Why they switch:** every other journal shows what happened. Pipzone shows *why* (sleep, tilt, overtrading) and stops the next mistake (tilt lock, prop coach, max risk today).
 
 **Rule:** we never show or rank money. Discipline is the scoreboard. That makes sharing safe and honest.
 
@@ -74,7 +74,7 @@ Price idea: 99 kr / $9 per month, 790 kr / $79 per year. Mentors: 49 kr per stud
 
 ## Before you grow big
 
-- Check the name Arelo in the App Store, Google Play, domains (arelo.app / arelo.io) and trademarks (PRV, EUIPO) before spending on branding.
+- Check the name Pipzone in the App Store, Google Play, domains (pipzone.app / pipzone.io) and trademarks (PRV, EUIPO) before spending on branding.
 - Add a privacy policy and terms page (Supabase stores emails and journal data).
 - Keep "not financial advice" visible.
 
@@ -91,7 +91,7 @@ What the big journals do and where they leave gaps:
 
 **Why traders quit journaling:** too many fields per trade, manual entry right after a loss, writing without ever rereading, no fixed review time.
 
-**What Arelo now does about it:**
+**What Pipzone now does about it:**
 - 5-second log: result, symbol, side, rules. Everything else is optional.
 - Ask your journal in plain language, free and uncapped, with the trades behind every answer.
 - Coach that flags hold-time leaks (losers held longer than winners), sizing up after losses, and weak weekdays.

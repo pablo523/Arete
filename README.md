@@ -1,6 +1,6 @@
-# Arelo
+# Pipzone
 
-![Arelo](icons/arelo-logo.png)
+![Pipzone](icons/pipzone-logo.png)
 
 **The discipline journal for traders.** Your trades, your rules and the days behind them in one place: a command center for today, a journal, analysis and live markets, with sleep, mood and habits feeding your coach.
 
@@ -101,7 +101,7 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 ## Version 55
 
-- The Tide and Radar looks are gone; Arelo is Classic only. Classic has a **new layout**, and the original one is one tap away in Profile → Layout.
+- The Tide and Radar looks are gone; Pipzone is Classic only. Classic has a **new layout**, and the original one is one tap away in Profile → Layout.
   - The desktop sidebar now floats, with a new set of icons in rounded tiles. The page you are on gets an orange tile.
   - On the phone, the nav is a floating dock with the same icons.
   - A new **card system**: Today is built from cards in a grid (world clock, readiness, quick log, prop, latest, week, coach, curve, your day), and the same cards are used across the app.
@@ -147,7 +147,7 @@ In the Academy: 10 freshly generated charts per session. Tap the sweep candle, d
 
 The app has one look, Classic: a sidebar with your sections on the left, today's light, clock and limits on the home page, and the analysis, journal and academy pages behind it. Behind everything runs your own equity curve as a glowing background: it is built from your trades, grows every time you log one, and ends in a pulsing dot where you are now (before your first trades it shows a calm placeholder curve). Other backgrounds can be picked under Profile → Background. The home clock comes in three styles plus the original: Ring (every market an arc on a 24-hour dial, with killzones and the London–New York overlap), Timeline (a timetable with one lane per market) and Orbits (one ring per market with a dot for now). Text fields (label inside, line, capsule) and icons (duotone, tiles, thin glow) can be switched the same way under Profile. The Academy has a Pattern Lab: 30 concepts in four groups (candles; structure and liquidity; gaps and blocks; time levels in New York time), each with a definition, how to spot it, the common mistake and its source (ICT, Connors & Raschke, Steve Nison, Bill Williams, Al Brooks, Daye's Quarterly Theory). Every exercise is a freshly generated chart graded against the definition, so the practice never runs out; a mixed test weights the concepts you are weakest at and adds name-the-pattern questions, and each concept earns bronze, silver and gold. Five teacher-led courses walk through the theory step by step on charts that build up as you click: Time, AMD and Quarterly Theory (every key time in New York and Swedish time, the true day open, power of three, AMDX/XAMD, quarters and true opens from the year down to 90 minutes, news times), Order blocks in depth, FVG/IFVG and opening gaps (NWOG/NDOG), SMT and SSMT (two markets side by side), and Turtle Soup at pro level (true day open, Asian range, CISD and FVG entries, traps and a full day from 00:00 to target). Four more courses cover the craft around the setups: Risk and psychology (position size, R, expectancy, drawdowns and losing streaks, trade management, tilt, routine), Daily and weekly bias (top-down, draw on liquidity, the previous-day-range scenarios, invalidation), Passing a prop firm challenge (rules, static/EOD/intraday trailing drawdown, risk, consistency, a 50K plan) and Timeframes working together (one job per timeframe, wicks as lower-timeframe sweeps, 4H zone to 1m trigger). Earlier looks (Home, and the older frames and themes) are kept on the `backup-v42-hemma` and `backup-v39-themes` branches.
 
-**Import from a screenshot.** Take a screenshot of the History tab (Positions) in the MetaTrader 5 app and tap Screenshot next to the 5-second log, or Journal → From screenshot. Arelo reads every closed trade, flags the ones already in your journal, and lets you fix any field before saving. In the Claude version Claude reads the picture. In the app version it is read on your device, or by Claude if you deploy the optional `vision` function (`supabase/functions/vision`, keep JWT verification on and add an `ANTHROPIC_API_KEY` secret).
+**Import from a screenshot.** Take a screenshot of the History tab (Positions) in the MetaTrader 5 app and tap Screenshot next to the 5-second log, or Journal → From screenshot. Pipzone reads every closed trade, flags the ones already in your journal, and lets you fix any field before saving. In the Claude version Claude reads the picture. In the app version it is read on your device, or by Claude if you deploy the optional `vision` function (`supabase/functions/vision`, keep JWT verification on and add an `ANTHROPIC_API_KEY` secret).
 
 **Today's session.** A five-minute daily workout on the home page and in the Academy: three fresh charts to read, one theory question from the courses, one rule from your checklists, and today's bias, which you lock before the session and grade the next morning. It keeps a streak, XP, a level and your bias hit rate.
 
@@ -164,7 +164,7 @@ Five sections: **Today** (command bar with today's light, result curve, quick lo
 - **Exit analysis:** MAE/MFE (auto-filled from Replay for crypto), exit efficiency and a stop/target simulator
 - **Journal filters and bulk edit:** period, market, setup, side, result, rules, mistake and text search, with summary stats and edit-all
 - **Import preview:** CSV, Excel and MT5 HTML reports with a preview of columns, new trades and duplicates before anything is saved
-- **MetaTrader 5 auto-import:** the read-only [Arelo Sync robot](mt5/AreloSync.mq5) sends every closed trade to your journal
+- **MetaTrader 5 auto-import:** the read-only [Pipzone Sync robot](mt5/AreloSync.mq5) sends every closed trade to your journal
 - **Trust:** [privacy policy](privacy.html), [terms](terms.html), export all data, delete account, and error reports
 - **Setup library:** classic setups (ORB, VWAP reclaim, break & retest, London breakout and more) added to your playbook in one tap
 - **Notebook:** daily plan, weekly recap, trading plan and after-a-bad-day templates
@@ -212,3 +212,9 @@ See [LAUNCH.md](LAUNCH.md) for the launch plan.
 - **Mål i fyra flikar:** Coach, Mentalt spel (A/B/C-game och tilt-karta), Beslut (beslut mot utfall och block om 20 trades per setup) och Planer.
 - **Spegla traden:** såg/kände/gjorde direkt i snabbloggen, en mjuk påminnelse när du skriver dömande, och Spegeln i Coach som återger din dag utan betyg.
 - Övningarna är skrivna med egna ord, fritt inspirerade av Jared Tendler, Mark Douglas, Annie Duke och Brett N. Steenbarger.
+
+## Version 65 – Pipzone
+- Nytt namn: **Pipzone** (tidigare Arelo) i appen, på landningssidan, i integritets- och villkorssidorna, manifestet och delningsbilderna.
+- Ny logga: **candle i zonen** – en vit candle som tar sig igenom en lila zon, på mörk bricka. Nya app-ikoner, favicon och delningsbild (icons/pipzone-logo.png).
+- Sparad data ligger kvar: lagringsnycklarna (`arelo:`) och MT5-filen AreloSync är oförändrade så ingen förlorar något.
+- Kommande åtgärder på Idag får inte längre plats att flöda över på mobil.

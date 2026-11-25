@@ -17,6 +17,17 @@ A short guided intro where you mostly tap instead of type: language, your experi
 
 
 
+## Version 62
+
+- **Studio** is the new default look:
+  - near-black with two quiet pools of cool light;
+  - navigation in a floating bar at the top instead of a sidebar;
+  - glass cards with a light top edge;
+  - large, thin numbers in Geist;
+  - white as the only accent, with green and red only for results.
+- The landing page has the same look.
+- Privé, Night and Graphite are still in Profile → Colours.
+
 ## Version 61
 
 - **Privé** is the new default look: deep black and near-white, monochrome with no gold. Greens and reds only for results. (Updated after v61: the gold was removed.)

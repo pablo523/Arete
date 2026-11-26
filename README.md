@@ -226,3 +226,9 @@ Ny flik **Coach** (mellan Mål och Marknader), byggd på idéerna i *The Daily T
 - **Verktyg:** *Tanke-journalen* (situation, tanke, känsla, coachens svar), *Små experiment* (en förändring, 20 trades före mot efter, behåll eller släpp) och *En minut andning* (4 in, 4 håll, 6 ut).
 - Två förluster i rad i dag ger en lugn påminnelse på Idag och i Coach om att andas en minut.
 - Suget-knappen finns också direkt i snabbloggen. Mål-fliken heter nu Mål / Mentalt spel / Beslut / Planer.
+
+## Version 67 – Lättare att läsa
+- Ljusare bas (#16181E i stället för nästan svart), vit rubriktext, ljusare brödtext och etiketter, större små etiketter.
+- Ikoner och meny tydligare: tjockare streck, ljusare färg, mörk text på den aktiva knappen.
+- Fält och knappar syns bättre, och klockans tidslinje, prickar och skalor har mer kontrast.
+- Landningssidan har samma ljusare bas och tydligare text, och nya skärmbilder.

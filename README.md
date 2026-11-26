@@ -232,3 +232,9 @@ Ny flik **Coach** (mellan Mål och Marknader), byggd på idéerna i *The Daily T
 - Ikoner och meny tydligare: tjockare streck, ljusare färg, mörk text på den aktiva knappen.
 - Fält och knappar syns bättre, och klockans tidslinje, prickar och skalor har mer kontrast.
 - Landningssidan har samma ljusare bas och tydligare text, och nya skärmbilder.
+
+## Version 68 – Enklare
+- Mindre text: förklaringarna i Mål och Coach är dolda bakom ett litet **?** vid rubriken.
+- Mindre skrivande, fler knappar: spegla traden med knappar (såg/kände/gjorde), vanliga tankar med färdiga coachsvar, recept för undantagen och tilt-signaler med nivå och åtgärd – ett tryck var. "Skriv själv" finns kvar.
+- Valfria fält är ihopfällda: svaret på dagens fråga, A/B/C-beskrivningar och varför/datum på mål.
+- Manuset "Ditt bästa jag" är förifyllt, så du bara behöver läsa och trycka.
